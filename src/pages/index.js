@@ -7,19 +7,25 @@ const IndexPage = ({ data: { notesQuery, assemblagesQuery } }) => {
   return (
     <Layout>
       <section>
-        <h2>You're on the Front Page</h2>
+        <h2>Assemblages</h2>
         <ul class="assemblage-list">
-          {/* {notesQuery.edges.map(({ node: note }) => (
-            <li class="card--assemblage">
-              <a href={`${note.slug}`}>
-                <p class="title">{note.title}</p>
-              </a>
-            </li>
-          ))} */}
           {assemblagesQuery.group.map((group) => (
             <li class="card--assemblage">
               <a href="/">
                 <p class="title">{group.title}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
+        <h2>Recent Notes</h2>
+        <ul className="notes-table">
+          {notesQuery.edges.map(({ node: note }) => (
+            <li>
+              <a href={`${note.slug}`}>
+                <p class="title">{note.title}</p>
               </a>
             </li>
           ))}

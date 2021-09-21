@@ -29,6 +29,27 @@ module.exports = {
       __key: "pages",
     },
     {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/content/essays`,
+        name: "Essays",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/content/works`,
+        name: "Works",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/content/moments`,
+        name: "Moments",
+      },
+    },
+    {
       resolve: `@aengusm/gatsby-theme-brain`,
       options: {
         mdxOtherwiseConfigured: true,
