@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-function AssemblagesPage({ data }) {
+function ConceptsPage({ data }) {
   return (
     <div>
       {data.allMdx.group.map((item) => (
@@ -28,4 +28,4 @@ export const query = graphql`
   }
 `;
 
-export default AssemblagesPage;
+export default ConceptsPage;

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { css } from "@emotion/react";
 
 const Footnote = ({ id, idName, children, closed }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const footnoteStyles = css`
     .sidenote,
     .marginnote {
@@ -18,6 +20,14 @@ const Footnote = ({ id, idName, children, closed }) => {
       line-height: 1.3;
       vertical-align: baseline;
       position: absolute;
+
+      /* float: none;
+      display: block;
+      position: relative;
+      right: unset;
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem; */
     }
 
     label {
@@ -126,7 +136,7 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
 
     .sidenote-number:after {
-      content: counter(sidenote-counter);
+      content: "[" counter(sidenote-counter) "]";
       font-size: 0.9em;
       top: -0.5rem;
       left: 0em;
@@ -135,7 +145,7 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
 
     .sidenote:before {
-      content: counter(sidenote-counter) " ";
+      content: "[" counter(sidenote-counter) "]";
       font-size: 0.9em;
       top: -0.3rem;
       padding-right: 8px;
@@ -179,10 +189,13 @@ const Footnote = ({ id, idName, children, closed }) => {
   `;
 
   return (
-    <span css={closed ? closedFootnoteStyles : footnoteStyles}>
+    <span css={isOpen ? closedFootnoteStyles : footnoteStyles}>
       <label
         for={idName}
-        className="margin-toggle sidenote-number"></label>
+        className="margin-toggle sidenote-number"
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}></label>
       <input type="checkbox" id={idName} className="margin-toggle" />
       <span className="sidenote">{children}</span>
     </span>

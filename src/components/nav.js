@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 
 function Nav() {
@@ -19,19 +20,29 @@ function Nav() {
       </aside>
       <ul>
         <li>
-          <a href="/">Front Page</a>
+          <Link to="/" ariaLabel="View front page">
+            Front Page
+          </Link>
         </li>
         <li>
-          <a href="/essays">Essays</a>
+          <Link to="/essays" ariaLabel="Go to essays">
+            Essays
+          </Link>
         </li>
         <li>
-          <a href="/moments">Moments</a>
+          <Link to="/moments" ariaLabel="Go to everyday moments">
+            Moments
+          </Link>
         </li>
         <li>
-          <a href="/works">Works</a>
+          <Link to="/works" ariaLabel="View work catalog">
+            Works
+          </Link>
         </li>
         <li>
-          <a href="/concepts">Concepts</a>
+          <Link to="/concepts" ariaLabel="View site topics">
+            Concepts
+          </Link>
         </li>
       </ul>
     </nav>

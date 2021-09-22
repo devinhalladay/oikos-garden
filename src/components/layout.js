@@ -1,7 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
 import React from "react";
 import "../styles/styles.scss";
-import "../styles/tufte.css";
 import Nav from "./nav";
 import components from "./mdx";
 
