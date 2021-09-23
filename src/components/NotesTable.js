@@ -2,9 +2,10 @@ import { Link } from "gatsby";
 import React from "react";
 
 function NotesTable({ notes }) {
+  console.log(notes);
   return (
     <ul className="notes-table">
-      {notes.map((node) => (
+      {notes.map(({ node }) => (
         <li>
           <Link to={`${node.slug}`}>
             <p class="title">

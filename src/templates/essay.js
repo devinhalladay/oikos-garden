@@ -73,6 +73,8 @@ export const pageQuery = graphql`
         excerpt(pruneLength: 160)
         body
         frontmatter {
+          subtitle
+          date(formatString: "MMMM YYYY")
           title
           description
         }

@@ -13,7 +13,8 @@ const IndexPage = ({ data: { notesQuery, assemblagesQuery } }) => {
         <ul class="assemblage-list">
           {assemblagesQuery.edges.map((edge) => {
             const { node } = edge;
-            const { title, slug, cover_image } = node.frontmatter;
+            const { slug } = node;
+            const { title, cover_image } = node.frontmatter;
             return (
               <li class="card--assemblage">
                 <Link to={slug}>
