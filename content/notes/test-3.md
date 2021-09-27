@@ -1,4 +1,7 @@
 ---
-title: automation is permeated with narratives of control
+title: People often bias toward conservation of resources
+tags: ["Logistics", "Human Behavior"]
+date: 2021-10-26
 ---
-[[Automation produces its own ethics and aesthetics]]
+
+[[Abstraction is critical to the product development process]]

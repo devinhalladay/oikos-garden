@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { css } from "@emotion/react";
+import React, { useState } from 'react';
+import { css } from '@emotion/react';
 
 const Footnote = ({ id, idName, children, closed }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,14 +20,7 @@ const Footnote = ({ id, idName, children, closed }) => {
       line-height: 1.3;
       vertical-align: baseline;
       position: absolute;
-
-      /* float: none;
-      display: block;
-      position: relative;
-      right: unset;
-      width: 100%;
-      margin-top: 0.5rem;
-      margin-bottom: 1rem; */
+      text-align: left;
     }
 
     label {
@@ -45,7 +38,7 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
 
     .sidenote-number:after {
-      content: "[" counter(sidenote-counter) "]";
+      content: '[' counter(sidenote-counter) ']';
       font-family: Manuale;
       font-size: 0.875rem;
       color: #1973ff;
@@ -55,10 +48,10 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
 
     .sidenote:before {
-      content: "[" counter(sidenote-counter) "]";
+      content: '[' counter(sidenote-counter) ']';
       color: #1973ff;
       font-size: 0.875rem;
-      padding-right: 8px;
+      padding-right: 6px;
     }
 
     blockquote .sidenote,
@@ -80,14 +73,20 @@ const Footnote = ({ id, idName, children, closed }) => {
       display: none;
     }
 
-    @media and (max-width: 1000px) {
+    @media (max-width: 1000px) {
       label.margin-toggle:not(.sidenote-number) {
         display: inline;
       }
 
       .sidenote,
       .marginnote {
-        display: none;
+        float: none;
+        display: block;
+        position: relative;
+        right: unset;
+        width: 100%;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
       }
 
       .margin-toggle:checked + .sidenote,
@@ -103,22 +102,24 @@ const Footnote = ({ id, idName, children, closed }) => {
       }
     }
   `;
+
   const closedFootnoteStyles = css`
     .sidenote,
     .marginnote {
+      font-family: Alegreya Sans;
       float: right;
       clear: right;
-      margin-right: -45%;
-      width: 40%;
+      text-align: left;
+      right: -50%;
+      width: 260px;
       margin-top: 0;
       margin-bottom: 0;
-      font-size: 0.82em;
+      color: #1973ff;
+      font-size: 0.75rem;
       opacity: 85%;
       line-height: 1.3;
       vertical-align: baseline;
-      position: relative;
-      border-left: 2px solid lightgray;
-      padding-left: 1em;
+      position: absolute;
     }
 
     label {
@@ -136,8 +137,8 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
 
     .sidenote-number:after {
-      content: "[" counter(sidenote-counter) "]";
-      font-size: 0.9em;
+      content: '[' counter(sidenote-counter) ']';
+      font-size: 0.875rem;
       top: -0.5rem;
       left: 0em;
       padding-right: 3px;
@@ -145,10 +146,9 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
 
     .sidenote:before {
-      content: "[" counter(sidenote-counter) "]";
-      font-size: 0.9em;
-      top: -0.3rem;
-      padding-right: 8px;
+      content: '[' counter(sidenote-counter) ']';
+      font-size: 0.875rem;
+      padding-right: 6px;
     }
 
     blockquote .sidenote,
@@ -170,11 +170,6 @@ const Footnote = ({ id, idName, children, closed }) => {
       display: inline;
     }
 
-    .sidenote,
-    .marginnote {
-      display: none;
-    }
-
     .margin-toggle:checked + .sidenote,
     .margin-toggle:checked + .marginnote {
       display: block;
@@ -186,10 +181,17 @@ const Footnote = ({ id, idName, children, closed }) => {
       vertical-align: baseline;
       position: relative;
     }
+
+    @media (max-width: 1000px) {
+      .sidenote,
+      .marginnote {
+        display: none;
+      }
+    }
   `;
 
   return (
-    <span css={isOpen ? closedFootnoteStyles : footnoteStyles}>
+    <span css={isOpen ? footnoteStyles : closedFootnoteStyles}>
       <label
         for={idName}
         className="margin-toggle sidenote-number"

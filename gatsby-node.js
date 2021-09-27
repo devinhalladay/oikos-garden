@@ -1,14 +1,17 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const website = require("./config/website");
-const _ = require("lodash");
+const website = require('./config/website');
+const _ = require('lodash');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   // Define a template for blog post
   const essayTemplate = path.resolve(`./src/templates/essay.js`);
-  const tagTemplate = path.resolve("./src/templates/tag.js");
+  const tagTemplate = path.resolve('./src/templates/tag.js');
+  const assemblageTemplate = path.resolve(
+    './src/templates/assemblage.js'
+  );
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -32,6 +35,26 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   );
+
+  const assemblageResults = await graphql(
+    `
+      {
+        allMdx(
+          limit: 1000
+          filter: {
+            fileAbsolutePath: { regex: "/content/assemblages/" }
+          }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+    `
+  );
   // sort: { fields: [frontmatter___date], order: ASC }
 
   if (result.errors) {
@@ -44,6 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const essays = result.data.allMdx.nodes;
   const tags = result.data.allMdx.group;
+  const assemblages = assemblageResults.data.allMdx.nodes;
 
   // Create blog essays pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -84,12 +108,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
+
+  if (assemblages.length > 0) {
+    // Make tag pages
+    assemblages.forEach((a) => {
+      createPage({
+        path: `/assemblages/${_.kebabCase(a.frontmatter.slug)}/`,
+        component: assemblageTemplate,
+        context: {
+          id: a.id,
+        },
+      });
+    });
+  }
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === "Mdx" && node.fileAbsolutePath) {
+  if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
     const value = createFilePath({ node, getNode });
 
     createNodeField({
@@ -129,7 +166,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      cover_image: String
+      cover_image: File @fileByRelativePath
       slug: String
       tags: [String]
       subtitle: String

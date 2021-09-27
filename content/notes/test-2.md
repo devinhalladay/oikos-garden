@@ -1,5 +1,7 @@
 ---
-title: Test 2
-topics: ['Nothing AT All']
+title: Abstraction is critical to the product development process
+tags: ["Product Development", "Abstraction", "Systems Thought"]
+date: 2021-10-26
 ---
-[[test]]
+
+[[People often bias toward conservation of resources]]

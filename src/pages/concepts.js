@@ -1,5 +1,5 @@
-import React from "react";
-import { graphql } from "gatsby";
+import React from 'react';
+import { graphql } from 'gatsby';
 
 function ConceptsPage({ data }) {
   return (
@@ -20,7 +20,7 @@ function ConceptsPage({ data }) {
 export const query = graphql`
   {
     allMdx {
-      group(field: frontmatter___topics) {
+      group(field: frontmatter___tags) {
         totalCount
         title: fieldValue
       }

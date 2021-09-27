@@ -1,6 +1,6 @@
-import * as React from "react";
-import { graphql } from "gatsby";
-import Layout from "../components/layout";
+import * as React from 'react';
+import { graphql } from 'gatsby';
+import Layout from '../components/layout';
 
 // markup
 const IndexPage = ({ data: { worksQuery } }) => {
@@ -26,7 +26,7 @@ const IndexPage = ({ data: { worksQuery } }) => {
               <li class="card--assemblage" key={i}>
                 <a href="/">
                   <p class="title">{title}</p>
-                  <img src={cover_image} alt="" />
+                  {/* <img src={cover_image} alt="" /> */}
                 </a>
               </li>
             );
@@ -51,10 +51,9 @@ export const pageQuery = graphql`
           frontmatter {
             title
             scope
-            topics
+            tags
             featured
             description
-            cover_image
             categories
           }
         }

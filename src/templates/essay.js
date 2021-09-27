@@ -1,8 +1,10 @@
-import * as React from "react";
-import { Link, graphql } from "gatsby";
+import * as React from 'react';
+import { Link, graphql } from 'gatsby';
 
-import Layout from "../components/layout";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import Layout from '../components/layout';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { kebabCase } from 'lodash';
+import EssayHeader from '../components/Essay/EssayHeader';
 
 const EssayTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];
@@ -15,41 +17,13 @@ const EssayTemplate = ({ data, location }) => {
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article">
-        <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
+        <EssayHeader post={post} />
         <MDXRenderer>{post.body}</MDXRenderer>
         <footer
           style={{
             height: 200,
           }}></footer>
       </article>
-      {/* <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}>
-          <li>
-            {previous && (
-              <Link to={previous.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
-          </li>
-          <li>
-            {next && (
-              <Link to={next.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav> */}
     </Layout>
   );
 };
@@ -57,11 +31,7 @@ const EssayTemplate = ({ data, location }) => {
 export default EssayTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
+  query BlogPostBySlug($id: String!) {
     site {
       siteMetadata {
         title
@@ -76,33 +46,13 @@ export const pageQuery = graphql`
           subtitle
           date(formatString: "MMMM YYYY")
           title
-          description
+          tags
         }
 
-        slug
-      }
-    }
-    previous: allMdx(filter: { id: { eq: $previousPostId } }) {
-      nodes {
-        id
-        excerpt(pruneLength: 160)
-        body
-        frontmatter {
-          title
-          description
-        }
-
-        slug
-      }
-    }
-    next: allMdx(filter: { id: { eq: $nextPostId } }) {
-      nodes {
-        id
-        excerpt(pruneLength: 160)
-        body
-        frontmatter {
-          title
-          description
+        fields {
+          readingTime {
+            text
+          }
         }
 
         slug
