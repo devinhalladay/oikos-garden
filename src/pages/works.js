@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
+import { Helmet } from 'react-helmet';
 
 // markup
 const IndexPage = ({ data: { worksQuery } }) => {
@@ -8,6 +9,7 @@ const IndexPage = ({ data: { worksQuery } }) => {
 
   return (
     <Layout>
+      <Helmet title="Works • Infinite Caesura" />
       <section>
         <h2>Works</h2>
         <ul class="assemblage-list">

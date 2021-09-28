@@ -9,6 +9,7 @@ import NoteCard from '../components/Notes/NoteCard';
 import AssemblageCard from '../components/Assemblages/AssemblageCard';
 import TagLink from '../components/TagLink';
 import PageHeading from '../components/PageHeading';
+import { Helmet } from 'react-helmet';
 const TagPage = ({
   pageContext,
   data: {
@@ -61,6 +62,7 @@ const TagPage = ({
 
   return (
     <Layout width="wide">
+      <Helmet title={`${tag} • Infinite Caesura`} />
       <PageHeading
         title={
           <>

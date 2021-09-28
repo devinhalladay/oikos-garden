@@ -3,13 +3,17 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import NotesTable from '../components/NotesTable';
 import EssayHeader from '../components/Essay/EssayHeader';
-import SectionHeading from '../components/SectionHeading';
+import PageHeading from '../components/PageHeading';
+import { Helmet } from 'react-helmet';
 
 function EssaysPage({ data }) {
   console.log(data);
+
   return (
     <Layout>
-      <SectionHeading title="Essays" />
+      <Helmet title="Essays • Infinite Caesura" />
+
+      <PageHeading title="Essays" />
       <div className="mt-6">
         {data.allMdx.nodes.map((node) => {
           console.log(node);

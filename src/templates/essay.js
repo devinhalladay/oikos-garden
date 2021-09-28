@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { kebabCase } from 'lodash';
 import EssayHeader from '../components/Essay/EssayHeader';
+import { Helmet } from 'react-helmet';
 
 const EssayTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];
@@ -13,6 +14,9 @@ const EssayTemplate = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Helmet
+        title={`${post.frontmatter.title} • Infinite Caesura`}
+      />
       <article
         className="blog-post"
         itemScope

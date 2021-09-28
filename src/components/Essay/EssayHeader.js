@@ -24,7 +24,7 @@ function EssayHeader({ post, isLinked, mini }) {
                 <div className="flex-grow mr-5">
                   <h1
                     className={`mb-2 tracking-tight ${
-                      mini ? 'text-xl' : 'text-4xl'
+                      mini ? 'text-xl' : 'text-3xl'
                     }`}>
                     {post.frontmatter.title}
                   </h1>

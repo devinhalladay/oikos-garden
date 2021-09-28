@@ -36,6 +36,7 @@ const TagsPage = ({
 
   return (
     <Layout width="wide">
+      <Helmet title="Concepts • Infinite Caesura" />
       <PageHeading
         title="Concepts Index"
         subtitle={

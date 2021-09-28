@@ -30,8 +30,8 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/moments" ariaLabel="Go to everyday moments">
-            Moments
+          <Link to="/notes" ariaLabel="Go to notes">
+            Notes
           </Link>
         </li>
         <li>

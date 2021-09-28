@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { Helmet } from 'react-helmet';
 
 const AssemblageTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];
@@ -11,6 +12,9 @@ const AssemblageTemplate = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Helmet
+        title={`${post.frontmatter.title} • Infinite Caesura`}
+      />
       <article
         className="blog-post"
         itemScope
