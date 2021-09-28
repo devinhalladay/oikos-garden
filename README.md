@@ -1,5 +1,9 @@
-# Infinite Caesura — Personal Wiki
+# Infinite Caesura — Personal Wiki 
+
 This is the personal wiki of Devin Halladay, a designer and writer based in Manhattan. The code is open source and licensed under GPL; I would only ask that, as a courtesy, you let me know if you borrow or remix any of my code.
+
+![GPL Logo](https://www.gnu.org/graphics/gplv3-127x51.png)
+
 
 ## Tech Stack
 - **Gatsby** to generate the site
