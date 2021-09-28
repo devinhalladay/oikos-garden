@@ -10,6 +10,7 @@ import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
 import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';
+import PageHeading from '../components/PageHeading';
 
 const TagsPage = ({
   data: {
@@ -35,14 +36,16 @@ const TagsPage = ({
 
   return (
     <Layout width="wide">
-      <header className="mb-10 pb-6 border-b border-gray-300">
-        <h1>Concepts Index</h1>
-        <p className="font-sans text-md leading-5 text-gray-500 mt-4">
-          Entries in this wiki are tagged by <strong>concept</strong>{' '}
-          for easy discovery. You may browse all entries under a given
-          topic.
-        </p>
-      </header>
+      <PageHeading
+        title="Concepts Index"
+        subtitle={
+          <>
+            Entries in this wiki are tagged by{' '}
+            <strong>concept</strong> for easy discovery. You may
+            browse all entries under a given topic.
+          </>
+        }
+      />
 
       <div className="grid grid-cols-2 gap-4 gap-y-16">
         {alphabetizedTags.map((group, i) => {
@@ -73,7 +76,7 @@ const TagsPage = ({
                     <TagLink
                       tag={t.tag}
                       size="lg"
-                      count={group.children.length}
+                      count={t.totalCount}
                     />
                   </div>
                 );

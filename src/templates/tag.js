@@ -8,6 +8,7 @@ import EssayHeader from '../components/Essay/EssayHeader';
 import NoteCard from '../components/Notes/NoteCard';
 import AssemblageCard from '../components/Assemblages/AssemblageCard';
 import TagLink from '../components/TagLink';
+import PageHeading from '../components/PageHeading';
 const TagPage = ({
   pageContext,
   data: {
@@ -60,10 +61,19 @@ const TagPage = ({
 
   return (
     <Layout width="wide">
-      <header className="mb-10 pb-6 border-b border-gray-300">
-        <h1 className="mb-4">
-          Entries filed under <span className="italic">{tag}</span>
-        </h1>
+      <PageHeading
+        title={
+          <>
+            Entries filed under <span className="italic">{tag}</span>
+          </>
+        }
+        subtitle={
+          <>
+            Entries in this wiki are tagged by{' '}
+            <strong>concept</strong> for easy discovery. You may
+            browse all entries under a given topic.
+          </>
+        }>
         <div>
           <p className="uppercase font-sans text-gray-500 tracking-wide text-sm">
             Related tags
@@ -76,7 +86,7 @@ const TagPage = ({
             ))}
           </ul>
         </div>
-      </header>
+      </PageHeading>
       <div className="flex flex-col xl:flex-row">
         {assemblageCount > 0 && (
           <section className="xl:w-2/3 mr-8">
