@@ -1,54 +1,23 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# Infinite Caesura — Personal Wiki
+This is the personal wiki of Devin Halladay, a designer and writer based in Manhattan. The code is open source and licensed under GPL; I would only ask that, as a courtesy, you let me know if you borrow or remix any of my code.
 
-## 🚀 Quick start
+## Tech Stack
+- **Gatsby** to generate the site
+- **MDX** to embed JSX in Markdown files
+- **Vercel** for hosting
+- **Tailwind** and SCSS for styling
+- **[gatsby-theme-brain](https://github.com/aengusmcmillin/gatsby-theme-brain)** provides bi-directional links and other niceties
+- **Roam** for taking notes and writing entries
 
-1.  **Create a Gatsby site.**
+## Installation
+1. You'll need to install Node and Yarn, if you haven't already.
+2. Clone this repo
+3. `cd` into the repo and run `yarn install` to install project dependencies
+4. Run `yarn dev` to start the development server
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Production
+- Run `yarrn build` to build the site for production.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+## Thanks to:
+- Maggie Appleton for [their exemplary digital garden](https://github.com/MaggieAppleton/maggieappleton.com) which helped me get my head around Gatsby.
+- Aengus McMillin for their powerful [digital garden theme and plugins](https://github.com/aengusmcmillin/gatsby-theme-brain)
