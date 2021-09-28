@@ -18,7 +18,7 @@ function Nav() {
           designer and writer based in Manhattan.
         </h1>
       </aside>
-      <ul>
+      <ul className="mt-6">
         <li>
           <Link to="/" ariaLabel="View front page">
             Front Page
@@ -40,7 +40,7 @@ function Nav() {
           </Link>
         </li>
         <li>
-          <Link to="/concepts" ariaLabel="View site topics">
+          <Link to="/tags" ariaLabel="View site topics">
             Concepts
           </Link>
         </li>

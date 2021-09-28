@@ -70,7 +70,7 @@ body:before {
   background: #1973ff;
 }
 
-body:befafterore {
+body:after {
   content: '';
   width: 10px;
   position: fixed;
@@ -132,14 +132,6 @@ nav {
   font-weight: 400;
 
   ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 4rem;
-
-    @media (max-width: 900px) {
-      margin-top: 2rem;
-    }
-
     li {
       padding-bottom: 2.5rem;
       height: 1.5rem;

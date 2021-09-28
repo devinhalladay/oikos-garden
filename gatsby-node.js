@@ -27,8 +27,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
             }
           }
+        }
+      }
+    `
+  );
 
+  const tagsResults = await graphql(
+    `
+      {
+        allMdx {
           group(field: frontmatter___tags) {
+            tag: fieldValue
+          }
+        }
+
+        allBrainNote {
+          group(field: childMdx___frontmatter___tags) {
             tag: fieldValue
           }
         }
@@ -66,7 +80,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const essays = result.data.allMdx.nodes;
-  const tags = result.data.allMdx.group;
+  const tags = [
+    ...tagsResults.data.allMdx.group,
+    ...tagsResults.data.allBrainNote.group,
+  ];
   const assemblages = assemblageResults.data.allMdx.nodes;
 
   // Create blog essays pages
@@ -93,8 +110,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
   }
-
-  console.log(tags);
 
   if (tags.length > 0) {
     // Make tag pages

@@ -39,23 +39,7 @@ export const pageQuery = graphql`
     }
     allMdx(filter: { id: { eq: $id } }) {
       nodes {
-        id
-        excerpt(pruneLength: 160)
-        body
-        frontmatter {
-          subtitle
-          date(formatString: "MMMM YYYY")
-          title
-          tags
-        }
-
-        fields {
-          readingTime {
-            text
-          }
-        }
-
-        slug
+        ...Essay
       }
     }
   }

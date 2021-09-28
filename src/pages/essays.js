@@ -3,18 +3,19 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import NotesTable from '../components/NotesTable';
 import EssayHeader from '../components/Essay/EssayHeader';
+import SectionHeading from '../components/SectionHeading';
 
 function EssaysPage({ data }) {
   console.log(data);
   return (
     <Layout>
-      <h1 className="font-sans text-2xl tracking-normal border-b border-gray-300 pb-1 mb-6">
-        Essays
-      </h1>
-      {data.allMdx.nodes.map((node) => {
-        console.log(node);
-        return <EssayHeader isLinked="true" post={node} />;
-      })}
+      <SectionHeading title="Essays" />
+      <div className="mt-6">
+        {data.allMdx.nodes.map((node) => {
+          console.log(node);
+          return <EssayHeader isLinked="true" post={node} />;
+        })}
+      </div>
     </Layout>
   );
 }
@@ -51,28 +52,7 @@ export const query = graphql`
       sort: { fields: frontmatter___date }
     ) {
       nodes {
-        id
-        slug
-        frontmatter {
-          slug
-          title
-          tags
-          subtitle
-          date(formatString: "MMMM YYYY")
-          cover_image {
-            childImageSharp {
-              fluid(maxWidth: 800) {
-                src
-              }
-            }
-          }
-        }
-
-        fields {
-          readingTime {
-            text
-          }
-        }
+        ...EssayPreview
       }
     }
   }

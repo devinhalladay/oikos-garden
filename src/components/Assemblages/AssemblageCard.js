@@ -1,12 +1,13 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import Card from '../Card';
 
 function AssemblageCard({ node }) {
   const { slug } = node;
   const { title, cover_image, subtitle } = node.frontmatter;
   return (
-    <div class="indent-0 font-sans shadow-sm mr-4 pb-0 w-full rounded border border-gray-300 flex transform rotate-0  hover:rotate-2 transition-all duration-300">
-      <Link to={`/assemblages/${slug}`}>
+    <Link to={`/assemblages/${slug}`}>
+      <Card animate="true">
         {cover_image && (
           <div className="h-32 w-full overflow-hidden">
             <img
@@ -21,8 +22,8 @@ function AssemblageCard({ node }) {
             {subtitle}
           </p>
         </div>
-      </Link>
-    </div>
+      </Card>
+    </Link>
   );
 }
 

@@ -1,0 +1,6 @@
+{
+  "extends": [
+    // Other configs ...
+    "prettier"
+  ]
+}
