@@ -30,12 +30,10 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-remark-reading-time',
     'gatsby-plugin-sharp',
-    `@commercetools-docs/gatsby-transformer-mdx-introspection`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         gatsbyRemarkPlugins: [
-          `@commercetools-docs/gatsby-transformer-mdx-introspection`,
           {
             resolve: 'gatsby-remark-reference-footnotes',
             options: {
