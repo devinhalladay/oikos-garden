@@ -1,5 +1,5 @@
 diff --git a/node_modules/gatsby-remark-reference-footnotes/index.js b/node_modules/gatsby-remark-reference-footnotes/index.js
-index c5af0a3..1e6f92b 100644
+index c5af0a3..dd37582 100644
 --- a/node_modules/gatsby-remark-reference-footnotes/index.js
 +++ b/node_modules/gatsby-remark-reference-footnotes/index.js
 @@ -1,6 +1,8 @@
@@ -123,7 +123,7 @@ index c5af0a3..1e6f92b 100644
    visit(markdownAST, `footnoteReference`, node => {
      let { group, text } = getTextAndGroup(node.identifier);
      if (prefs.groupInclude === group) {
-@@ -131,66 +137,112 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
+@@ -131,66 +137,95 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
    );
  
    // change the inline footnotes
@@ -209,26 +209,15 @@ index c5af0a3..1e6f92b 100644
      }
 -    if (footnote.type === "footnoteReference") {
 +
-+
-+
 +    if (footnote.type === "footnoteReference") { // eg. `This is a sentence[^1]
 +      // Find the footnote definition matching this reference
        let def = footnoteDefinitions.find(
          item => item.identifier === footnote.identifier
        );
 +
-+      // let { group, text } = getTextAndGroup(footnote.identifier);
-+
        if (def) {
 +        // Add the footnote definition text to the content array
          content.push(...def.children);
-+
-+        // let index = footnote.identifier + 1;
-+
-+        // console.log(def.children[0].children);
-+
-+        // // Add the footnote content to the inline reference
-+        // replaceRefNode({ node: footnote, group, index, prefs, content: [...def.children] });
        }
      }
  
@@ -242,12 +231,6 @@ index c5af0a3..1e6f92b 100644
 +      let { group, text } = getTextAndGroup(def.identifier);
 +
 +      if (prefs.groupInclude === group) {
-+        // find the index
-+        // let index = footnote.identifier + 1;
-+
-+        // console.log(def.children[0].children);
-+        console.log(index);
-+
 +        parent.children.splice(index, 1, {
 +          type: "jsx",
 +          value: "<>"
