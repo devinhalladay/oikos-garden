@@ -23,6 +23,7 @@ const Footnote = (props) => {
       vertical-align: baseline;
       position: absolute;
       text-align: left;
+      text-indent: 0;
     }
 
     label {
@@ -108,6 +109,7 @@ const Footnote = (props) => {
   const closedFootnoteStyles = css`
     .sidenote,
     .marginnote {
+      text-indent: 0;
       font-family: Alegreya Sans;
       float: right;
       clear: right;
