@@ -28,9 +28,35 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-mdx',
     'gatsby-remark-reading-time',
     'gatsby-plugin-sharp',
+    `@commercetools-docs/gatsby-transformer-mdx-introspection`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          `@commercetools-docs/gatsby-transformer-mdx-introspection`,
+          {
+            resolve: 'gatsby-remark-reference-footnotes',
+            options: {
+              groupInclude: 'default',
+
+              inlineLinkPrefix: '',
+              inlineLinkSuffix: '',
+              inlineTextPrefix: '',
+              inlineTextSuffix: '',
+
+              referenceLinkPosition: 'start',
+
+              referenceLinkPrefix: '↑ ',
+              referenceLinkSuffix: '.',
+              referenceTextPrefix: '',
+              referenceTextSuffix: ' ',
+            },
+          },
+        ],
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',

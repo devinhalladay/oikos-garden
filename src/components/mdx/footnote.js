@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
 
-const Footnote = ({ id, idName, children, closed }) => {
+const Footnote = (props) => {
+  const { id, idName, children, closed, className } = props;
+  // console.log(props);
   const [isOpen, setIsOpen] = useState(false);
 
   const footnoteStyles = css`
@@ -190,16 +192,24 @@ const Footnote = ({ id, idName, children, closed }) => {
     }
   `;
 
+  // console.log(children);
+
   return (
-    <span css={isOpen ? footnoteStyles : closedFootnoteStyles}>
-      <label
-        for={idName}
-        className="margin-toggle sidenote-number"
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}></label>
-      <input type="checkbox" id={idName} className="margin-toggle" />
-      <span className="sidenote">{children}</span>
+    <span className={className}>
+      <span css={isOpen ? footnoteStyles : closedFootnoteStyles}>
+        <label
+          for={idName}
+          className="margin-toggle sidenote-number"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}></label>
+        <input
+          type="checkbox"
+          id={idName}
+          className="margin-toggle"
+        />
+        <span className="sidenote">{children}</span>
+      </span>
     </span>
   );
 };

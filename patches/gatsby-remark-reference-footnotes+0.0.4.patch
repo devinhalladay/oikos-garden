@@ -1,0 +1,271 @@
+diff --git a/node_modules/gatsby-remark-reference-footnotes/index.js b/node_modules/gatsby-remark-reference-footnotes/index.js
+index c5af0a3..1e6f92b 100644
+--- a/node_modules/gatsby-remark-reference-footnotes/index.js
++++ b/node_modules/gatsby-remark-reference-footnotes/index.js
+@@ -1,6 +1,8 @@
+ const yaml = require("js-yaml");
+ const visit = require("unist-util-visit");
+-const hastToHTML = require(`hast-util-to-html`);
++// fs = require('fs');
++
++const footnotes = [];
+ 
+ // convert "in-string" to "inString"
+ const strToCamel = str => {
+@@ -35,22 +37,19 @@ const getTextAndGroup = str => {
+   };
+ };
+ 
+-// render the html-tag for the occurrence of the reference
+-const renderInline = ({ index, group, label, prefs }) => {
+-  let ref;
+-  if (group !== "default") {
+-    ref = `${group}-${index}`;
+-  } else {
+-    ref = `${index}`;
+-  }
+-  return `<sup class="footnote-inline" id="use-ref-${ref}">${
+-    prefs.inlineTextPrefix ? prefs.inlineTextPrefix : ""
+-  }<a href="#ref-${ref}" class="footnote-inline-link">${
+-    prefs.inlineLinkPrefix ? prefs.inlineLinkPrefix : ""
+-  }${label}${prefs.inlineLinkSuffix ? prefs.inlineLinkSuffix : ""}</a>${
+-    prefs.inlineTextSuffix ? prefs.inlineTextSuffix : ""
+-  }</sup>`;
+-};
++// // render the html-tag for the occurrence of the reference
++// const renderInline = ({ index, group, label, prefs }) => {
++//   let ref;
++//   if (group !== "default") {
++//     ref = `${group}-${index}`;
++//   } else {
++//     ref = `${index}`;
++//   }
++//   return `<sup class="footnote-inline" id="use-ref-${ref}">${prefs.inlineTextPrefix ? prefs.inlineTextPrefix : ""
++//     }<a href="#ref-${ref}" class="footnote-inline-link">${prefs.inlineLinkPrefix ? prefs.inlineLinkPrefix : ""
++//     }${label}${prefs.inlineLinkSuffix ? prefs.inlineLinkSuffix : ""}</a>${prefs.inlineTextSuffix ? prefs.inlineTextSuffix : ""
++//     }</sup>`;
++// };
+ 
+ // render the html-tag in the footnote
+ const renderRef = ({ index, group, label, prefs }) => {
+@@ -60,29 +59,30 @@ const renderRef = ({ index, group, label, prefs }) => {
+   } else {
+     ref = `${index}`;
+   }
+-  return `<span class="footnote-ref" id="ref-${ref}">${
+-    prefs.referenceTextPrefix ? prefs.referenceTextPrefix : ""
+-  }<a id="use-ref-${ref}" href="#use-ref-${ref}" class="footnote-ref-link">${
+-    prefs.referenceLinkPrefix ? prefs.referenceLinkPrefix : ""
+-  }${label}${prefs.referenceLinkSuffix ? prefs.referenceLinkSuffix : ""}</a>${
+-    prefs.referenceTextSuffix ? prefs.referenceTextSuffix : ""
+-  }</span>`;
++  return `<span class="footnote-ref" id="ref-${ref}">${prefs.referenceTextPrefix ? prefs.referenceTextPrefix : ""
++    }<a id="use-ref-${ref}" href="#use-ref-${ref}" class="footnote-ref-link">${prefs.referenceLinkPrefix ? prefs.referenceLinkPrefix : ""
++    }${label}${prefs.referenceLinkSuffix ? prefs.referenceLinkSuffix : ""}</a>${prefs.referenceTextSuffix ? prefs.referenceTextSuffix : ""
++    }</span>`;
+ };
+ 
+ // replace the referencing node with the html
+-const replaceRefNode = ({ node, index, group, prefs }) => {
+-  node.type = "html";
+-  node.value = renderInline({
+-    index,
+-    prefs,
+-    group,
+-    label: hastToHTML({
+-      type: "text",
+-      value: `${index}`
+-    })
+-  });
+-  node.children = null;
+-};
++// const replaceRefNode = ({ node, index, group, prefs, content }) => {
++//   node.type = "mdxJsxFlowElement"
++//   node.name = 'span'
++
++//   node.children = [].concat(
++//     {
++//       type: "jsx",
++//       value: "<Footnote>"
++//     },
++//     content[0].children,
++//     {
++//       type: "jsx",
++//       value: "</Footnote>"
++//     },
++//   )
++
++// };
+ 
+ // transform each reference code block
+ const transformerRef = ({ markdownAST, index, prefs }) => {
+@@ -93,8 +93,13 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
+     footnoteDefinitions.push(footnoteDefinition);
+   });
+ 
+-  // final footnotes
+-  const footnotes = [];
++  // create a list node `<ol>` that will output our reference list
++  let list = {
++    type: "list",
++    spread: true, // add p tag around content
++    children: []
++  };
++
+ 
+   // register the inline footnotes
+   visit(markdownAST, `footnote`, node => {
+@@ -111,6 +116,7 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
+   });
+ 
+   // register the footnote references
++  // this is where your footnote text lives
+   visit(markdownAST, `footnoteReference`, node => {
+     let { group, text } = getTextAndGroup(node.identifier);
+     if (prefs.groupInclude === group) {
+@@ -131,66 +137,112 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
+   );
+ 
+   // change the inline footnotes
+-  visit(markdownAST, `footnote`, node => {
+-    let identifier = `:foootnote:--${node.position.start.offset}`;
+-    let { group, text } = getTextAndGroup(node.children[0].value);
+-    if (prefs.groupInclude === group) {
+-      // cut off group-notation
+-      node.children[0].value = text;
++  // visit(markdownAST, `footnote`, node => {
++  //   let identifier = `:foootnote:--${node.position.start.offset}`;
++  //   let { group, text } = getTextAndGroup(node.children[0].value);
++  //   if (prefs.groupInclude === group) {
++  //     // cut off group-notation
++  //     node.children[0].value = text;
+ 
+-      // find the index
+-      let index =
+-        uniqueFootnotes.findIndex(item => item.identifier === identifier) + 1;
++  //     // find the index
++  //     // this is used to insert the footnotes in the right order
++  //     let index =
++  //       uniqueFootnotes.findIndex(item => item.identifier === identifier) + 1;
+ 
+-      replaceRefNode({ node, group, index, prefs });
+-    }
+-  });
++  //     // replaceRefNode({ node, group, index, prefs });
++  //   }
++  // });
+ 
+   // change the footnote references
+-  visit(markdownAST, `footnoteReference`, node => {
+-    let identifier = node.identifier;
+-    let { group, text } = getTextAndGroup(node.identifier);
+-    if (prefs.groupInclude === group) {
+-      // find the index
+-      let index =
+-        uniqueFootnotes.findIndex(item => item.identifier === identifier) + 1;
++  // this affects foornote text nodes
++  // visit(markdownAST, `footnoteReference`, node => {
++  //   let identifier = node.identifier;
++  //   let { group, text } = getTextAndGroup(node.identifier);
++  //   if (prefs.groupInclude === group) {
++  //     // find the index
++  //     let index =
++  //       uniqueFootnotes.findIndex(item => item.identifier === identifier) + 1;
+ 
+-      replaceRefNode({ node, group, index, prefs });
+-    }
+-  });
++  //     // replaceRefNode({ node, group, index, prefs });
++  //   }
++  // });
+ 
+-  // the list to output
+-  let list = {
+-    type: "list",
+-    spread: true, // add p tag arround content
+-    children: []
+-  };
+ 
++  // for each footnote after being sorted and cleaned etc
+   uniqueFootnotes.forEach((footnote, footnoteIndex) => {
+-    let content = [];
++    let content = []; // store the content we're building below
+ 
+     let renderLinkRef = renderRef({
+       index: `${footnoteIndex + 1}`,
+       label: `${footnoteIndex + 1}`,
+       group: prefs.groupInclude,
+       prefs
+-    });
++    }); // render the reference number links
+ 
+-    if (footnote.type === "footnote") {
++    if (footnote.type === "footnote") { //eg. `[^1]: My footnote`
+       content.push({
+         type: "paragraph",
+         children: [...footnote.children]
+-      });
++      })
+     }
+-    if (footnote.type === "footnoteReference") {
++
++
++
++    if (footnote.type === "footnoteReference") { // eg. `This is a sentence[^1]
++      // Find the footnote definition matching this reference
+       let def = footnoteDefinitions.find(
+         item => item.identifier === footnote.identifier
+       );
++
++      // let { group, text } = getTextAndGroup(footnote.identifier);
++
+       if (def) {
++        // Add the footnote definition text to the content array
+         content.push(...def.children);
++
++        // let index = footnote.identifier + 1;
++
++        // console.log(def.children[0].children);
++
++        // // Add the footnote content to the inline reference
++        // replaceRefNode({ node: footnote, group, index, prefs, content: [...def.children] });
+       }
+     }
+ 
++    visit(markdownAST, `footnoteReference`, (node, index, parent) => {
++      // Find the matching footnote definition
++      let def = footnoteDefinitions.find(
++        item => item.identifier === node.identifier
++      );
++
++      // Get the group of the definition
++      let { group, text } = getTextAndGroup(def.identifier);
++
++      if (prefs.groupInclude === group) {
++        // find the index
++        // let index = footnote.identifier + 1;
++
++        // console.log(def.children[0].children);
++        console.log(index);
++
++        parent.children.splice(index, 1, {
++          type: "jsx",
++          value: "<>"
++        }, {
++          type: "jsx",
++          value: "<Footnote>"
++        },
++          ...content[0].children,
++          {
++            type: "jsx",
++            value: "</Footnote>"
++          }, {
++          type: "jsx",
++          value: "</>"
++        });
++      }
++    });
++
+     // add the back-reference
+     if (content.length > 0) {
+       if ((prefs.referenceLinkPosition || "").toLowerCase() === "end") {
