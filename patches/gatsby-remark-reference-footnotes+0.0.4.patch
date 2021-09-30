@@ -1,5 +1,5 @@
 diff --git a/node_modules/gatsby-remark-reference-footnotes/index.js b/node_modules/gatsby-remark-reference-footnotes/index.js
-index c5af0a3..6178d1a 100644
+index c5af0a3..85053aa 100644
 --- a/node_modules/gatsby-remark-reference-footnotes/index.js
 +++ b/node_modules/gatsby-remark-reference-footnotes/index.js
 @@ -1,6 +1,8 @@
@@ -60,7 +60,7 @@ index c5af0a3..6178d1a 100644
 -    prefs.referenceTextSuffix ? prefs.referenceTextSuffix : ""
 -  }</span>`;
 +  return `<span class="footnote-ref" id="ref-${ref}">${prefs.referenceTextPrefix ? prefs.referenceTextPrefix : ""
-+    }<a id="use-ref-${ref}" href="#use-ref-${ref}" class="footnote-ref-link">${prefs.referenceLinkPrefix ? prefs.referenceLinkPrefix : ""
++    }<a id="use-ref-${ref}" href="#f-ref-${ref}" class="footnote-ref-link">${prefs.referenceLinkPrefix ? prefs.referenceLinkPrefix : ""
 +    }${label}${prefs.referenceLinkSuffix ? prefs.referenceLinkSuffix : ""}</a>${prefs.referenceTextSuffix ? prefs.referenceTextSuffix : ""
 +    }</span>`;
  };
@@ -123,7 +123,7 @@ index c5af0a3..6178d1a 100644
    visit(markdownAST, `footnoteReference`, node => {
      let { group, text } = getTextAndGroup(node.identifier);
      if (prefs.groupInclude === group) {
-@@ -131,66 +137,99 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
+@@ -131,66 +137,102 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
    );
  
    // change the inline footnotes
@@ -185,6 +185,7 @@ index c5af0a3..6178d1a 100644
 -    spread: true, // add p tag arround content
 -    children: []
 -  };
++  let counter = 0;
  
 +  // for each footnote after being sorted and cleaned etc
    uniqueFootnotes.forEach((footnote, footnoteIndex) => {
@@ -227,6 +228,8 @@ index c5af0a3..6178d1a 100644
 +        item => item.identifier === node.identifier
 +      );
 +
++      counter += 1;
++
 +      // Get the group of the definition
 +      let { group, text } = getTextAndGroup(def.identifier);
 +
@@ -238,7 +241,7 @@ index c5af0a3..6178d1a 100644
 +          },
 +          {
 +            type: "jsx",
-+            value: "<Footnote>"
++            value: `<Footnote id={${counter}}>`
 +          },
 +          ...def.children[0].children,
 +          {

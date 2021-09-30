@@ -197,7 +197,7 @@ const Footnote = (props) => {
   // console.log(children);
 
   return (
-    <span className={className}>
+    <span className={className} id={`f-ref-${id}`}>
       <span css={isOpen ? footnoteStyles : closedFootnoteStyles}>
         <label
           for={idName}
