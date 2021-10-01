@@ -43,12 +43,13 @@ img {
 
 body {
   background-color: white;
+  text-rendering: geometricPrecision;
   background: linear-gradient(
     90deg,
-    #d6e6ff 0%,
+    rgba(#1973ff, 0.1) 0%,
     transparent 30%,
     transparent 90%,
-    #d6e6ff 100%
+    rgba(#1973ff, 0.1) 100%
   );
   color: $text;
   font-family: Manuale;
@@ -640,43 +641,4 @@ blockquote {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   font-family: 'Alegreya Sans';
-}
-
-.jargon-term {
-  text-decoration: underline dotted #228be6;
-}
-// Add a question mark behind/above jargon terms
-.jargon-term::after {
-  content: '?';
-  font-weight: bold;
-  display: inline-block;
-  transform: translate(0, -0.5em);
-  font-size: 75%;
-  color: #228be6;
-  margin-left: 3px;
-}
-// Hover behavior for the therm itself
-.jargon-term:hover {
-  position: relative;
-  text-decoration: none;
-  cursor: help;
-}
-// Hide info by default
-.jargon-term .jargon-info {
-  display: none;
-}
-// Show info on hover
-.jargon-term:hover .jargon-info {
-  display: block;
-  position: absolute;
-  top: 1.5em;
-  left: 0;
-  background: #f8f8f8;
-  border: 1px solid #dcdcdc;
-  padding: 1rem;
-  border-radius: 4px;
-  font-size: 90%;
-  min-width: 250px;
-  max-width: 450px;
-  z-index: 1;
 }

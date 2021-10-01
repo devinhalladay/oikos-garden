@@ -16,7 +16,7 @@ export default function Layout({ children, width }) {
         <link rel="icon" href={favicon} />
       </Helmet>
       <Graphic layout={width} />
-      <div class="layout">
+      <div className="layout antialiased">
         <Nav />
         <main className={width ? width : null}>{children}</main>
       </div>

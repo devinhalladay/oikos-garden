@@ -26,41 +26,118 @@ const Footnote = (props) => {
   // console.log(props);
   const [isOpen, setIsOpen] = useState(false);
 
-  const footnoteStyles = css`
-    .sidenote,
-    .marginnote {
-      font-family: Alegreya Sans;
-      float: right;
-      clear: right;
-      right: -50%;
-      width: 260px;
-      margin-top: 0;
-      margin-bottom: 0;
-      color: #1973ff;
-      font-size: 0.75rem;
-      opacity: 85%;
-      line-height: 1.3;
-      vertical-align: baseline;
-      position: absolute;
-      text-align: left;
-      text-indent: 0;
-    }
+  const defaultFootnoteStyles = css`
+    font-family: Alegreya Sans;
+    color: #1973ff;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-indent: 0;
 
-    label {
-      cursor: pointer;
-    }
+    float: right;
+    clear: right;
+    margin-right: -40%;
+    width: 260px;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+    text-indent: 0;
 
-    .sidenote-number {
-      counter-increment: sidenote-counter;
-    }
+    font-weight: 500;
+    margin-left: 1rem;
 
-    .sidenote-number:after,
-    .sidenote:before {
+    @media (max-width: 1000px) {
+      float: none;
       position: relative;
-      vertical-align: baseline;
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      margin-left: 0;
+      display: none;
     }
 
-    .sidenote-number:after {
+    & a {
+      text-decoration: underline;
+    }
+
+    &:before {
+      content: '[' counter(sidenote-counter) ']';
+      vertical-align: baseline;
+      font-size: 0.875rem;
+      padding-right: 6px;
+    }
+
+    blockquote & {
+      margin-right: calc(-41% - 2px);
+      min-width: 258px;
+      text-align: left;
+    }
+  `;
+
+  const openFootnoteStyles = css`
+    font-family: Alegreya Sans;
+    color: #1973ff;
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-indent: 0;
+
+    float: right;
+    clear: right;
+    margin-right: -40%;
+    width: 260px;
+    margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    vertical-align: baseline;
+    position: relative;
+    text-indent: 0;
+    margin-left: 1rem;
+
+    font-weight: 500;
+
+    @media (max-width: 1000px) {
+      float: none;
+      display: block;
+      position: relative;
+      right: unset;
+      width: 100%;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      margin-left: 0;
+    }
+
+    & a {
+      text-decoration: underline;
+    }
+
+    &:before {
+      content: '[' counter(sidenote-counter) ']';
+      vertical-align: baseline;
+      font-size: 0.875rem;
+      padding-right: 6px;
+    }
+
+    blockquote & {
+      margin-right: calc(-41% - 2px);
+      min-width: 258px;
+      text-align: left;
+    }
+  `;
+
+  const inputStyles = css`
+    display: none;
+  `;
+
+  const labelStyles = css`
+    cursor: pointer;
+    counter-increment: sidenote-counter;
+    max-height: 2rem;
+    text-indent: 0;
+
+    &:after {
       content: '[' counter(sidenote-counter) ']';
       font-family: Manuale;
       font-size: 0.875rem;
@@ -68,171 +145,30 @@ const Footnote = (props) => {
       top: -0.5rem;
       left: 0em;
       padding-right: 3px;
-    }
-
-    .sidenote:before {
-      content: '[' counter(sidenote-counter) ']';
-      color: #1973ff;
-      font-size: 0.875rem;
-      padding-right: 6px;
-    }
-
-    blockquote .sidenote,
-    blockquote .marginnote {
-      margin-right: -82%;
-      min-width: 59%;
-      text-align: left;
-    }
-
-    label.sidenote-number {
-      display: inline;
-    }
-
-    label.margin-toggle:not(.sidenote-number) {
-      display: none;
-    }
-
-    input.margin-toggle {
-      display: none;
-    }
-
-    @media (max-width: 1000px) {
-      label.margin-toggle:not(.sidenote-number) {
-        display: inline;
-      }
-
-      .sidenote,
-      .marginnote {
-        float: none;
-        display: block;
-        position: relative;
-        right: unset;
-        width: 100%;
-        margin-top: 0.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .margin-toggle:checked + .sidenote,
-      .margin-toggle:checked + .marginnote {
-        display: block;
-        float: left;
-        left: 1rem;
-        clear: both;
-        width: 95%;
-        margin: 1rem 2.5%;
-        vertical-align: baseline;
-        position: relative;
-      }
-    }
-  `;
-
-  const closedFootnoteStyles = css`
-    .sidenote,
-    .marginnote {
-      text-indent: 0;
-      font-family: Alegreya Sans;
-      float: right;
-      clear: right;
-      text-align: left;
-      right: -50%;
-      width: 260px;
-      margin-top: 0;
-      margin-bottom: 0;
-      color: #1973ff;
-      font-size: 0.75rem;
-      opacity: 85%;
-      line-height: 1.3;
-      vertical-align: baseline;
-      position: absolute;
-    }
-
-    label {
-      cursor: pointer;
-    }
-
-    .sidenote-number {
-      counter-increment: sidenote-counter;
-    }
-
-    .sidenote-number:after,
-    .sidenote:before {
+      padding-left: 1px;
       position: relative;
       vertical-align: baseline;
     }
-
-    .sidenote-number:after {
-      content: '[' counter(sidenote-counter) ']';
-      font-size: 0.875rem;
-      top: -0.5rem;
-      left: 0em;
-      padding-right: 3px;
-      color: #1973ff;
-    }
-
-    .sidenote:before {
-      content: '[' counter(sidenote-counter) ']';
-      font-size: 0.875rem;
-      padding-right: 6px;
-    }
-
-    blockquote .sidenote,
-    blockquote .marginnote {
-      margin-right: -82%;
-      min-width: 59%;
-      text-align: left;
-    }
-
-    label.sidenote-number {
-      display: inline;
-    }
-
-    input.margin-toggle {
-      display: none;
-    }
-
-    label.margin-toggle:not(.sidenote-number) {
-      display: inline;
-    }
-
-    .margin-toggle:checked + .sidenote,
-    .margin-toggle:checked + .marginnote {
-      display: block;
-      float: left;
-      left: 1rem;
-      clear: both;
-      width: 95%;
-      margin: 1rem 2.5%;
-      vertical-align: baseline;
-      position: relative;
-    }
-
-    @media (max-width: 1000px) {
-      .sidenote,
-      .marginnote {
-        display: none;
-      }
-    }
   `;
-
-  console.log(bbox);
 
   return (
-    <span className={className} id={`f-ref-${id}`} ref={ref}>
-      <span css={isOpen ? footnoteStyles : closedFootnoteStyles}>
-        <label
-          for={idName}
-          className="margin-toggle sidenote-number"
-          onClick={() => {
-            setIsOpen(!isOpen);
-          }}></label>
-        <input
-          type="checkbox"
-          id={idName}
-          className="margin-toggle"
-        />
-        <span className="sidenote">{children}</span>
+    <>
+      <label
+        for={idName}
+        className="margin-toggle sidenote-number"
+        css={labelStyles}
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}></label>
+      <input type="checkbox" id={idName} css={inputStyles} />
+      <span
+        css={isOpen ? openFootnoteStyles : defaultFootnoteStyles}
+        className="sidenote"
+        id={`f-ref-${id}`}
+        ref={ref}>
+        {children}
       </span>
-    </span>
+    </>
   );
 };
 
