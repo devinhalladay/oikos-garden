@@ -7,7 +7,6 @@ import NoteCard from '../components/Notes/NoteCard';
 import PageHeading from '../components/PageHeading';
 import SectionHeading from '../components/SectionHeading';
 
-// markup
 const IndexPage = ({
   data: { notesQuery, assemblagesQuery, essaysQuery },
 }) => {
