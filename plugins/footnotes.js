@@ -45,7 +45,7 @@ const renderRef = ({ index, group, label, prefs }) => {
   } else {
     ref = `${index}`;
   }
-  return `<span class="footnote-ref" id="ref-${ref}">${
+  return `<span class="footnote-ref flex-shrink-0 mr-2" id="ref-${ref}">${
     prefs.referenceTextPrefix ? prefs.referenceTextPrefix : ''
   }<a id="use-ref-${ref}" href="#f-ref-${ref}" class="footnote-ref-link">${
     prefs.referenceLinkPrefix ? prefs.referenceLinkPrefix : ''
@@ -68,6 +68,11 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
   // create a list node `<ol>` that will output our reference list
   let list = {
     type: 'list',
+    data: {
+      hProperties: {
+        className: 'footnotes',
+      },
+    },
     spread: true, // add p tag around content
     children: [],
   };
@@ -180,27 +185,38 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
 
     // add the back-reference
     if (content.length > 0) {
-      if (
-        (prefs.referenceLinkPosition || '').toLowerCase() === 'end'
-      ) {
-        content[0].children.push({
-          type: 'html',
-          value: renderLinkRef,
-        });
-      } else {
-        content[0].children = [
-          {
-            type: 'html',
-            value: renderLinkRef,
-          },
-          ...content[0].children,
-        ];
-      }
+      // if (
+      //   (prefs.referenceLinkPosition || '').toLowerCase() === 'end'
+      // ) {
+      //   content[0].children.push({
+      //     type: 'html',
+      //     value: renderLinkRef,
+      //   });
+      // } else {
+      //   content[0].children = [
+      //     {
+      //       type: 'html',
+      //       value: renderLinkRef,
+      //     },
+      //     ...content[0].children,
+      //   ];
+      // }
 
       // add list item
       list.children.push({
         type: 'listItem',
-        children: content,
+        data: {
+          hProperties: {
+            className: 'mb-3 flex',
+          },
+        },
+        children: [
+          {
+            type: 'html',
+            value: renderLinkRef,
+          },
+          ...content,
+        ],
       });
     }
   });

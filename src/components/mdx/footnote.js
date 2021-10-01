@@ -154,6 +154,7 @@ const Footnote = (props) => {
   return (
     <>
       <label
+        id={`f-ref-${id}`}
         for={idName}
         className="margin-toggle sidenote-number"
         css={labelStyles}
@@ -163,9 +164,7 @@ const Footnote = (props) => {
       <input type="checkbox" id={idName} css={inputStyles} />
       <span
         css={isOpen ? openFootnoteStyles : defaultFootnoteStyles}
-        className="sidenote"
-        id={`f-ref-${id}`}
-        ref={ref}>
+        className="sidenote">
         {children}
       </span>
     </>
