@@ -21,39 +21,10 @@ const keysToCamel = (obj) => {
   return obj;
 };
 
-// in: ":group:text text"
-// out: {group: 'group', text: 'text text'}
-const getTextAndGroup = (str) => {
-  var matches = str.match(/^:([^:]+):(.*)/);
-  if (matches) {
-    return {
-      group: matches[1],
-      text: matches[2],
-    };
-  }
-  return {
-    group: 'default',
-    text: str,
-  };
-};
-
 // render the html-tag in the footnote
-const renderRef = ({ index, group, label, prefs }) => {
-  let ref;
-  if (group !== 'default') {
-    ref = `${group}-${index}`;
-  } else {
-    ref = `${index}`;
-  }
-  return `<span class="footnote-ref flex-shrink-0 mr-2" id="ref-${ref}">${
-    prefs.referenceTextPrefix ? prefs.referenceTextPrefix : ''
-  }<a id="use-ref-${ref}" href="#f-ref-${ref}" class="footnote-ref-link">${
-    prefs.referenceLinkPrefix ? prefs.referenceLinkPrefix : ''
-  }${label}${
-    prefs.referenceLinkSuffix ? prefs.referenceLinkSuffix : ''
-  }</a>${
-    prefs.referenceTextSuffix ? prefs.referenceTextSuffix : ''
-  }</span>`;
+const renderRef = ({ index, label, prefs }) => {
+  let ref = `${index}`;
+  return `<span class="footnote-ref flex-shrink-0 mr-2" id="ref-${ref}"><a id="use-ref-${ref}" href="#f-ref-${ref}" class="footnote-ref-link">↑ ${label}</a></span>`;
 };
 
 // transform each reference code block
@@ -79,29 +50,23 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
 
   // register the inline footnotes
   visit(markdownAST, `footnote`, (node) => {
-    let { group, text } = getTextAndGroup(node.children[0].value);
-    if (prefs.groupInclude === group) {
-      footnotes.push({
-        type: 'footnote',
-        children: node.children,
-        // identifier set like a group so it can never clash
-        identifier: `:foootnote:--${node.position.start.offset}`,
-        offset: node.position.start.offset,
-      });
-    }
+    footnotes.push({
+      type: 'footnote',
+      children: node.children,
+      // identifier set like a group so it can never clash
+      identifier: `:foootnote:--${node.position.start.offset}`,
+      offset: node.position.start.offset,
+    });
   });
 
   // register the footnote references
   // this is where your footnote text lives
   visit(markdownAST, `footnoteReference`, (node) => {
-    let { group, text } = getTextAndGroup(node.identifier);
-    if (prefs.groupInclude === group) {
-      footnotes.push({
-        type: 'footnoteReference',
-        identifier: node.identifier,
-        offset: node.position.start.offset,
-      });
-    }
+    footnotes.push({
+      type: 'footnoteReference',
+      identifier: node.identifier,
+      offset: node.position.start.offset,
+    });
   });
 
   // sort footnotes
@@ -122,7 +87,6 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
     let renderLinkRef = renderRef({
       index: `${footnoteIndex + 1}`,
       label: `${footnoteIndex + 1}`,
-      group: prefs.groupInclude,
       prefs,
     }); // render the reference number links
 
@@ -155,10 +119,7 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
 
       counter += 1;
 
-      // Get the group of the definition
-      let { group, text } = getTextAndGroup(def.identifier);
-
-      if (prefs.groupInclude === group) {
+      if (def) {
         parent.children.splice(
           index,
           1,
@@ -185,23 +146,6 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
 
     // add the back-reference
     if (content.length > 0) {
-      // if (
-      //   (prefs.referenceLinkPosition || '').toLowerCase() === 'end'
-      // ) {
-      //   content[0].children.push({
-      //     type: 'html',
-      //     value: renderLinkRef,
-      //   });
-      // } else {
-      //   content[0].children = [
-      //     {
-      //       type: 'html',
-      //       value: renderLinkRef,
-      //     },
-      //     ...content[0].children,
-      //   ];
-      // }
-
       // add list item
       list.children.push({
         type: 'listItem',
@@ -224,12 +168,12 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
   markdownAST.children = [].concat(
     markdownAST.children.slice(0, index),
     {
-      type: 'html',
-      value: `<div class="ref-notes refnotes--${prefs.groupInclude}">`,
+      type: 'jsx',
+      value: `<div class="ref-notes">`,
     },
     list,
     {
-      type: 'html',
+      type: 'jsx',
       value: '</div>',
     },
     markdownAST.children.slice(index + 1)
@@ -237,7 +181,6 @@ const transformerRef = ({ markdownAST, index, prefs }) => {
 };
 
 const transformer = (markdownAST, pluginOptions) => {
-  console.log(pluginOptions);
   // transform backwards all refs-code blocks
   for (let i = markdownAST.children.length - 1; i >= 0; --i) {
     let node = markdownAST.children[i];
@@ -246,10 +189,6 @@ const transformer = (markdownAST, pluginOptions) => {
       let prefs = {
         referenceComponent: 'div',
         footnoteComponent: 'li',
-        groupInclude: 'default',
-        referenceLinkPrefix: '↑ ',
-        referenceLinkSuffix: '.',
-        referenceTextSuffix: ' ',
         ...keysToCamel(pluginOptions),
       };
 

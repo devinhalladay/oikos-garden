@@ -39,19 +39,6 @@ module.exports = {
             options: {
               referenceComponent: 'Footnote',
               footnoteComponent: undefined,
-              groupInclude: 'default',
-
-              inlineLinkPrefix: '',
-              inlineLinkSuffix: '',
-              inlineTextPrefix: '',
-              inlineTextSuffix: '',
-
-              referenceLinkPosition: 'start',
-
-              referenceLinkPrefix: '↑ ',
-              referenceLinkSuffix: '.',
-              referenceTextPrefix: '',
-              referenceTextSuffix: ' ',
             },
           },
         ],
