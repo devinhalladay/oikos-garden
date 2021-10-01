@@ -4,6 +4,7 @@ import AssemblageCard from '../components/Assemblages/AssemblageCard';
 import EssayHeader from '../components/Essay/EssayHeader';
 import Layout from '../components/layout';
 import NoteCard from '../components/Notes/NoteCard';
+import PageHeading from '../components/PageHeading';
 import SectionHeading from '../components/SectionHeading';
 
 // markup
