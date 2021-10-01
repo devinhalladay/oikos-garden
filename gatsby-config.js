@@ -35,8 +35,10 @@ module.exports = {
       options: {
         gatsbyRemarkPlugins: [
           {
-            resolve: 'gatsby-remark-reference-footnotes',
+            resolve: require.resolve(`./plugins/footnotes.js`),
             options: {
+              referenceComponent: 'Footnote',
+              footnoteComponent: undefined,
               groupInclude: 'default',
 
               inlineLinkPrefix: '',

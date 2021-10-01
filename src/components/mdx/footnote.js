@@ -1,7 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 
+export const useBbox = () => {
+  const ref = useRef();
+  const [bbox, setBbox] = useState({});
+
+  const set = () =>
+    setBbox(
+      ref && ref.current ? ref.current.getBoundingClientRect() : {}
+    );
+
+  useEffect(() => {
+    set();
+    window.addEventListener('resize', set);
+    return () => window.removeEventListener('resize', set);
+  }, []);
+
+  return [bbox, ref];
+};
+
 const Footnote = (props) => {
+  const [bbox, ref] = useBbox();
+
   const { id, idName, children, closed, className } = props;
   // console.log(props);
   const [isOpen, setIsOpen] = useState(false);
@@ -194,10 +214,10 @@ const Footnote = (props) => {
     }
   `;
 
-  // console.log(children);
+  console.log(bbox);
 
   return (
-    <span className={className} id={`f-ref-${id}`}>
+    <span className={className} id={`f-ref-${id}`} ref={ref}>
       <span css={isOpen ? footnoteStyles : closedFootnoteStyles}>
         <label
           for={idName}
