@@ -6,7 +6,9 @@ function Figure({ src, caption, children, className, bordered }) {
       <img
         src={src}
         alt={caption}
-        className={`mb-2 ${bordered && 'border border-gray-300'}`}
+        className={`mb-2 w-full ${
+          bordered && 'border border-gray-300'
+        }`}
       />
 
       {caption ||
