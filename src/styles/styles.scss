@@ -96,6 +96,10 @@ main {
   font-size: 1.125rem;
   line-height: 2rem;
 
+  &:not(.wide) {
+    max-width: 800px;
+  }
+
   &.wide {
     grid-column: 4 / 12;
   }
