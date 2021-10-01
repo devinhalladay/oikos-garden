@@ -1,11 +1,10 @@
+import { graphql } from 'gatsby';
 import * as React from 'react';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
-import NotesTable from '../components/NotesTable';
 import AssemblageCard from '../components/Assemblages/AssemblageCard';
+import EssayHeader from '../components/Essay/EssayHeader';
+import Layout from '../components/layout';
 import NoteCard from '../components/Notes/NoteCard';
 import SectionHeading from '../components/SectionHeading';
-import EssayHeader from '../components/Essay/EssayHeader';
 
 // markup
 const IndexPage = ({

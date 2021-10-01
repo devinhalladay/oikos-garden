@@ -1,4 +1,3 @@
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 function Figure({ src, caption, children, className, bordered }) {

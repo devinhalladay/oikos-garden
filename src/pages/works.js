@@ -1,7 +1,7 @@
-import * as React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layout';
+import * as React from 'react';
 import { Helmet } from 'react-helmet';
+import Layout from '../components/layout';
 
 // markup
 const IndexPage = ({ data: { worksQuery } }) => {

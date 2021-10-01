@@ -1,10 +1,9 @@
+import { graphql } from 'gatsby';
 import React from 'react';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/layout';
-import NotesTable from '../components/NotesTable';
-import EssayHeader from '../components/Essay/EssayHeader';
-import PageHeading from '../components/PageHeading';
 import { Helmet } from 'react-helmet';
+import EssayHeader from '../components/Essay/EssayHeader';
+import Layout from '../components/layout';
+import PageHeading from '../components/PageHeading';
 
 function EssaysPage({ data }) {
   return (

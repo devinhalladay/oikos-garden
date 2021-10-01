@@ -1,16 +1,11 @@
+import { graphql } from 'gatsby';
 import React from 'react';
-import PropTypes from 'prop-types';
-
-// Utilities
-import kebabCase from 'lodash/kebabCase';
-
 // Components
 import { Helmet } from 'react-helmet';
-import { Link, graphql } from 'gatsby';
 import Layout from '../components/layout';
+import PageHeading from '../components/PageHeading';
 import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';
-import PageHeading from '../components/PageHeading';
 
 const TagsPage = ({
   data: {

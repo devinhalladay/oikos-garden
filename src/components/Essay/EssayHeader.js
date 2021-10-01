@@ -1,6 +1,4 @@
 import { Link } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
-import { kebabCase } from 'lodash';
 import React from 'react';
 import TagLink from '../TagLink';
 

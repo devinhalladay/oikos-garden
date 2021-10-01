@@ -1,7 +1,7 @@
 import React from 'react';
+import SectionHeading from '../SectionHeading';
 import Figure from './figure';
 import Footnote from './footnote';
-import SectionHeading from '../SectionHeading';
 
 function recursiveMap(children, fn) {
   return React.Children.map(children, (child) => {

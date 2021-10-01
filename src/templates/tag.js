@@ -1,15 +1,15 @@
-import React from 'react';
-import Layout from '../components/layout';
-
 // Components
-import { Link, graphql } from 'gatsby';
-import SectionHeading from '../components/SectionHeading';
-import EssayHeader from '../components/Essay/EssayHeader';
-import NoteCard from '../components/Notes/NoteCard';
-import AssemblageCard from '../components/Assemblages/AssemblageCard';
-import TagLink from '../components/TagLink';
-import PageHeading from '../components/PageHeading';
+import { graphql } from 'gatsby';
+import React from 'react';
 import { Helmet } from 'react-helmet';
+import AssemblageCard from '../components/Assemblages/AssemblageCard';
+import EssayHeader from '../components/Essay/EssayHeader';
+import Layout from '../components/layout';
+import NoteCard from '../components/Notes/NoteCard';
+import PageHeading from '../components/PageHeading';
+import SectionHeading from '../components/SectionHeading';
+import TagLink from '../components/TagLink';
+
 const TagPage = ({
   pageContext,
   data: {

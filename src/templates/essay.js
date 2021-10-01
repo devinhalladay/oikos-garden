@@ -1,11 +1,9 @@
-import * as React from 'react';
-import { Link, graphql } from 'gatsby';
-
-import Layout from '../components/layout';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { kebabCase } from 'lodash';
-import EssayHeader from '../components/Essay/EssayHeader';
+import * as React from 'react';
 import { Helmet } from 'react-helmet';
+import EssayHeader from '../components/Essay/EssayHeader';
+import Layout from '../components/layout';
 
 const EssayTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];
