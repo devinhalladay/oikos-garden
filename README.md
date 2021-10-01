@@ -10,8 +10,13 @@ This is the personal wiki of Devin Halladay, a designer and writer based in Manh
 - **MDX** to embed JSX in Markdown files
 - **Vercel** for hosting
 - **Tailwind** and SCSS for styling
+- [Custom MDX footnote transformer plugin](https://github.com/devinhalladay/oikos-garden/blob/main/plugins/footnotes.js)
+  - Inspired by [Maggie's footnote component](https://github.com/MaggieAppleton/maggieappleton.com/blob/f4dbc08f3702725073680f25dd6ca197b27721d3/src/components/mdx/Footnote.js) and [gatsby-remark-reference-footnotes](https://github.com/signalwerk/gatsby-remark-reference-footnotes)
+  - Transforms MDX footnotes[^1] into a configurable JSX element (eg. a react component)
 - **[gatsby-theme-brain](https://github.com/aengusmcmillin/gatsby-theme-brain)** provides bi-directional links and other niceties
 - **Roam** for taking notes and writing entries
+
+[^1]: Like this one!
 
 ## Installation
 1. You'll need to install Node and Yarn, if you haven't already.
@@ -25,3 +30,4 @@ This is the personal wiki of Devin Halladay, a designer and writer based in Manh
 ## Thanks to:
 - Maggie Appleton for [their exemplary digital garden](https://github.com/MaggieAppleton/maggieappleton.com) which helped me get my head around Gatsby.
 - Aengus McMillin for their powerful [digital garden theme and plugins](https://github.com/aengusmcmillin/gatsby-theme-brain)
+
