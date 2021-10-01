@@ -1,13 +1,15 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 import AssemblageCard from '../components/Assemblages/AssemblageCard';
+import Card from '../components/Card';
 import EssayHeader from '../components/Essay/EssayHeader';
 import Layout from '../components/layout';
 import NoteCard from '../components/Notes/NoteCard';
 import SectionHeading from '../components/SectionHeading';
+import TagLink from '../components/TagLink';
 
 const IndexPage = ({
-  data: { notesQuery, assemblagesQuery, essaysQuery },
+  data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
   return (
     <Layout width="wide">
@@ -30,7 +32,7 @@ const IndexPage = ({
               </>
             }
           />
-          <div class="grid md:grid-cols-2 pl-0 list-none gap-4 gap">
+          <div className="grid md:grid-cols-2 pl-0 list-none gap-4 gap">
             {assemblagesQuery.edges.map((edge) => {
               const { node } = edge;
               return <AssemblageCard node={node} />;
@@ -66,6 +68,48 @@ const IndexPage = ({
             subhead="Design, art, and other media I've created regarding the
             concepts on this site."
           />
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-8">
+            {worksQuery.edges.map(({ node }) => {
+              console.log(node);
+              return (
+                <div className="font-sans">
+                  {node.frontmatter.cover_image && (
+                    <Link to={`/${node.frontmatter.slug}`}>
+                      <div className="h-52 w-full overflow-hidden rounded-lg">
+                        <img
+                          src={
+                            node.frontmatter.cover_image
+                              .childImageSharp.fluid.src
+                          }
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    </Link>
+                  )}
+                  <div className="pt-2">
+                    <Link
+                      to={`/${node.frontmatter.slug}`}
+                      className="font-semibold indent-0 leading-5 text-xl">
+                      {node.frontmatter.title}
+                    </Link>
+                    <div className="mb-2 leading-3">
+                      {node.frontmatter.tags &&
+                        node.frontmatter.tags.map((tag, i) => (
+                          <TagLink tag={tag} size="sm" />
+                        ))}
+                    </div>
+                    <p className="mt-2">
+                      <Link
+                        to={`/${node.frontmatter.slug}`}
+                        className="p-2 leading-none inline-block transition-colors rounded-md text-gray-500 border border-gray-200 bg-gray-50 hover:bg-black hover:text-white">
+                        See Project
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </section>
       </div>
     </Layout>
@@ -84,6 +128,19 @@ export const pageQuery = graphql`
           id
           slug
           ...AssemblageFrontmatter
+        }
+      }
+    }
+
+    worksQuery: allMdx(
+      filter: { fileAbsolutePath: { regex: "/content/works/" } }
+      limit: 6
+    ) {
+      edges {
+        node {
+          id
+          slug
+          ...WorkFrontmatter
         }
       }
     }

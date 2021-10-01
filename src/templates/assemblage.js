@@ -7,7 +7,6 @@ import Layout from '../components/layout';
 const AssemblageTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];
   const siteTitle = data.site.siteMetadata?.title || `Title`;
-  const { previous, next } = data;
 
   return (
     <Layout location={location} title={siteTitle}>

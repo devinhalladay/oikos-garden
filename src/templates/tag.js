@@ -90,7 +90,7 @@ const TagPage = ({
             <SectionHeading
               title={`Assemblages (${assemblageCount})`}
             />
-            <div class="grid md:grid-cols-2 pl-0 list-none gap-4 gap">
+            <div className="grid md:grid-cols-2 pl-0 list-none gap-4 gap">
               {assemblagesQuery.nodes.map((edge) => {
                 const { node } = edge;
                 return <AssemblageCard node={node} />;

@@ -17,8 +17,10 @@ function AssemblageCard({ node }) {
           </div>
         )}
         <div className="p-2">
-          <p class="font-semibold indent-0 leading-5 my-2">{title}</p>
-          <p class="indent-0 text-gray-500 leading-5 mb-2 text-base">
+          <p className="font-semibold indent-0 leading-5 my-2">
+            {title}
+          </p>
+          <p className="indent-0 text-gray-500 leading-5 mb-2 text-base">
             {subtitle}
           </p>
         </div>

@@ -6,12 +6,12 @@ function Nav() {
     <nav>
       <aside>
         <div>
-          <a href="/" class="site-title">
-            <span class="site-title--1">Infinite</span>
-            <span class="site-title--2">Caesura</span>
+          <a href="/" className="site-title">
+            <span className="site-title--1">Infinite</span>
+            <span className="site-title--2">Caesura</span>
           </a>
         </div>
-        <h2 class="folder__title">Oikos — No place</h2>
+        <h2 className="folder__title">Oikos — No place</h2>
 
         <h1>
           This is the personal wiki of Devin Halladay, a product

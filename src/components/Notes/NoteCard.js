@@ -11,7 +11,7 @@ function NoteCard({ note }) {
           <small className="text-gray-400">
             {note.childMdx.frontmatter.date}
           </small>
-          <p class="leading-5 font-medium">
+          <p className="leading-5 font-medium">
             {note.childMdx.frontmatter.title}
           </p>
           <div className="mt-2 mb-0 leading-3">

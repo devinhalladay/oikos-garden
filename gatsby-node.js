@@ -12,6 +12,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const assemblageTemplate = path.resolve(
     './src/templates/assemblage.js'
   );
+  const workTemplate = path.resolve('./src/templates/work.js');
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
@@ -69,6 +70,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   );
+
+  const workResults = await graphql(
+    `
+      {
+        allMdx(
+          limit: 1000
+          filter: { fileAbsolutePath: { regex: "/content/works/" } }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
+    `
+  );
   // sort: { fields: [frontmatter___date], order: ASC }
 
   if (result.errors) {
@@ -85,6 +104,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     ...tagsResults.data.allBrainNote.group,
   ];
   const assemblages = assemblageResults.data.allMdx.nodes;
+  const works = workResults.data.allMdx.nodes;
 
   // Create blog essays pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
@@ -97,8 +117,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const nextEssayId =
         index === essays.length - 1 ? null : essays[index + 1].id;
 
-      console.log(essay);
-
       createPage({
         path: essay.frontmatter.slug,
         component: essayTemplate,
@@ -106,6 +124,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: essay.id,
           previousEssayId,
           nextEssayId,
+        },
+      });
+    });
+  }
+
+  if (works.length > 0) {
+    works.forEach((work, index) => {
+      createPage({
+        path: work.frontmatter.slug,
+        component: workTemplate,
+        context: {
+          id: work.id,
         },
       });
     });
@@ -185,6 +215,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
       tags: [String]
       subtitle: String
+      featured: Boolean
     }
   `);
 };
