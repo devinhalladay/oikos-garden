@@ -80,13 +80,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/moments`,
-        name: 'moments',
-      },
-    },
-    {
       resolve: `@aengusm/gatsby-theme-brain`,
       options: {
         mdxOtherwiseConfigured: true,
