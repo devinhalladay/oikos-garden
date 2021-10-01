@@ -2,6 +2,9 @@ const config = require('./config/website');
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
+  flags: {
+    FAST_DEV: true,
+  },
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
     title: config.siteTitle,
