@@ -20,31 +20,6 @@ function EssaysPage({ data }) {
   );
 }
 
-{
-  /* <article>
-            <Link to={`/${node.frontmatter.slug}`}>
-              <h2 class="title">
-                {node.frontmatter
-                  ? node.frontmatter.title
-                  : node.title}
-              </h2>
-              <p>{node.frontmatter.subtitle}</p>
-              <footer>
-                <small>{node.frontmatter.date}</small>
-                {node.frontmatter.tags ? (
-                  <ul>
-                    {node.frontmatter.tags.map((tag) => {
-                      return <li>{tag}</li>;
-                    })}
-                  </ul>
-                ) : null}
-              </footer>
-            </Link>
-          </article> */
-}
-
-// const ComponentName = ({ data }) => <pre>{JSON.stringify(data, null, 4)}</pre>
-
 export const query = graphql`
   {
     allMdx(

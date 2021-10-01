@@ -14,21 +14,12 @@ const IndexPage = ({ data: { worksQuery } }) => {
         <h2>Works</h2>
         <ul class="assemblage-list">
           {worksQuery.edges.map((work, i) => {
-            const {
-              categories,
-              cover_image,
-              description,
-              featured,
-              scope,
-              title,
-              topics,
-            } = work.node.frontmatter;
+            const { title } = work.node.frontmatter;
 
             return (
               <li class="card--assemblage" key={i}>
                 <a href="/">
                   <p class="title">{title}</p>
-                  {/* <img src={cover_image} alt="" /> */}
                 </a>
               </li>
             );

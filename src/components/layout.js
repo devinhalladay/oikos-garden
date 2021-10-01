@@ -6,6 +6,8 @@ import '../styles/styles.scss';
 import Graphic from './graphic';
 import components from './mdx';
 import Nav from './nav';
+import '@fontsource/alegreya-sans';
+import '@fontsource/manuale';
 
 export default function Layout({ children, width }) {
   return (
