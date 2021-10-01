@@ -88,7 +88,7 @@ module.exports = {
         mdxOtherwiseConfigured: true,
         notesDirectory: `content/notes/`,
         rootPath: `/`,
-        hideDoubleBrackets: true,
+        hideDoubleBrackets: false,
       },
     },
   ],

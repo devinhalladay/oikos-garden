@@ -146,7 +146,7 @@ export const pageQuery = graphql`
     }
 
     notesQuery: allBrainNote(
-      limit: 10
+      limit: 4
       filter: { absolutePath: { regex: "/content/notes/" } }
     ) {
       nodes {
