@@ -2,8 +2,6 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 function NotesTable({ notes }) {
-  console.log(notes);
-
   return (
     <div>
       {notes.map((note) => (

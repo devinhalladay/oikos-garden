@@ -32,8 +32,6 @@ const TagsPage = ({
     return r;
   }, []);
 
-  console.log(alphabetizedTags);
-
   return (
     <Layout width="wide">
       <Helmet title="Concepts • Infinite Caesura" />

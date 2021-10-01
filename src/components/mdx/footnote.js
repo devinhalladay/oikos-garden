@@ -23,7 +23,7 @@ const Footnote = (props) => {
   const [bbox, ref] = useBbox();
 
   const { id, idName, children, closed, className } = props;
-  // console.log(props);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const defaultFootnoteStyles = css`

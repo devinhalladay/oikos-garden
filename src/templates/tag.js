@@ -26,8 +26,6 @@ const TagPage = ({
   const essaysCount = essaysQuery.nodes.length;
   const worksCount = 0;
 
-  console.log(relatedMdxTags);
-
   // const allTags = [
   //   ...relatedMdxTags.group,
   //   ...relatedBrainTags.group,
@@ -56,9 +54,6 @@ const TagPage = ({
   const allTags = [...relatedMdxTags.group].filter(
     (t) => t.tag !== tag
   );
-
-  console.log('tags');
-  console.log(allTags);
 
   return (
     <Layout width="wide">

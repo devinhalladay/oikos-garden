@@ -7,8 +7,6 @@ import PageHeading from '../components/PageHeading';
 import { Helmet } from 'react-helmet';
 
 function EssaysPage({ data }) {
-  console.log(data);
-
   return (
     <Layout>
       <Helmet title="Essays • Infinite Caesura" />
@@ -16,7 +14,6 @@ function EssaysPage({ data }) {
       <PageHeading title="Essays" />
       <div className="mt-6">
         {data.allMdx.nodes.map((node) => {
-          console.log(node);
           return <EssayHeader isLinked="true" post={node} />;
         })}
       </div>

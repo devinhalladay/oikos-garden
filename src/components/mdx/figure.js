@@ -2,7 +2,6 @@ import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 function Figure({ src, caption, children, className, bordered }) {
-  console.log(src);
   return (
     <figure className={`my-8 ${className}`}>
       <img
