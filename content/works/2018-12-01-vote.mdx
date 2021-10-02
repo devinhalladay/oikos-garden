@@ -3,21 +3,21 @@ title: "Digital Vote Posters"
 tags: ['Web Design', 'Web Development']
 subtitle: "Designing a series of websites-as-posters to encourage people to participate in politics and to vote on election day."
 tag: politics culture technology
-cover_image: ../../src/images/2018/12/vote/cover.png
+cover_image: ../../static/images/2018/12/vote/cover.png
 external_url: https://devinhalladay.com/vote/1/
 filters: interaction
 categories: identity internet
 slug: '2018-12-01-vote'
 ---
-<!-- <% @image_dir = '../../src/images/2018/12/vote' %> -->
+
 
 <div className="gc-main">
   <a target="_blank" href="/vote/1/" className="no-barba button button-forward">View poster #1</a>
 </div>
 
 <div className="gc-spill">
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/1-desktop.png" })  */}
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/1-scrunched.png" })  */}
+  <Figure src={'/images/2018/12/vote/1-desktop.png'} />
+  <Figure src={'/images/2018/12/vote/1-scrunched.png'} />
 </div>
 
 <div className="gc-main">
@@ -26,7 +26,7 @@ slug: '2018-12-01-vote'
 </div>
 
 <div className="gc-spill">
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/2.png" })  */}
+  <Figure src={'/images/2018/12/vote/2.png'} />
 </div>
 
 <div className="gc-main">
@@ -35,5 +35,5 @@ slug: '2018-12-01-vote'
 </div>
 
 <div className="gc-spill">
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/3.png" })  */}
+  <Figure src={'/images/2018/12/vote/3.png'} />
 </div>

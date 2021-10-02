@@ -2,7 +2,7 @@
 title: "Kilotype"
 tags: ['Web Design']
 subtitle: "Designing a website for a new German type foundry, with Friends of the Web."
-cover_image: ../../src/images/2019/02/kilotype/cover.png
+cover_image: ../../static/images/2019/02/kilotype/cover.png
 tag: culture
 external_url : https://kilotype.de
 filters: interaction
@@ -10,10 +10,10 @@ featured: true
 categories: internet identity
 slug: '2019-02-20-kilotype'
 ---
-<!-- <% @image_dir = '../../src/images/2019/02/kilotype' %> -->
+
 
 <div className="gc-breakout hero-image">
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/mockup.jpg" })  */}
+  <Figure src={'/images/2019/02/kilotype/mockup.jpg'} />
 </div>
 
 
@@ -31,24 +31,24 @@ slug: '2019-02-20-kilotype'
 <div className="gc-breakout">
   <hr />
   <h2>Early Iterations</h2>
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/1.png" })  */}
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/2.png" })  */}
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/3.png", :border => true })  */}
+  <Figure src={'/images/2019/02/kilotype/1.png'} />
+  <Figure src={'/images/2019/02/kilotype/2.png'} />
+  <Figure src={'/images/2019/02/kilotype/3.png'} />
 
   <hr />
   <h2>Round Two</h2>
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/4.png", :border => true })  */}
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/6.png" })  */}
+  <Figure src={'/images/2019/02/kilotype/4.png'} />
+  <Figure src={'/images/2019/02/kilotype/6.png'} />
 
   <hr />
   <h2>Round Three</h2>
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/9.png" })  */}
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/10.png" })  */}
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/11.png" })  */}
+  <Figure src={'/images/2019/02/kilotype/9.png'} />
+  <Figure src={'/images/2019/02/kilotype/10.png'} />
+  <Figure src={'/images/2019/02/kilotype/11.png'} />
 
   <hr />
   <h2>Final</h2>
-  {/*  partial("partials/figure", :locals => { :img => "#{@image_dir}/mockup.jpg" })  */}
+  <Figure src={'/images/2019/02/kilotype/mockup.jpg'} />
   <p className="u-font-center">
     <a href="https://kilotype.de/" className="button">View the final site</a>
   </p>
