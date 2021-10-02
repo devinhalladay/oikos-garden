@@ -1,6 +1,10 @@
 const config = require('./config/website');
 const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   flags: {
     FAST_DEV: true,
@@ -57,6 +61,12 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/static/images/`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'pages',
         path: `${__dirname}/src/pages/`,
       },
@@ -91,5 +101,14 @@ module.exports = {
         hideDoubleBrackets: false,
       },
     },
+    // {
+    //   resolve: `gatsby-source-roamresearch`,
+    //   options: {
+    //     url: 'https://roamresearch.com/#/app/oikos/',
+    //     // Learn about environment variables: https://gatsby.dev/env-vars
+    //     email: process.env.ROAM_EMAIL,
+    //     password: process.env.ROAM_PASSWORD,
+    //   },
+    // },
   ],
 };
