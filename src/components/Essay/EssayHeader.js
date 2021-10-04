@@ -28,9 +28,9 @@ function EssayHeader({ post, isLinked, mini }) {
                   </h1>
                   {post.frontmatter.subtitle && (
                     <h2
-                      className={`font-sans indent-0 text-gray-500 ${
+                      className={`font-serif indent-0 leading-tight text-gray-500 ${
                         mini ? 'text-sm' : 'text-xl'
-                      }`}>
+                      } mt-0`}>
                       {post.frontmatter.subtitle}
                     </h2>
                   )}
@@ -69,7 +69,7 @@ function EssayHeader({ post, isLinked, mini }) {
         <div className="mb-2">
           <h1 className="mb-2">{post.frontmatter.title}</h1>
           {post.frontmatter.subtitle && (
-            <h2 className="font-sans text-xl indent-0 text-gray-500">
+            <h2 className="font-sans text-2xl indent-0 text-gray-500 mt-0">
               {post.frontmatter.subtitle}
             </h2>
           )}

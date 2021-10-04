@@ -240,10 +240,12 @@ main {
   }
 
   h2 {
-    font-size: 1.75rem;
+    font-family: 'Manuale';
     font-weight: 400;
-    margin-top: 0;
-    text-indent: 2rem;
+    margin-top: 2.1rem;
+    margin-bottom: 1.4rem;
+    font-size: 2.2rem;
+    line-height: 1;
   }
 
   h4 {
@@ -251,8 +253,6 @@ main {
     margin-top: 1rem;
     margin-bottom: 3rem;
     font-size: 1.6rem;
-    font-family: Manuale;
-    color: #1973ff;
     line-height: 120%;
     font-weight: 400;
     text-indent: -2rem;
@@ -261,6 +261,35 @@ main {
 
   section {
     margin-bottom: 4rem;
+  }
+
+  article {
+    h3 {
+      font-size: 26px;
+      font-weight: 700;
+      text-indent: 3rem;
+      margin-top: 2rem;
+      line-height: 2rem;
+    }
+
+    h2 {
+      font-weight: 300;
+      font-size: 1.7rem;
+      margin-top: 2rem;
+      margin-bottom: 1.4rem;
+      line-height: 1;
+      font-family: 'Manuale';
+    }
+
+    h4 {
+      font-size: 22px;
+      font-weight: 700;
+      text-indent: 0;
+      margin-top: 2rem;
+      line-height: 2rem;
+      font-family: 'Alegreya Sans';
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -649,4 +678,10 @@ blockquote {
 
 .footnote-ref {
   color: #1973ff;
+}
+
+blockquote.narration {
+  padding-left: 30px;
+  font-style: italic;
+  border-left: 0;
 }
