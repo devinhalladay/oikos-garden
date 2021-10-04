@@ -133,6 +133,7 @@ export const pageQuery = graphql`
     }
 
     worksQuery: allMdx(
+      sort: { fields: slug, order: DESC }
       filter: { fileAbsolutePath: { regex: "/content/works/" } }
       limit: 6
     ) {
