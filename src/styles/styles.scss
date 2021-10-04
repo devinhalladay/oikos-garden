@@ -679,3 +679,23 @@ blockquote.narration {
   font-style: italic;
   border-left: 0;
 }
+
+article ul:not(.footnotes) {
+  list-style: inherit;
+  padding-left: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+
+  li {
+    padding-left: 0.5rem;
+  }
+}
+
+article h1:not([class]) {
+  font-family: 'Manuale';
+  margin-top: 2rem;
+  font-weight: 300;
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+}

@@ -16,7 +16,7 @@ const IndexPage = ({
       <div className="flex flex-col xl:flex-row">
         <section className="xl:w-2/3 mr-8">
           <SectionHeading
-            title="Assemblages: Exercises in worldbuilding"
+            title="Assemblages"
             subhead={
               <>
                 Thematic compositions of notes, essays, and works.
