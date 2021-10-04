@@ -3,7 +3,7 @@ import React from 'react';
 function SectionHeading({ title, subhead }) {
   return (
     <div className="mb-6">
-      <h2 className="indent-0 mb-2 font-semibold border-b border-gray-300 pb-1">
+      <h2 className="indent-0 mb-2 font-semibold border-b border-gray-300 pb-1 text-2xl">
         {title}
       </h2>
       {subhead && (
