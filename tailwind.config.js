@@ -8,6 +8,9 @@ module.exports = {
         'sans': ['Alegreya Sans', 'sans-serif'],
         'serif': ['Manuale', 'serif'],
       },
+      fontSize: {
+        '5xl': '2.6rem',
+      },
     },
   },
   variants: {

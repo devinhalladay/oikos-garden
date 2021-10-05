@@ -316,15 +316,15 @@ main {
 
 .site-title {
   position: sticky;
-  font-family: 'neue-haas-unica', 'BlinkMacSystemFont', -apple-system,
-    'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Alegreya Sans';
   font-weight: bold;
   text-decoration: none;
-  font-size: 32px;
+  font-size: 2.125rem;
   color: #151515;
   font-feature-settings: none;
   // position: relative;
 
+  letter-spacing: -0.5px;
   height: 48px;
   display: block;
 

@@ -56,7 +56,7 @@ const IndexPage = ({
             title="Featured Essays"
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
           />
-          <div className="grid grid-cols-2 gap-4">
+          <div className=" gap-4">
             {essaysQuery.nodes.map((node) => (
               <EssayHeader post={node} isLinked mini />
             ))}

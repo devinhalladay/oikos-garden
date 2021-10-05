@@ -21,15 +21,15 @@ function EssayHeader({ post, isLinked, mini }) {
               <div className="mb-2">
                 <div className="flex-grow mr-5">
                   <h1
-                    className={`mb-2 tracking-tight ${
-                      mini ? 'text-xl' : 'text-3xl'
+                    className={`mb-2 tracking-tight mb-0 leading-none ${
+                      mini ? 'text-2xl' : 'text-3xl'
                     }`}>
                     {post.frontmatter.title}
                   </h1>
                   {post.frontmatter.subtitle && (
                     <h2
-                      className={`font-serif indent-0 leading-tight text-gray-500 ${
-                        mini ? 'text-sm' : 'text-xl'
+                      className={`font-serif my-0 indent-0 leading-tight text-gray-500 ${
+                        mini ? 'text-lg' : 'text-xl'
                       } mt-0`}>
                       {post.frontmatter.subtitle}
                     </h2>

@@ -2,6 +2,7 @@ import React from 'react';
 import SectionHeading from '../SectionHeading';
 import Figure from './figure';
 import Footnote from './footnote';
+import Heading from './headings';
 
 function recursiveMap(children, fn) {
   return React.Children.map(children, (child) => {
@@ -23,6 +24,10 @@ function recursiveMap(children, fn) {
 export default {
   Footnote: (props) => <Footnote key={props.id} {...props} />,
   Figure: (props) => <Figure {...props} />,
+  h1: (props) => <Heading level={1} {...props} />,
+  h2: (props) => <Heading level={2} {...props} />,
+  h3: (props) => <Heading level={3} {...props} />,
+  h4: (props) => <Heading level={4} {...props} />,
   wrapper: ({ children, ...props }) => {
     const map = recursiveMap(children, (c, i) => {
       if (c.props.mdxType === 'Footnote') {
