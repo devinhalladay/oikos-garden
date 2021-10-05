@@ -7,9 +7,18 @@ module.exports = {
       fontFamily: {
         'sans': ['Alegreya Sans', 'sans-serif'],
         'serif': ['Manuale', 'serif'],
+        'sans-sc': [
+          'Alegreya Sans SC',
+          'Alegreya Sans',
+          'sans-serif',
+        ],
       },
       fontSize: {
         '5xl': '2.6rem',
+      },
+      colors: {
+        'infinite-blue': '#d0232a',
+        'domain-red': '#d0232a',
       },
     },
   },

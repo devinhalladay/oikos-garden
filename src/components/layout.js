@@ -8,6 +8,7 @@ import components from './mdx';
 import Nav from './nav';
 import '@fontsource/alegreya-sans/latin.css';
 import '@fontsource/manuale/latin.css';
+import '@fontsource/alegreya-sans-sc/latin.css';
 
 export default function Layout({ children, width }) {
   return (

@@ -1251,6 +1251,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/alegreya-sans-sc@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/alegreya-sans-sc/-/alegreya-sans-sc-4.5.0.tgz#63b1d50b21a0d0bd58a1264d6aa9fd0e418e5140"
+  integrity sha512-mC7DHk7ZqCoG3XZN5xtj10ISjIEcQH0q/gTHiSuqBOEsq9/kHE4Pgl7+N38pPERxtji5FGlhjENzQUEopIIeWA==
+
 "@fontsource/alegreya-sans@^4.5.0":
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/@fontsource/alegreya-sans/-/alegreya-sans-4.5.0.tgz#81d6234c18fb9c603db3913b11bc3fae39f131da"

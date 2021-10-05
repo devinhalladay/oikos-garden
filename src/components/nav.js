@@ -11,12 +11,14 @@ function Nav() {
             <span className="site-title--2">Caesura</span>
           </a>
         </div>
-        <h2 className="folder__title">Oikos — No place</h2>
+        <h2 className="font-sans-sc text-base lowercase leading-none tracking-wide">
+          Being as the World
+        </h2>
 
-        <h1>
-          This is the personal wiki of Devin Halladay, a product
-          designer and writer based in Manhattan.
-        </h1>
+        <p className="leading-tight font-sans">
+          This is the wiki realm of Devin Halladay, a product designer
+          and writer based in Manhattan.
+        </p>
       </aside>
       <ul className="mt-6">
         <li>

@@ -28,7 +28,7 @@ const Footnote = (props) => {
 
   const defaultFootnoteStyles = css`
     font-family: Alegreya Sans;
-    color: #1973ff;
+    color: #d0232a;
     font-size: 0.75rem;
     line-height: 1.3;
     text-indent: 0;
@@ -78,7 +78,7 @@ const Footnote = (props) => {
 
   const openFootnoteStyles = css`
     font-family: Alegreya Sans;
-    color: #1973ff;
+    color: #d0232a;
     font-size: 0.75rem;
     line-height: 1.3;
     text-indent: 0;
@@ -141,7 +141,7 @@ const Footnote = (props) => {
       content: '[' counter(sidenote-counter) ']';
       font-family: Manuale;
       font-size: 0.875rem;
-      color: #1973ff;
+      color: #d0232a;
       top: -0.5rem;
       left: 0em;
       padding-right: 3px;

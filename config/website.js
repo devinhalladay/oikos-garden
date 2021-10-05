@@ -16,7 +16,7 @@ module.exports = {
   ogLanguage: 'en_US',
 
   // Manifest and Progress color
-  themeColor: '#1973ff',
+  themeColor: '#d0232a',
   backgroundColor: '#ffffff',
 
   // Social component
