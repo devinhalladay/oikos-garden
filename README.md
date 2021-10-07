@@ -1,8 +1,8 @@
-# Infinite Caesura — Personal Wiki 
+# Infinite Caesura — Personal Wiki
 
 This is the personal wiki of Devin Halladay, a designer and writer based in Manhattan. The code is open source and licensed under GPL; I would only ask that, as a courtesy, you let me know if you borrow or remix any of my code.
 
-![GPL Logo](https://www.gnu.org/graphics/gplv3-127x51.png)
+[![GPL Logo](https://www.gnu.org/graphics/gplv3-127x51.png)](https://img.shields.io/github/license/devinhalladay/oikos-garden?label=LICENSE)
 
 
 ## Tech Stack
@@ -30,4 +30,3 @@ This is the personal wiki of Devin Halladay, a designer and writer based in Manh
 ## Thanks to:
 - Maggie Appleton for [their exemplary digital garden](https://github.com/MaggieAppleton/maggieappleton.com) which helped me get my head around Gatsby.
 - Aengus McMillin for their powerful [digital garden theme and plugins](https://github.com/aengusmcmillin/gatsby-theme-brain)
-

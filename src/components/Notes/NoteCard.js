@@ -14,11 +14,13 @@ function NoteCard({ note }) {
           <p className="leading-5 font-medium">
             {note.childMdx.frontmatter.title}
           </p>
-          <div className="mt-2 mb-0 leading-3">
-            {note.childMdx.frontmatter.tags &&
-              note.childMdx.frontmatter.tags.map((tag, i) => (
-                <TagLink tag={tag} size="sm" />
-              ))}
+          <div className="mt-2 mb-0 leading-3 overflow-scroll max-h-5">
+            <p className="whitespace-nowrap no-scrollbar">
+              {note.childMdx.frontmatter.tags &&
+                note.childMdx.frontmatter.tags.map((tag, i) => (
+                  <TagLink tag={tag} size="sm" />
+                ))}
+            </p>
           </div>
         </div>
       </Card>

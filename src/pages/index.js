@@ -13,7 +13,7 @@ const IndexPage = ({
 }) => {
   return (
     <Layout width="wide">
-      <div className="flex flex-col xl:flex-row">
+      <div className="flex flex-col xl:flex-row mb-12 border-gray-100 border-b-8">
         <section className="w-full xl:w-2/3 mr-8">
           <SectionHeading
             title="Assemblages"
@@ -41,6 +41,7 @@ const IndexPage = ({
         </section>
         <section className="xl:w-1/3">
           <SectionHeading
+            link="/notes"
             title="Recent Notes"
             subhead="Rolling, work-in-progress notes, images, clippings, and
             threads."
@@ -51,10 +52,11 @@ const IndexPage = ({
         </section>
       </div>
       <div>
-        <section className="w-full">
+        <section className="w-full mb-12 border-gray-100 border-b-8">
           <SectionHeading
             title="Featured Essays"
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
+            link="/essays"
           />
           <div className=" gap-4">
             {essaysQuery.nodes.map((node) => (
@@ -62,11 +64,12 @@ const IndexPage = ({
             ))}
           </div>
         </section>
-        <section className="w-full">
+        <section className="w-full mb-12 border-gray-100 border-b-8">
           <SectionHeading
             title="Creative Works"
             subhead="Design, art, and other media I've created regarding the
             concepts on this site."
+            link="/works"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-8">
             {worksQuery.edges.map(({ node }) => {
