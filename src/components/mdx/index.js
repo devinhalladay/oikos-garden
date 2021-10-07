@@ -28,7 +28,8 @@ export default {
   h2: (props) => <Heading level={2} {...props} />,
   h3: (props) => <Heading level={3} {...props} />,
   h4: (props) => <Heading level={4} {...props} />,
-  wrapper: ({ children, ...props }) => {
+  wrapper: (props) => {
+    const { children } = props;
     const map = recursiveMap(children, (c, i) => {
       if (c.props.mdxType === 'Footnote') {
         return React.cloneElement(c, {
@@ -36,6 +37,14 @@ export default {
           parentNode: c.props.parentNode,
         });
       }
+
+      // if (c.props.className === 'table-of-contents') {
+      //   return (
+      //     <div className="text-domain-red absolute right-0 w-80">
+      //       {children}
+      //     </div>
+      //   );
+      // }
 
       if (c.props.className === 'footnotes') {
         return (

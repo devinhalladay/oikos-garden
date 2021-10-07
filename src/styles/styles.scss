@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: 'Bluu';
   src: url('../fonts/bluunext-bold-webfont.woff2') format('woff2'),
@@ -89,7 +93,10 @@ a {
 }
 
 p a {
-  color: #d0232a;
+  // color: #d0232a;
+  // text-decoration: underline;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
 }
 
 main {

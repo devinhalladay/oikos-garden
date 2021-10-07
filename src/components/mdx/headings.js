@@ -11,7 +11,7 @@ function Heading({ level, children }) {
     case 2:
       return (
         <>
-          <h2 className="font-sans text-4xl pb-2 font-bold leading-none tracking-tight border-b border-gray-300">
+          <h2 className="font-sans text-4xl pt-4 pb-2 font-bold leading-none tracking-tight border-b border-gray-300">
             {children}
           </h2>
         </>

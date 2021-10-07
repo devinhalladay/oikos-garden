@@ -10,7 +10,7 @@ import '@fontsource/alegreya-sans/latin.css';
 import '@fontsource/manuale/latin.css';
 import '@fontsource/alegreya-sans-sc/latin.css';
 
-export default function Layout({ children, width }) {
+export default function Layout({ children, width, navContent }) {
   return (
     <MDXProvider components={components}>
       <Helmet
@@ -20,7 +20,7 @@ export default function Layout({ children, width }) {
       </Helmet>
       <Graphic layout={width} />
       <div className="layout antialiased">
-        <Nav />
+        <Nav>{navContent}</Nav>
         <main className={width ? width : null}>{children}</main>
       </div>
     </MDXProvider>

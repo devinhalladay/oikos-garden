@@ -6,10 +6,7 @@ function EssayHeader({ post, isLinked, mini }) {
   if (isLinked) {
     return (
       <Link to={`/${post.frontmatter.slug}`}>
-        <article
-          className={`h-full mb-6 border-gray-200 hover:bg-gray-50 transition-colors duration-300 ${
-            isLinked ? 'border rounded-lg overflow-hidden p-3' : null
-          }`}>
+        <article className={'h-full mb-10 font-sans'}>
           {!mini && (
             <div className="mb-1 text-gray-500 font-sans lining-nums">
               <small className="mr-3">{post.frontmatter.date}</small>
@@ -19,16 +16,16 @@ function EssayHeader({ post, isLinked, mini }) {
           <div className="flex">
             <div className="flex-grow">
               <div className="mb-2">
-                <div className="flex-grow mr-5">
+                <div className="flex-grow mr-8">
                   <h1
-                    className={`mb-2 tracking-tight mb-0 leading-none ${
-                      mini ? 'text-2xl' : 'text-3xl'
+                    className={`mb-2 tracking-tight leading-none ${
+                      mini ? 'text-3xl' : 'text-3xl'
                     }`}>
                     {post.frontmatter.title}
                   </h1>
                   {post.frontmatter.subtitle && (
                     <h2
-                      className={`font-serif my-0 indent-0 leading-tight text-gray-500 ${
+                      className={`font-sans my-0 indent-0 leading-tight font-normal ${
                         mini ? 'text-lg' : 'text-xl'
                       } mt-0`}>
                       {post.frontmatter.subtitle}

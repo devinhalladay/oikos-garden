@@ -42,6 +42,21 @@ module.exports = {
       options: {
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [
+                {
+                  resolve: `gatsby-remark-autolink-headers`,
+                  options: {
+                    offsetY: `100`,
+                    icon: false,
+                    elements: ['h1', 'h2', 'h3', 'h4'],
+                  },
+                },
+              ],
+            },
+          },
+          {
             resolve: require.resolve(`./plugins/footnotes.js`),
             options: {
               referenceComponent: 'Footnote',
