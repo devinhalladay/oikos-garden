@@ -6,21 +6,19 @@ function AssemblageCard({ node }) {
   const { slug } = node;
   const { title, cover_image, subtitle } = node.frontmatter;
   return (
-    <Link to={`/assemblages/${slug}`}>
-      <Card animate="true">
+    <Link to={`/assemblages/${slug}`} className="w-full">
+      <Card animate="true" className="min-h-64 w-full">
         {cover_image && (
-          <div className="h-32 w-full overflow-hidden">
-            <img
-              src={cover_image.childImageSharp.fluid.src}
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <img
+            src={cover_image.childImageSharp.fluid.src}
+            className="h-full w-full object-cover min-h-80"
+          />
         )}
-        <div className="p-2">
-          <p className="font-semibold indent-0 leading-5 my-2">
+        <div className="px-3 pb-4 pt-12 absolute bottom-0 w-full bg-gradient-to-t from-black text-white">
+          <p className="font-semibold text-xl indent-0 leading-tight mb-1">
             {title}
           </p>
-          <p className="indent-0 text-gray-500 leading-5 mb-2 text-base">
+          <p className="indent-0 leading-5 text-base font-medium">
             {subtitle}
           </p>
         </div>

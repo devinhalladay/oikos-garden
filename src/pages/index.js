@@ -14,7 +14,7 @@ const IndexPage = ({
   return (
     <Layout width="wide">
       <div className="flex flex-col xl:flex-row">
-        <section className="xl:w-2/3 mr-8">
+        <section className="w-full xl:w-2/3 mr-8">
           <SectionHeading
             title="Assemblages"
             subhead={

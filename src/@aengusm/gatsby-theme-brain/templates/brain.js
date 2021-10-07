@@ -15,6 +15,7 @@ export const query = graphql`
       childMdx {
         body
         frontmatter {
+          date(formatString: "MMMM DD, YYYY")
           title
           slug
           tags

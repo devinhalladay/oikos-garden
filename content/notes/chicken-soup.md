@@ -1,6 +1,11 @@
 ---
 title: Critique is chicken soup for the designer's soul
 date: 2021-06-28
+tags:
+  - Design Criticism
+  - Design
+  - Critique
+  - Design Process
 ---
 ## Draft #3
 

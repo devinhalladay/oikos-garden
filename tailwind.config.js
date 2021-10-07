@@ -1,5 +1,4 @@
 module.exports = {
-  purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     textIndent: (theme) => theme('spacing'),
@@ -20,6 +19,7 @@ module.exports = {
         'infinite-blue': '#d0232a',
         'domain-red': '#d0232a',
       },
+      minHeight: (theme) => theme('spacing'),
     },
   },
   variants: {
