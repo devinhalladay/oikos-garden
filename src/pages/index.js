@@ -9,12 +9,13 @@ import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';
 
 const IndexPage = ({
-  data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
+  data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery, logseqQuery },
 }) => {
+  console.log(logseqQuery);
   return (
     <Layout width="wide">
       <div className="flex flex-col xl:flex-row mb-12 border-gray-100 border-b-8">
-        <section className="w-full xl:w-2/3 mr-8">
+        {/* <section className="w-full xl:w-2/3 mr-8">
           <SectionHeading
             title="Assemblages"
             subhead={
@@ -38,17 +39,19 @@ const IndexPage = ({
               return <AssemblageCard node={node} />;
             })}
           </div>
-        </section>
-        <section className="xl:w-1/3">
+        </section> */}
+        <section className="w-full">
           <SectionHeading
             link="/notes"
             title="Recent Notes"
             subhead="Rolling, work-in-progress notes, images, clippings, and
-            threads."
+              threads."
           />
-          {notesQuery.nodes.map((note) => (
-            <NoteCard note={note} />
-          ))}
+          <div class="grid grid-cols-2 gap-4">
+            {notesQuery.nodes.map((note) => (
+              <NoteCard note={note} />
+            ))}
+          </div>
         </section>
       </div>
       <div>
@@ -165,6 +168,18 @@ export const pageQuery = graphql`
             date(formatString: "MM.DD.YYYY")
             tags
           }
+        }
+      }
+    }
+
+    logseqQuery: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(logseqRepo)/"}}) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+          }
+          fileAbsolutePath
         }
       }
     }

@@ -88,7 +88,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     `
   );
-  // sort: { fields: [frontmatter___date], order: ASC }
 
   if (result.errors) {
     reporter.panicOnBuild(
@@ -216,6 +215,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       tags: [String]
       subtitle: String
       featured: Boolean
+      public: Boolean
     }
   `);
 };

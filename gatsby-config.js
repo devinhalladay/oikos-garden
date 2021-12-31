@@ -38,9 +38,12 @@ module.exports = {
     'gatsby-plugin-sitemap',
     'gatsby-remark-reading-time',
     'gatsby-plugin-sharp',
+    `gatsby-plugin-mdx-source-name`,
+    // `gatsby-remark-source-name`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
+        extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-transformer-remark`,
@@ -111,6 +114,15 @@ module.exports = {
         path: `${__dirname}/content/works`,
         name: 'works',
       },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `logseqRepo`,
+        remote: `https://devinhalladay:${process.env.GITHUB_TOKEN}@github.com/devinhalladay/oikos-logseq`,
+        // Only import the docs folder from a codebase.
+        patterns: `pages/*.md`
+      }
     },
     {
       resolve: `@aengusm/gatsby-theme-brain`,
