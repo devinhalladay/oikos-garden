@@ -1,7 +1,8 @@
 ---
 title: Online courses are evolving toward student-driven curricula
 tags: ['Online Learning', 'Education', 'History of Online Education', '2000s', '2010s']
-date: 2021-10-26
+date: 2021-10-25T20:00:00-04:00
+updated: 2021-12-31T15:19:36-05:00
 ---
 
 After the first wave of massive online education pioneered by [[MOOCs]] and expanded by [[Course Marketplaces]] there remained a need for better skills-based education online.
