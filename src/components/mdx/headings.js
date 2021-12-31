@@ -4,7 +4,7 @@ function Heading({ level, children }) {
   switch (level) {
     case 1:
       return (
-        <h1 className="font-serif text-5xl text-center font-light my-5 leading-none tracking-tight">
+        <h1 className="font-serif text-5xl text-center font-light my-20 leading-none tracking-tight">
           {children}
         </h1>
       );
@@ -24,7 +24,7 @@ function Heading({ level, children }) {
       );
     case 4:
       return (
-        <h4 className="font-sans text-2xl indent-0 pb-0 pt-14 mt-0">
+        <h4 className="font-sans text-2xl indent-0 pb-4 mt-4">
           {children}
         </h4>
       );

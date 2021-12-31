@@ -287,12 +287,23 @@ main {
   }
 
   article {
+    hr {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+
     h3 {
       font-size: 26px;
       font-weight: 700;
       text-indent: 3rem;
       margin-top: 2rem;
       line-height: 2rem;
+    }
+
+    p {
+      & + blockquote.blockquote-page {
+        margin-top: 2rem;
+      }
     }
 
     h2 {
