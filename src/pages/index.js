@@ -9,9 +9,8 @@ import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';
 
 const IndexPage = ({
-  data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery, logseqQuery },
+  data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
-  console.log(logseqQuery);
   return (
     <Layout width="wide">
       <div className="flex flex-col xl:flex-row mb-12 border-gray-100 border-b-8">
@@ -172,17 +171,17 @@ export const pageQuery = graphql`
       }
     }
 
-    logseqQuery: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(logseqRepo)/"}}) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-          }
-          fileAbsolutePath
-        }
-      }
-    }
+    # logseqQuery: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(logseqRepo)/"}}) {
+    #   edges {
+    #     node {
+    #       id
+    #       frontmatter {
+    #         title
+    #       }
+    #       fileAbsolutePath
+    #     }
+    #   }
+    # }
 
     essaysQuery: allMdx(
       filter: { fileAbsolutePath: { regex: "/content/essays/" } }

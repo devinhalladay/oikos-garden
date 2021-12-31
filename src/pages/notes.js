@@ -7,11 +7,8 @@ import PageHeading from '../components/PageHeading';
 import TagLink from '../components/TagLink';
 
 // markup
-const NotesIndex = ({ data: { brainNotes, logseqNotes } }) => {
-  // const edges = [...brainNotes.edges, ...logseqNotes.edges];
+const NotesIndex = ({ data: { brainNotes } }) => {
   const { edges } = brainNotes;
-
-  console.log(logseqNotes);
 
   return (
     <Layout width="wide">
@@ -52,16 +49,16 @@ export const pageQuery = graphql`
       }
     }
 
-    logseqNotes: allMdx(filter: {fields: {source: {eq: "logseqRepo"}}, frontmatter: {title: {}, public: {}}}) {
-      edges {
-        node {
-          frontmatter {
-          title
-          public
-        }
-        slug
-        }
-      }
-    }
+    # logseqNotes: allMdx(filter: {fields: {source: {eq: "logseqRepo"}}, frontmatter: {title: {}, public: {}}}) {
+    #   edges {
+    #     node {
+    #       frontmatter {
+    #       title
+    #       public
+    #       }
+    #     slug
+    #     }
+    #   }
+    # }
   }
 `;

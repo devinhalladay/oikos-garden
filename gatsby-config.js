@@ -115,15 +115,15 @@ module.exports = {
         name: 'works',
       },
     },
-    {
-      resolve: `gatsby-source-git`,
-      options: {
-        name: `logseqRepo`,
-        remote: `https://devinhalladay:${process.env.GITHUB_TOKEN}@github.com/devinhalladay/oikos-logseq`,
-        // Only import the docs folder from a codebase.
-        patterns: `pages/*.md`
-      }
-    },
+    // {
+    //   resolve: `gatsby-source-git`,
+    //   options: {
+    //     name: `logseqRepo`,
+    //     remote: `https://devinhalladay:${process.env.GITHUB_TOKEN}@github.com/devinhalladay/oikos-logseq`,
+    //     // Only import the docs folder from a codebase.
+    //     patterns: `pages/*.md`
+    //   }
+    // },
     {
       resolve: `@aengusm/gatsby-theme-brain`,
       options: {
