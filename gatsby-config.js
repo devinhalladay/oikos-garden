@@ -129,7 +129,7 @@ module.exports = {
       options: {
         mdxOtherwiseConfigured: true,
         notesDirectory: `content/notes/`,
-        rootPath: `/`,
+        rootPath: `notes`,
         hideDoubleBrackets: false,
       },
     },

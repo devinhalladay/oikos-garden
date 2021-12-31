@@ -30,33 +30,31 @@ html {
 }
 
 @font-face {
-  font-family: 'Bluu';
-  src: url('../fonts/bluunext-bold-webfont.woff2') format('woff2'),
-    url('../fonts/bluunext-bold-webfont.woff') format('woff'),
-    url('../fonts/bluunext-bold.ttf') format('truetype'),
-    url('../fonts/bluunext-bold-webfont.svg#bluu_nextbold')
-      format('svg');
+  font-family: "Bluu";
+  src: url("../fonts/bluunext-bold-webfont.woff2") format("woff2"),
+    url("../fonts/bluunext-bold-webfont.woff") format("woff"),
+    url("../fonts/bluunext-bold.ttf") format("truetype"),
+    url("../fonts/bluunext-bold-webfont.svg#bluu_nextbold") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Bluu';
-  src: url('../fonts/bluunext-bolditalic-webfont.woff2')
-      format('woff2'),
-    url('../fonts/bluunext-bolditalic-webfont.woff') format('woff'),
-    url('../fonts/bluunext-bolditalic.ttf') format('truetype'),
-    url('../fonts/bluunext-bolditalic-webfont.svg#bluu_nextbold_italic')
-      format('svg');
+  font-family: "Bluu";
+  src: url("../fonts/bluunext-bolditalic-webfont.woff2") format("woff2"),
+    url("../fonts/bluunext-bolditalic-webfont.woff") format("woff"),
+    url("../fonts/bluunext-bolditalic.ttf") format("truetype"),
+    url("../fonts/bluunext-bolditalic-webfont.svg#bluu_nextbold_italic")
+      format("svg");
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'Bluu Next';
-  src: url('../fonts/BluuNext-Titling.ttf') format('truetype'),
-    url('../fonts/bluunext-titling.woff2') format('woff2'),
-    url('../fonts/bluunext-titling.woff') format('woff');
+  font-family: "Bluu Next";
+  src: url("../fonts/BluuNext-Titling.ttf") format("truetype"),
+    url("../fonts/bluunext-titling.woff2") format("woff2"),
+    url("../fonts/bluunext-titling.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -90,7 +88,7 @@ body {
 }
 
 body:before {
-  content: '';
+  content: "";
   width: 10px;
   position: fixed;
   top: 0;
@@ -100,7 +98,7 @@ body:before {
 }
 
 body:after {
-  content: '';
+  content: "";
   width: 10px;
   position: fixed;
   top: 0;
@@ -225,14 +223,14 @@ aside {
 h4,
 h5,
 h6 {
-  font-family: 'Manuale', serif;
+  font-family: "Manuale", serif;
 }
 
 .sans-serif,
 h1,
 h2,
 h3 {
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
 }
 
 h1,
@@ -249,7 +247,7 @@ h3 {
 
 h4 {
   font-size: 1.4rem;
-  font-family: 'Alegreya Sans', sans-serif;
+  font-family: "Alegreya Sans", sans-serif;
   font-weight: 350;
   text-decoration-thickness: 1px;
 }
@@ -260,7 +258,7 @@ main {
   h1,
   h2,
   h3 {
-    font-family: 'Alegreya Sans';
+    font-family: "Alegreya Sans";
   }
 
   h1 {
@@ -303,7 +301,7 @@ main {
       margin-top: 2rem;
       margin-bottom: 1.4rem;
       line-height: 1;
-      font-family: 'Manuale';
+      font-family: "Manuale";
     }
 
     h4 {
@@ -312,7 +310,7 @@ main {
       text-indent: 0;
       margin-top: 2rem;
       line-height: 2rem;
-      font-family: 'Alegreya Sans';
+      font-family: "Alegreya Sans";
       margin-bottom: 0;
     }
   }
@@ -324,6 +322,7 @@ main {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(12, 1fr);
+  padding-bottom: 10rem;
 
   @media (max-width: 900px) {
     display: flex;
@@ -334,7 +333,6 @@ main {
 @media (min-width: 1000px) {
   .layout {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 11em 11em 1fr;
   }
 }
 @media (min-width: 1400px) {
@@ -348,7 +346,7 @@ main {
 .site-title {
   color: #d0232a;
   position: sticky;
-  font-family: 'Alegreya Sans';
+  font-family: "Alegreya Sans";
   font-weight: bold;
   text-decoration: none;
   font-size: 2.125rem;
@@ -404,7 +402,7 @@ main {
   margin-top: -15px;
 }
 .duration-1 {
-  content: '';
+  content: "";
   display: -ms-inline-grid;
   display: inline-grid;
   -ms-grid-column: 1;
@@ -523,7 +521,7 @@ main {
 }
 
 .duration-2 {
-  content: '';
+  content: "";
   display: -ms-inline-grid;
   display: inline-grid;
   height: 1px;
@@ -543,7 +541,7 @@ main {
 }
 
 .duration-3 {
-  content: '';
+  content: "";
   display: -ms-inline-grid;
   display: inline-grid;
   height: 1px;
@@ -595,7 +593,7 @@ main {
       flex: 1;
       padding: 0.75rem;
       max-width: 100%;
-      font-family: 'Alegreya Sans', sans-serif;
+      font-family: "Alegreya Sans", sans-serif;
       text-decoration: none;
       justify-content: flex-end;
 
@@ -670,7 +668,7 @@ hr.hr-short {
 
 hr {
   border: 0;
-  content: '';
+  content: "";
   display: block;
   height: 1px;
   margin: 30px 0;
@@ -699,7 +697,7 @@ blockquote {
   padding-left: 1rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
-  font-family: 'Alegreya Sans';
+  font-family: "Alegreya Sans";
 }
 
 .footnote-ref {
@@ -725,7 +723,7 @@ article ul:not(.footnotes) {
 }
 
 article h1:not([class]) {
-  font-family: 'Manuale';
+  font-family: "Manuale";
   margin-top: 2rem;
   font-weight: 300;
   font-size: 2.25rem;
