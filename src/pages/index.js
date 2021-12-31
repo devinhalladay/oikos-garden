@@ -52,19 +52,19 @@ const IndexPage = ({
         </section>
       </div>
       <div>
-        <section className="w-full mb-12 border-gray-100 border-b-8">
+        <section className="w-full border-gray-100 border-b-8 pb-12">
           <SectionHeading
             title="Featured Essays"
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
             link="/essays"
           />
-          <div className=" gap-4">
+          <div className="grid gap-4">
             {essaysQuery.nodes.map((node) => (
               <EssayHeader post={node} isLinked mini />
             ))}
           </div>
         </section>
-        <section className="w-full mb-12 border-gray-100 border-b-8">
+        <section className="w-full pb-12 border-gray-100 border-b-8">
           <SectionHeading
             title="Creative Works"
             subhead="Design, art, and other media I've created regarding the
@@ -159,10 +159,10 @@ export const pageQuery = graphql`
       nodes {
         id
         slug
+        title
         childMdx {
           frontmatter {
-            date(formatString: "MM/DD/YYYY")
-            title
+            date(formatString: "MM.DD.YYYY")
             tags
           }
         }

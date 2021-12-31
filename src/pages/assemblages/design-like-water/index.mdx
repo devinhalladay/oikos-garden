@@ -1,0 +1,81 @@
+---
+title: 'Design Like Water'
+slug: design-like-water
+cover_image: ../../src/images/water.jpg
+subtitle: Building an adaptive, autonomous design practice at Manhattan Hydraulics
+---
+
+import { graphql } from 'gatsby';
+import Layout from '../../../components/layout';
+import NoteCard from '../../../components/Notes/NoteCard';
+import EssayHeader from '../../../components/Essay/EssayHeader';
+import Card from '../../../components/Card';
+
+<Card animate="true" className="min-h-64 w-full">
+  {props.pageContext.frontmatter.cover_image && (
+    <img
+      src={
+        props.pageContext.frontmatter.cover_image.childImageSharp
+          .fluid.src
+      }
+      className="h-full w-full object-cover min-h-80"
+    />
+  )}
+  <div className="px-3 pb-4 pt-12 absolute bottom-0 w-full bg-gradient-to-t from-black text-white">
+    <p className="font-semibold text-xl indent-0 leading-tight mb-1">
+      {props.pageContext.frontmatter.title}
+    </p>
+    <p className="indent-0 leading-5 text-base font-medium">
+      {props.pageContext.frontmatter.subtitle}
+    </p>
+  </div>
+</Card>
+
+This is _some markdown_
+
+<NoteCard note={props.data.notes.nodes[0]} />
+
+This is _some markdown_
+
+<EssayHeader post={props.data.essays.nodes[0]} isLinked mini />
+
+export const pageQuery = graphql`
+  query {
+    notes: allBrainNote(
+      filter: {
+        title: {
+          in: [
+            "Critique is chicken soup for the designer's soul"
+            "MOOCs"
+          ]
+        }
+      }
+    ) {
+      nodes {
+        id
+        title
+        childMdx {
+          frontmatter {
+            title
+            tags
+            date(formatString: "MM.DD.YYYY")
+          }
+        }
+      }
+    }
+    essays: allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/content/essays/" }
+        frontmatter: {
+          title: { in: "Algorithmic Sovereignity and Datapower" }
+        }
+      }
+      sort: { fields: frontmatter___date }
+      limit: 4
+    ) {
+      nodes {
+        ...EssayPreview
+      }
+    }
+  }
+`;

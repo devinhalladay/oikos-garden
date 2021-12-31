@@ -5,3 +5,5 @@ public
 .vercel
 .env
 .env.*
+
+.DS_Store

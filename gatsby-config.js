@@ -8,6 +8,7 @@ require('dotenv').config({
 module.exports = {
   flags: {
     FAST_DEV: true,
+    DEV_SSR: false,
   },
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
@@ -64,6 +65,10 @@ module.exports = {
             },
           },
         ],
+
+        defaultLayouts: {
+          default: require.resolve('./src/components/layout.js'),
+        },
       },
     },
     'gatsby-transformer-sharp',

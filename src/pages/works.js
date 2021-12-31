@@ -6,7 +6,7 @@ import PageHeading from '../components/PageHeading';
 import TagLink from '../components/TagLink';
 
 // markup
-const IndexPage = ({ data: { worksQuery } }) => {
+const WorksIndex = ({ data: { worksQuery } }) => {
   const { node } = worksQuery;
 
   return (
@@ -61,7 +61,7 @@ const IndexPage = ({ data: { worksQuery } }) => {
   );
 };
 
-export default IndexPage;
+export default WorksIndex;
 
 export const pageQuery = graphql`
   query {

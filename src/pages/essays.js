@@ -5,7 +5,7 @@ import EssayHeader from '../components/Essay/EssayHeader';
 import Layout from '../components/layout';
 import PageHeading from '../components/PageHeading';
 
-function EssaysPage({ data }) {
+function EssaysIndex({ data }) {
   return (
     <Layout>
       <Helmet title="Essays • Infinite Caesura" />
@@ -33,4 +33,4 @@ export const query = graphql`
   }
 `;
 
-export default EssaysPage;
+export default EssaysIndex;

@@ -33,7 +33,7 @@ function Nav({ children }) {
         </h2>
 
         <p className="leading-tight font-sans">
-          This is the wiki realm of Devin Halladay, a product designer
+          This is the wiki realm of <a href="https://devinhalladay.com" target="_blank" rel="noopener noreferrer">Devin Halladay</a>, a product designer
           and writer based in Manhattan.
         </p>
       </aside>
@@ -58,14 +58,14 @@ function Nav({ children }) {
               Essays
             </Link>
           </li>
-          {/* <li className="mb-2">
-          <Link
-            to="/notes"
-            ariaLabel="Go to notes"
-            activeClassName="text-domain-red font-bold">
-            Notes
-          </Link>
-        </li> */}
+          <li className="mb-2">
+            <Link
+              to="/notes"
+              ariaLabel="Go to notes"
+              activeClassName="text-domain-red font-bold">
+              Notes
+            </Link>
+          </li>
           <li className="mb-2">
             <Link
               to="/works"

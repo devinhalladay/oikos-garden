@@ -9,7 +9,7 @@ function SectionHeading({ title, subhead, link }) {
         </h2>
         {link && (
           <a
-            a={link}
+            href={link}
             className="text-domain-red text-sm uppercase font-semibold tracking-wide">
             View all
           </a>

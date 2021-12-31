@@ -7,7 +7,7 @@ import PageHeading from '../components/PageHeading';
 import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';
 
-const TagsPage = ({
+const TagsIndex = ({
   data: {
     allMdx: { group: mdxTags },
     allBrainNote: { group: brainTags },
@@ -83,7 +83,7 @@ const TagsPage = ({
   );
 };
 
-export default TagsPage;
+export default TagsIndex;
 
 export const pageQuery = graphql`
   query {

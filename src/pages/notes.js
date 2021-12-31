@@ -1,0 +1,52 @@
+import { graphql, Link } from 'gatsby';
+import * as React from 'react';
+import { Helmet } from 'react-helmet';
+import Layout from '../components/layout';
+import NoteCard from '../components/Notes/NoteCard';
+import PageHeading from '../components/PageHeading';
+import TagLink from '../components/TagLink';
+
+// markup
+const NotesIndex = ({ data: { notesQuery } }) => {
+  const { edges } = notesQuery;
+
+  return (
+    <Layout width="wide">
+      <Helmet title="Notes • Infinite Caesura" />
+      <PageHeading title="Working Notes" />
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-2">
+          {edges.map(({ node }) => {
+            return <NoteCard note={node} />;
+          })}
+        </div>
+      </section>
+    </Layout>
+  );
+};
+
+export default NotesIndex;
+
+export const pageQuery = graphql`
+  query {
+    notesQuery: allBrainNote(
+      sort: { fields: childMdx___frontmatter___date }
+      filter: { absolutePath: { regex: "/content/notes/" } }
+    ) {
+      edges {
+        node {
+          title
+          slug
+          childMdx {
+            frontmatter {
+              date(formatString: "MM.DD.YYYY")
+              subtitle
+              published
+              tags
+            }
+          }
+        }
+      }
+    }
+  }
+`;
