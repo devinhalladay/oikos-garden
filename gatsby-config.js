@@ -18,14 +18,12 @@ module.exports = {
     description: config.siteDescription,
     keywords: ['Philosophy', 'Tech', 'Design', 'Art History'],
     canonicalUrl: config.siteUrl,
-    // image: config.siteLogo,
     author: {
       name: config.author,
     },
     organization: {
       name: config.organization,
       url: config.siteUrl,
-      // logo: config.siteLogo,
     },
     social: {
       twitter: config.twitterHandle,
@@ -40,7 +38,6 @@ module.exports = {
     'gatsby-remark-reading-time',
     'gatsby-plugin-sharp',
     `gatsby-plugin-mdx-source-name`,
-    // `gatsby-remark-source-name`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -95,13 +92,6 @@ module.exports = {
         name: 'essays',
       },
     },
-    // {
-    //   resolve: 'gatsby-source-filesystem',
-    //   options: {
-    //     path: `${__dirname}/content/assemblages`,
-    //     name: 'assemblages',
-    //   },
-    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -109,15 +99,6 @@ module.exports = {
         name: 'works',
       },
     },
-    // {
-    //   resolve: `gatsby-source-git`,
-    //   options: {
-    //     name: `logseqRepo`,
-    //     remote: `https://devinhalladay:${process.env.GITHUB_TOKEN}@github.com/devinhalladay/oikos-logseq`,
-    //     // Only import the docs folder from a codebase.
-    //     patterns: `pages/*.md`
-    //   }
-    // },
     {
       resolve: `@aengusm/gatsby-theme-brain`,
       options: {
@@ -127,14 +108,5 @@ module.exports = {
         hideDoubleBrackets: false,
       },
     },
-    // {
-    //   resolve: `gatsby-source-roamresearch`,
-    //   options: {
-    //     url: 'https://roamresearch.com/#/app/oikos/',
-    //     // Learn about environment variables: https://gatsby.dev/env-vars
-    //     email: process.env.ROAM_EMAIL,
-    //     password: process.env.ROAM_PASSWORD,
-    //   },
-    // },
   ],
 };

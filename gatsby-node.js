@@ -1,23 +1,22 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const _ = require('lodash');
+const _ = require("lodash");
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // Define a template for blog post
-  const essayTemplate = path.resolve(`./src/templates/essay.js`);
-  const tagTemplate = path.resolve('./src/templates/tag.js');
-  // const assemblageTemplate = path.resolve(
-  //   './src/templates/assemblage.js'
-  // );
-  const workTemplate = path.resolve('./src/templates/work.js');
+  // Define a template for each post type
+  const templates = {
+    essay: path.resolve(`./src/templates/essay.js`),
+    tag: path.resolve("./src/templates/tag.js"),
+    work: path.resolve("./src/templates/work.js"),
+  };
 
-  // Get all markdown blog posts sorted by date
-  const result = await graphql(
+  // Query all the posts
+  const allContent = await graphql(
     `
       {
-        allMdx(
+        essays: allMdx(
           limit: 1000
           filter: { fileAbsolutePath: { regex: "/content/essays/" } }
         ) {
@@ -28,14 +27,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-      }
-    `
-  );
 
-  const tagsResults = await graphql(
-    `
-      {
-        allMdx {
+        tags: allMdx {
           group(field: frontmatter___tags) {
             tag: fieldValue
           }
@@ -46,34 +39,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             tag: fieldValue
           }
         }
-      }
-    `
-  );
 
-  // const assemblageResults = await graphql(
-  //   `
-  //     {
-  //       allMdx(
-  //         limit: 1000
-  //         filter: {
-  //           fileAbsolutePath: { regex: "/content/assemblages/" }
-  //         }
-  //       ) {
-  //         nodes {
-  //           id
-  //           frontmatter {
-  //             slug
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // );
-
-  const workResults = await graphql(
-    `
-      {
-        allMdx(
+        works: allMdx(
           limit: 1000
           filter: { fileAbsolutePath: { regex: "/content/works/" } }
         ) {
@@ -88,36 +55,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   );
 
-  if (result.errors) {
+  if (allContent.errors) {
     reporter.panicOnBuild(
-      `There was an error loading your essays`,
-      result.errors
+      `There was an error loading your content.`,
+      allContent.errors
     );
     return;
   }
 
-  const essays = result.data.allMdx.nodes;
-  const tags = [
-    ...tagsResults.data.allMdx.group,
-    ...tagsResults.data.allBrainNote.group,
-  ];
-  // const assemblages = assemblageResults.data.allMdx.nodes;
-  const works = workResults.data.allMdx.nodes;
+  const { data } = allContent;
 
-  // Create blog essays pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
+  const allEssays = data.essays.nodes;
 
-  if (essays.length > 0) {
-    essays.forEach((essay, index) => {
-      const previousEssayId =
-        index === 0 ? null : essays[index - 1].id;
+  const allTags = [...data.tags.group, ...data.allBrainNote.group];
+
+  const allWorks = data.works.nodes;
+
+  if (allEssays.length > 0) {
+    allEssays.forEach((essay, index) => {
+      const previousEssayId = index === 0 ? null : allEssays[index - 1].id;
       const nextEssayId =
-        index === essays.length - 1 ? null : essays[index + 1].id;
+        index === allEssays.length - 1 ? null : allEssays[index + 1].id;
 
       createPage({
         path: essay.frontmatter.slug,
-        component: essayTemplate,
+        component: templates.essay,
         context: {
           id: essay.id,
           previousEssayId,
@@ -127,11 +89,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 
-  if (works.length > 0) {
-    works.forEach((work, index) => {
+  if (allWorks.length > 0) {
+    allWorks.forEach((work) => {
       createPage({
         path: work.frontmatter.slug,
-        component: workTemplate,
+        component: templates.work,
         context: {
           id: work.id,
         },
@@ -139,37 +101,24 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 
-  if (tags.length > 0) {
+  if (allTags.length > 0) {
     // Make tag pages
-    tags.forEach((tag) => {
+    allTags.forEach((tag) => {
       createPage({
         path: `/tags/${_.kebabCase(tag.tag)}/`,
-        component: tagTemplate,
+        component: templates.tag,
         context: {
           tag: tag.tag,
         },
       });
     });
   }
-
-  // if (assemblages.length > 0) {
-  //   // Make tag pages
-  //   assemblages.forEach((a) => {
-  //     createPage({
-  //       path: `/assemblages/${_.kebabCase(a.frontmatter.slug)}/`,
-  //       component: assemblageTemplate,
-  //       context: {
-  //         id: a.id,
-  //       },
-  //     });
-  //   });
-  // }
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === 'Mdx' && node.fileAbsolutePath) {
+  if (node.internal.type === "Mdx" && node.fileAbsolutePath) {
     const value = createFilePath({ node, getNode });
 
     createNodeField({
