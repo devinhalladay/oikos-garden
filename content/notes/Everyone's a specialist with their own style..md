@@ -1,7 +1,7 @@
 ---
 title: "Everyone's a specialist with their own style."
-date: 2021-12-31T15:35:39-05:00
-updated: 2021-12-31T15:37:11-05:00
+date: 2021-08-06T16:44:31-04:00
+updated: 2022-01-01T12:07:39-05:00
 tags:
 - Generalists
 - General Specialists

@@ -1,7 +1,7 @@
-import { Link } from 'gatsby';
-import React from 'react';
+import { Link } from "gatsby";
+import React, { FC } from "react";
 
-function Nav({ children }) {
+const Navigation: FC = ({ children }) => {
   return (
     <nav>
       <aside>
@@ -12,7 +12,8 @@ function Nav({ children }) {
               height="55"
               viewBox="0 0 157 55"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
@@ -33,8 +34,15 @@ function Nav({ children }) {
         </h2>
 
         <p className="leading-tight font-sans">
-          This is the wiki realm of <a href="https://devinhalladay.com" target="_blank" rel="noopener noreferrer">Devin Halladay</a>, a product designer
-          and writer based in Manhattan.
+          This is the wiki realm of{" "}
+          <a
+            href="https://devinhalladay.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Devin Halladay
+          </a>
+          , a product designer and writer based in Manhattan.
         </p>
       </aside>
       {/* {children ? (
@@ -46,7 +54,8 @@ function Nav({ children }) {
           <Link
             to="/"
             ariaLabel="View front page"
-            activeClassName="text-domain-red font-bold">
+            activeClassName="text-domain-red font-bold"
+          >
             Front Page
           </Link>
         </li>
@@ -54,7 +63,8 @@ function Nav({ children }) {
           <Link
             to="/essays"
             ariaLabel="Go to essays"
-            activeClassName="text-domain-red font-bold">
+            activeClassName="text-domain-red font-bold"
+          >
             Essays
           </Link>
         </li>
@@ -62,7 +72,8 @@ function Nav({ children }) {
           <Link
             to="/notes"
             ariaLabel="Go to notes"
-            activeClassName="text-domain-red font-bold">
+            activeClassName="text-domain-red font-bold"
+          >
             Notes
           </Link>
         </li>
@@ -78,7 +89,8 @@ function Nav({ children }) {
           <Link
             to="/tags"
             ariaLabel="View site topics"
-            activeClassName="text-domain-red font-bold">
+            activeClassName="text-domain-red font-bold"
+          >
             Concepts
           </Link>
         </li>
@@ -86,6 +98,6 @@ function Nav({ children }) {
       {/* )} */}
     </nav>
   );
-}
+};
 
-export default Nav;
+export default Navigation;

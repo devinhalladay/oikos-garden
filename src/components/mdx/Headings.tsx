@@ -1,6 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
-function Heading({ level, children, ...rest }) {
+interface Heading {
+  level: number;
+}
+
+const Heading: FC<Heading> = ({ level, children, ...rest }) => {
   switch (level) {
     case 1:
       return (
@@ -39,6 +43,6 @@ function Heading({ level, children, ...rest }) {
         </h3>
       );
   }
-}
+};
 
 export default Heading;

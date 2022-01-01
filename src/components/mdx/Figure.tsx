@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { FC } from "react";
 
-function Figure({ src, caption, children, className, bordered }) {
+interface Figure {
+  src: string;
+  caption?: string;
+  className?: string;
+  bordered?: boolean;
+}
+
+const Figure: FC<Figure> = ({
+  src,
+  caption,
+  children,
+  className = undefined,
+  bordered = false,
+}) => {
   return (
     <figure className={`my-8 ${className}`}>
       <img
         src={src}
         alt={caption}
-        className={`mb-2 w-full ${
-          bordered && 'border border-gray-300'
-        }`}
+        className={`mb-2 w-full ${bordered && "border border-gray-300"}`}
       />
 
       {caption ||
@@ -20,6 +31,6 @@ function Figure({ src, caption, children, className, bordered }) {
         ))}
     </figure>
   );
-}
+};
 
 export default Figure;

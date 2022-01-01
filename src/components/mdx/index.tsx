@@ -1,10 +1,19 @@
-import React from 'react';
-import SectionHeading from '../SectionHeading';
-import Figure from './figure';
-import Footnote from './Footnote';
-import Heading from './headings';
+import React, {
+  ReactChild,
+  ReactChildren,
+  ReactElement,
+  ReactNode,
+  ReactText,
+} from "react";
+import SectionHeading from "../SectionHeading";
+import Figure from "./figure";
+import Footnote from "./Footnote";
+import Heading from "./headings";
 
-function recursiveMap(children, fn) {
+const recursiveMap = (
+  children: ReactNode,
+  fn: (child: ReactNode) => void
+): ReactNode => {
   return React.Children.map(children, (child) => {
     if (!React.isValidElement(child)) {
       return child;
@@ -13,13 +22,13 @@ function recursiveMap(children, fn) {
     if (child.props.children) {
       child = React.cloneElement(child, {
         children: recursiveMap(child.props.children, fn),
-        parentNode: child.props.mdxType === 'Footnote' ? child : null,
+        parentNode: child.props.mdxType === "Footnote" ? child : null,
       });
     }
 
     return fn(child);
   });
-}
+};
 
 export default {
   Footnote: (props) => <Footnote key={props.id} {...props} />,
@@ -30,28 +39,20 @@ export default {
   h4: (props) => <Heading level={4} {...props} />,
   wrapper: (props) => {
     const { children } = props;
-    const map = recursiveMap(children, (c, i) => {
-      if (c.props.mdxType === 'Footnote') {
+    const map = recursiveMap(children, (c) => {
+      if (c.props.mdxType === "Footnote") {
         return React.cloneElement(c, {
           className: `footnote`,
           parentNode: c.props.parentNode,
         });
       }
 
-      // if (c.props.className === 'table-of-contents') {
-      //   return (
-      //     <div className="text-domain-red absolute right-0 w-80">
-      //       {children}
-      //     </div>
-      //   );
-      // }
-
-      if (c.props.className === 'footnotes') {
+      if (c.props.className === "footnotes") {
         return (
           <div className="mt-12 text-base">
             <SectionHeading title="Reference Notes" />
             {React.cloneElement(c, {
-              className: 'footnotes',
+              className: "footnotes",
               parentNode: c.props.parentNode,
             })}
           </div>

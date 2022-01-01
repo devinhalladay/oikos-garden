@@ -1,9 +1,21 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import Card from './Card';
-import TagLink from './TagLink';
+import { Link } from "gatsby";
+import React, { FC } from "react";
+import Card from "./Card";
+import TagLink from "./TagLink";
 
-function EssayHeader({ post, isLinked, mini }) {
+interface EssayHeader {
+  post: GatsbyTypes.Mdx;
+  isLinked?: boolean;
+  mini?: boolean;
+}
+
+const EssayHeader: FC<EssayHeader> = ({
+  post,
+  isLinked = true,
+  mini = false,
+}) => {
+  if (!post) return null;
+
   if (isLinked) {
     return (
       <Link to={`/${post.frontmatter.slug}`}>
@@ -11,19 +23,14 @@ function EssayHeader({ post, isLinked, mini }) {
           <article className="h-full font-sans p-4">
             {!mini && (
               <div className="mb-1 text-gray-500 font-sans lining-nums">
-                <small className="mr-3">
-                  {post.frontmatter.date}
-                </small>
+                <small className="mr-3">{post.frontmatter.date}</small>
                 <small>{post.fields.readingTime.text}</small>
               </div>
             )}
             {post.frontmatter.cover_image && (
               <img
                 className="float-right rounded-md w-1/3 overflow-hidden border border-gray-200 m-0"
-                src={
-                  post.frontmatter.cover_image.childImageSharp
-                    .fluid.src
-                }
+                src={post.frontmatter.cover_image.childImageSharp.fluid.src}
               />
             )}
             <div className="flex flex-col-reverse justify-between">
@@ -31,14 +38,18 @@ function EssayHeader({ post, isLinked, mini }) {
                 <div className="mb-2">
                   <div className="mr-8">
                     <h1
-                      className={`mb-2 tracking-tight leading-none ${mini ? 'text-3xl' : 'text-3xl'
-                        }`}>
+                      className={`mb-2 tracking-tight leading-none ${
+                        mini ? "text-3xl" : "text-3xl"
+                      }`}
+                    >
                       {post.frontmatter.title}
                     </h1>
                     {post.frontmatter.subtitle && (
                       <h2
-                        className={`font-sans text-xl my-0 indent-0 leading-tight font-normal ${mini ? 'text-lg' : 'text-xl'
-                          } mt-0`}>
+                        className={`font-sans text-xl my-0 indent-0 leading-tight font-normal ${
+                          mini ? "text-lg" : "text-xl"
+                        } mt-0`}
+                      >
                         {post.frontmatter.subtitle}
                       </h2>
                     )}
@@ -55,9 +66,9 @@ function EssayHeader({ post, isLinked, mini }) {
                   </div>
                 </div>
                 {post.frontmatter.tags && (
-                  <div className={`font-sans ${mini && 'text-sm'}`}>
+                  <div className={`font-sans ${mini && "text-sm"}`}>
                     {post.frontmatter.tags.map((tag, i) => (
-                      <TagLink tag={tag} size={mini ? 'sm' : 'lg'} />
+                      <TagLink tag={tag} size={mini ? "sm" : "lg"} />
                     ))}
                   </div>
                 )}
@@ -72,12 +83,10 @@ function EssayHeader({ post, isLinked, mini }) {
       <header className="pb-14 mb-14 border-gray-100 border-b-8">
         <div className="mb-1 text-gray-500 font-sans lining-nums text-center font-medium">
           <small className="mr-3">{post.frontmatter.date}</small>
-          <small className="mr-3">
-            {post.fields.readingTime.text}
-          </small>
+          <small className="mr-3">{post.fields.readingTime.text}</small>
           {post.frontmatter.tags &&
             post.frontmatter.tags.map((tag, i) => (
-              <TagLink tag={tag} size={'sm'} />
+              <TagLink tag={tag} size={"sm"} />
             ))}
         </div>
         <div className="mb-2 text-center justify-center items-center flex flex-col">
@@ -94,6 +103,6 @@ function EssayHeader({ post, isLinked, mini }) {
       </header>
     );
   }
-}
+};
 
 export default EssayHeader;

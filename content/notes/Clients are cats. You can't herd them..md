@@ -4,8 +4,8 @@ tags:
 - Building Alignment
 - Communication
 - Client Relations
-date: 2021-12-31T15:44:31-05:00
-updated: 2021-12-31T15:44:31-05:00
+date: 2021-08-06T16:44:31-04:00
+updated: 2022-01-01T12:07:12-05:00
 ---
 
 The old adage "it's like herding cats" applies to clients. Maybe a project isn't going the way you want, maybe you're stressed and overworked, or maybe the client can't seem to get their shit together. Oftentimes in those situations you might want to try more strongly pushing for what you believe to be right. Maybe you'll institute a new process, add new rules to your engagement style, or continue to pursue an idea whose value you feel the client hasn't understood.

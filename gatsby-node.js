@@ -152,7 +152,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       twitter: String
     }
     type Mdx implements Node {
-      frontmatter: Frontmatter
+      frontmatter: Frontmatter!
     }
     type Frontmatter {
       title: String

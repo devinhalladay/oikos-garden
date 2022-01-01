@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { FC } from "react";
 
-function PageHeading({ title, subtitle, children }) {
+interface PageHeading {
+  title: string;
+  subtitle?: string;
+}
+
+const PageHeading: FC<PageHeading> = ({ title, subtitle, children }) => {
   return (
     <header className="mb-10 pb-6 border-b border-gray-300">
       <h1 className="p-0 text-5xl">{title}</h1>
@@ -12,6 +17,6 @@ function PageHeading({ title, subtitle, children }) {
       {children && <div>{children}</div>}
     </header>
   );
-}
+};
 
 export default PageHeading;

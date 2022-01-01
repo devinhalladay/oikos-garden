@@ -5,6 +5,7 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
+    "moduleResolution": "node",
     "lib": [
       "dom",
       "es2017"
