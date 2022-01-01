@@ -13,8 +13,6 @@ const EssayTemplate = ({ data, location }) => {
 
   const { tableOfContents } = post;
 
-  console.log(tableOfContents);
-
   const renderTOC = () => {
     return typeof tableOfContents.items === 'undefined' ? null : (
       <ul className="font-sans text-base leading-5 mt-2  pl-2 box-border">
@@ -31,7 +29,6 @@ const EssayTemplate = ({ data, location }) => {
               {typeof i.items === 'undefined'
                 ? null
                 : i.items.map((i2) => {
-                  console.log(i2.items);
                   return (
                     <li
                       key={i2.url}
@@ -42,7 +39,6 @@ const EssayTemplate = ({ data, location }) => {
                       {typeof i2.items === 'undefined'
                         ? null
                         : i2.items.map((i3) => {
-                          console.log(i3.items);
                           return (
                             <li
                               key={i3.url}

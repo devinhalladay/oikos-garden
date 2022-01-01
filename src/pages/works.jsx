@@ -16,7 +16,6 @@ const WorksIndex = ({ data: { worksQuery } }) => {
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-8">
           {worksQuery.edges.map(({ node }) => {
-            console.log(node);
             return (
               <div className="font-sans">
                 {node.frontmatter.cover_image && (
