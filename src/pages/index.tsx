@@ -47,7 +47,7 @@ const IndexPage: React.FC<IndexPage> = ({
           </div>
         </section> */}
 
-        <section className="w-full sm:w-2/3 border-gray-100 border-b-8 pb-12">
+        <section className="w-full sm:w-2/3 border-gray-100 border-b-8 sm:border-b-0 pb-12">
           <SectionHeading
             title="Featured Essays"
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
@@ -170,7 +170,7 @@ export const pageQuery = graphql`
     }
 
     notesQuery: allBrainNote(
-      limit: 4
+      limit: 6
       filter: { absolutePath: { regex: "/content/notes/" } }
     ) {
       nodes {

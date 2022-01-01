@@ -5991,10 +5991,10 @@ type pageUsersdevinCodeSitesoikosGardensrcpagesessaysJsx2646689613QueryVariables
 
 type pageUsersdevinCodeSitesoikosGardensrcpagesessaysJsx2646689613Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
 
-type pageUsersdevinCodeSitesoikosGardensrcpagesindexTsx3572978405QueryVariables = Exact<{ [key: string]: never; }>;
+type pageUsersdevinCodeSitesoikosGardensrcpagesindexTsx4170242568QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type pageUsersdevinCodeSitesoikosGardensrcpagesindexTsx3572978405Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+type pageUsersdevinCodeSitesoikosGardensrcpagesindexTsx4170242568Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<Mdx, 'id' | 'slug'>
         & AssemblageFrontmatterFragment
       ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (

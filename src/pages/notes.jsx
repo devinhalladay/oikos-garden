@@ -15,7 +15,7 @@ const NotesIndex = ({ data: { brainNotes } }) => {
       <Helmet title="Notes • Infinite Caesura" />
       <PageHeading title="Working Notes" />
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 gap-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {edges.map(({ node }) => {
             return <NoteCard note={node} />;
           })}
