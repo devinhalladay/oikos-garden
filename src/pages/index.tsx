@@ -20,7 +20,7 @@ const IndexPage: React.FC<IndexPage> = ({
 }) => {
   return (
     <Layout wide>
-      <div className="flex flex-col gap-12 sm:flex-row mb-12 border-gray-100 border-b-8">
+      <div className="flex flex-col gap-12 lg:flex-row mb-12 border-gray-100 border-b-8">
         {/* <section className="w-full xl:w-2/3 mr-8">
           <SectionHeading
             title="Assemblages"
@@ -47,7 +47,7 @@ const IndexPage: React.FC<IndexPage> = ({
           </div>
         </section> */}
 
-        <section className="w-full sm:w-2/3 border-gray-100 border-b-8 sm:border-b-0 pb-12">
+        <section className="w-full lg:w-2/3 border-gray-100 border-b-8 sm:border-b-0 pb-12">
           <SectionHeading
             title="Featured Essays"
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
@@ -55,12 +55,12 @@ const IndexPage: React.FC<IndexPage> = ({
           />
           <div className="flex flex-col gap-4">
             {essaysQuery.nodes.map((node) => (
-              <EssayCard post={node} mini />
+              <EssayCard post={node} />
             ))}
           </div>
         </section>
 
-        <section className="w-full sm:w-1/3">
+        <section className="w-full lg:w-1/3">
           <SectionHeading
             link="/notes"
             title="Recent Notes"
