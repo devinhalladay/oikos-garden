@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/devin/.nvm/versions/node/v17.0.1/bin/node /Users/devin/.nvm/versions/node/v17.0.1/bin/yarn add @types/gatsby
+  /Users/devin/.nvm/versions/node/v17.0.1/bin/node /Users/devin/.nvm/versions/node/v17.0.1/bin/yarn add @types/gatsby-plugin-mdx
 
 PATH: 
   /opt/homebrew/bin:/opt/homebrew/sbin:/Users/devin/.nvm/versions/node/v17.0.1/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/devin/.nvm/versions/node/v17.0.1/bin:/Users/devin/.rover/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fgatsby: Not found
+  Error: https://registry.yarnpkg.com/@types%2fgatsby-plugin-mdx: Not found
       at Request.params.callback [as _callback] (/Users/devin/.nvm/versions/node/v17.0.1/lib/node_modules/yarn/lib/cli.js:67029:18)
       at Request.self.callback (/Users/devin/.nvm/versions/node/v17.0.1/lib/node_modules/yarn/lib/cli.js:140883:22)
       at Request.emit (node:events:390:28)

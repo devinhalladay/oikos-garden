@@ -1,6 +1,7 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import BrainNote from '../components/BrainNote';
+import React from "react";
+import { graphql } from "gatsby";
+
+import BrainNote from "../components/BrainNote";
 
 export default (props) => {
   return <BrainNote note={props.data.brainNote} />;
