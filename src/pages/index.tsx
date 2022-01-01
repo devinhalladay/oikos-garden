@@ -1,12 +1,10 @@
-import { graphql, Link } from 'gatsby';
-import * as React from 'react';
-import AssemblageCard from '../components/AssemblageCard';
-import Card from '../components/Card';
-import EssayHeader from '../components/EssayHeader';
-import Layout from '../components/Layout';
-import NoteCard from '../components/NoteCard';
-import SectionHeading from '../components/SectionHeading';
-import TagLink from '../components/TagLink';
+import { graphql } from "gatsby";
+import * as React from "react";
+
+import EssayHeader from "../components/EssayHeader";
+import Layout from "../components/Layout";
+import NoteCard from "../components/NoteCard";
+import SectionHeading from "../components/SectionHeading";
 
 const IndexPage = ({
   data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
@@ -183,14 +181,17 @@ export const pageQuery = graphql`
     #   }
     # }
 
-  essaysQuery: allMdx(
-    filter: { fileAbsolutePath: { regex: "/content/essays/" }, frontmatter: {featured: {eq: true}} }
-    sort: { fields: frontmatter___date, order: DESC }
-    limit: 4
-  ) {
-    nodes {
-      ...EssayPreview
+    essaysQuery: allMdx(
+      filter: {
+        fileAbsolutePath: { regex: "/content/essays/" }
+        frontmatter: { featured: { eq: true } }
+      }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 4
+    ) {
+      nodes {
+        ...EssayPreview
+      }
     }
-  }
   }
 `;

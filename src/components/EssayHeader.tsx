@@ -11,7 +11,7 @@ interface EssayHeader {
 
 const EssayHeader: FC<EssayHeader> = ({
   post,
-  isLinked = true,
+  isLinked = false,
   mini = false,
 }) => {
   if (!post) return null;
