@@ -6,7 +6,16 @@ import Layout from "../components/Layout";
 import NoteCard from "../components/NoteCard";
 import SectionHeading from "../components/SectionHeading";
 
-const IndexPage = ({
+interface IndexPage {
+  data: {
+    notesQuery: GatsbyTypes.BrainNoteConnection;
+    assemblagesQuery: GatsbyTypes.MdxConnection;
+    essaysQuery: GatsbyTypes.MdxConnection;
+    worksQuery: GatsbyTypes.MdxConnection;
+  };
+}
+
+const IndexPage: React.FC<IndexPage> = ({
   data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
   return (
@@ -44,9 +53,15 @@ const IndexPage = ({
             subhead="Rolling, work-in-progress notes, images, clippings, and
               threads."
           />
-          <div class="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             {notesQuery.nodes.map((note) => (
-              <NoteCard note={note} />
+              <NoteCard
+                note={
+                  note as GatsbyTypes.BrainNote & {
+                    childMdx: GatsbyTypes.Mdx;
+                  }
+                }
+              />
             ))}
           </div>
         </section>

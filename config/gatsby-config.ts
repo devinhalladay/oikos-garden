@@ -19,6 +19,7 @@ const plugins: GatsbyConfig["plugins"] = [
   {
     resolve: `gatsby-plugin-typegen`,
     options: {
+      includeResolvers: true,
       emitSchema: {
         "./src/__generated__/gatsby-introspection.json": true,
       },
