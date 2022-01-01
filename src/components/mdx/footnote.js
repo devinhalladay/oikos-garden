@@ -59,7 +59,7 @@ const Footnote = (props) => {
     }
 
     & a {
-      text-decoration: underline;
+      text-decoration: none;
     }
 
     &:before {
