@@ -65,7 +65,14 @@ const EssayTemplate = ({ data, location }) => {
       navContent={renderTOC()}>
       <Helmet
         title={`${post.frontmatter.title} • Infinite Caesura`}
-      />
+      >
+        <meta name="twitter:title" content={`${post.frontmatter.title} • Infinite Caesura`} />
+        <meta
+          name="twitter:description"
+          content={post.frontmatter.subtitle ?? "Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan"}
+        />
+        <meta name="twitter:image" content={post.frontmatter.cover_image.childImageSharp.fluid.src ?? "/images/seo-image.png"} />
+      </Helmet>
       <article
         className="blog-post"
         itemScope
