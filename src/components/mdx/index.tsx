@@ -1,14 +1,8 @@
-import React, {
-  ReactChild,
-  ReactChildren,
-  ReactElement,
-  ReactNode,
-  ReactText,
-} from "react";
+import React, { ReactNode } from "react";
 import SectionHeading from "../SectionHeading";
-import Figure from "./figure";
+import Figure from "./Figure";
 import Footnote from "./Footnote";
-import Heading from "./headings";
+import Heading from "./Headings";
 
 const recursiveMap = (
   children: ReactNode,

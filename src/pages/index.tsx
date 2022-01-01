@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import * as React from "react";
 
-import EssayHeader from "../components/EssayHeader";
+import EssayCard from "../components/EssayCard";
 import Layout from "../components/Layout";
 import NoteCard from "../components/NoteCard";
 import SectionHeading from "../components/SectionHeading";
@@ -75,7 +75,7 @@ const IndexPage: React.FC<IndexPage> = ({
           />
           <div className="grid gap-4">
             {essaysQuery.nodes.map((node) => (
-              <EssayHeader post={node} isLinked mini />
+              <EssayCard post={node} mini />
             ))}
           </div>
         </section>

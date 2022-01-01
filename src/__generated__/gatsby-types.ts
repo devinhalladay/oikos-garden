@@ -262,6 +262,8 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
+  readonly port: Maybe<Scalars['Int']>;
+  readonly host: Maybe<Scalars['String']>;
   readonly flags: Maybe<SiteFlags>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
@@ -1075,6 +1077,8 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -2497,6 +2501,8 @@ type SiteFieldsEnum =
   | 'siteMetadata.canonicalUrl'
   | 'siteMetadata.organization.name'
   | 'siteMetadata.organization.url'
+  | 'port'
+  | 'host'
   | 'flags.FAST_DEV'
   | 'flags.DEV_SSR'
   | 'flags.PARALLEL_SOURCING'
@@ -2634,6 +2640,8 @@ type SiteGroupConnection_groupArgs = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  readonly port: Maybe<IntQueryOperatorInput>;
+  readonly host: Maybe<StringQueryOperatorInput>;
   readonly flags: Maybe<SiteFlagsFilterInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -5901,15 +5909,87 @@ type BrainNoteWithRefsBySlugQuery = { readonly brainNote: Maybe<(
     )>>> }
   )> };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type EssayFragment = (
+  Pick<Mdx, 'id' | 'slug' | 'body'>
+  & EssayFrontmatterFragment
+  & ReadingTimeFragment
+);
+
+type EssayFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'slug' | 'date' | 'subtitle' | 'tags'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> }
+  ) };
+
+type ReadingTimeFragment = { readonly fields: Maybe<{ readonly readingTime: Maybe<Pick<MdxFieldsReadingTime, 'text'>> }> };
+
+type BlogPostBySlugQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
 
 
-type Unnamed_1_Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
+type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<(
+      Pick<Mdx, 'tableOfContents'>
+      & EssayFragment
+    )> } };
 
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+type WorkFragment = (
+  Pick<Mdx, 'id' | 'slug' | 'body'>
+  & WorkFrontmatterFragment
+);
+
+type WorkFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'tags' | 'subtitle' | 'slug'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+  ) };
+
+type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type WorksBySlugQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
 
 
-type Unnamed_2_Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+type WorksBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<WorkFragment> } };
+
+type AssemblageFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'subtitle'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+  ) };
+
+type EssayPreviewFragment = (
+  Pick<Mdx, 'id' | 'slug' | 'excerpt'>
+  & EssayFrontmatterFragment
+  & ReadingTimeFragment
+);
+
+type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3927187473QueryVariables = Exact<{
+  tag: Maybe<Scalars['String']>;
+}>;
+
+
+type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3927187473Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyArray<(
+      Pick<Mdx, 'id' | 'slug'>
+      & AssemblageFrontmatterFragment
+    )> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
+      Pick<BrainNote, 'id' | 'slug'>
+      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'title' | 'tags'> }> }
+    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> }, readonly relatedMdxTags: { readonly group: ReadonlyArray<(
+      Pick<MdxGroupConnection, 'totalCount'>
+      & { tag: MdxGroupConnection['fieldValue'] }
+    )> }, readonly relatedBrainTags: { readonly group: ReadonlyArray<(
+      Pick<BrainNoteGroupConnection, 'totalCount'>
+      & { tag: BrainNoteGroupConnection['fieldValue'] }
+    )> } };
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesessaysJsx2646689613QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesessaysJsx2646689613Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesindexTsx3572978405QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesindexTsx3572978405Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<Mdx, 'id' | 'slug'>
         & AssemblageFrontmatterFragment
       ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
@@ -5928,20 +6008,10 @@ type allNotesQuery = { readonly brainNotes: { readonly edges: ReadonlyArray<{ re
         & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'subtitle' | 'published' | 'tags'> }> }
       ) }> } };
 
-type BlogPostBySlugQueryVariables = Exact<{
-  id: Scalars['String'];
-}>;
+type pageUsersdevinCodeSitesoikosGardensrcpagestagsJsx932778392QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<(
-      Pick<Mdx, 'tableOfContents'>
-      & EssayFragment
-    )> } };
-
-type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_3_Query = { readonly allMdx: { readonly group: ReadonlyArray<(
+type pageUsersdevinCodeSitesoikosGardensrcpagestagsJsx932778392Query = { readonly allMdx: { readonly group: ReadonlyArray<(
       Pick<MdxGroupConnection, 'totalCount'>
       & { tag: MdxGroupConnection['fieldValue'] }
     )> }, readonly allBrainNote: { readonly group: ReadonlyArray<(
@@ -5949,13 +6019,18 @@ type Unnamed_3_Query = { readonly allMdx: { readonly group: ReadonlyArray<(
       & { tag: BrainNoteGroupConnection['fieldValue'] }
     )> } };
 
-type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
+type pageUsersdevinCodeSitesoikosGardensrcpagesworksJsx242300695QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_4_Query = { readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+type pageUsersdevinCodeSitesoikosGardensrcpagesworksJsx242300695Query = { readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<Mdx, 'id' | 'slug'>
         & WorkFrontmatterFragment
       ) }> } };
+
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type AssemblageBySlugQueryVariables = Exact<{
   id: Scalars['String'];
@@ -5966,66 +6041,6 @@ type AssemblageBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: May
       Pick<Mdx, 'id' | 'excerpt' | 'body' | 'slug'>
       & AssemblageFrontmatterFragment
     )> } };
-
-type WorksBySlugQueryVariables = Exact<{
-  id: Scalars['String'];
-}>;
-
-
-type WorksBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<WorkFragment> } };
-
-type Unnamed_5_QueryVariables = Exact<{
-  tag: Maybe<Scalars['String']>;
-}>;
-
-
-type Unnamed_5_Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyArray<(
-      Pick<Mdx, 'id' | 'slug'>
-      & AssemblageFrontmatterFragment
-    )> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
-      Pick<BrainNote, 'id' | 'slug'>
-      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'title' | 'tags'> }> }
-    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> }, readonly relatedMdxTags: { readonly group: ReadonlyArray<(
-      Pick<MdxGroupConnection, 'totalCount'>
-      & { tag: MdxGroupConnection['fieldValue'] }
-    )> }, readonly relatedBrainTags: { readonly group: ReadonlyArray<(
-      Pick<BrainNoteGroupConnection, 'totalCount'>
-      & { tag: BrainNoteGroupConnection['fieldValue'] }
-    )> } };
-
-type EssayFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'slug' | 'date' | 'subtitle' | 'tags'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> }
-  ) };
-
-type ReadingTimeFragment = { readonly fields: Maybe<{ readonly readingTime: Maybe<Pick<MdxFieldsReadingTime, 'text'>> }> };
-
-type EssayPreviewFragment = (
-  Pick<Mdx, 'id' | 'slug' | 'excerpt'>
-  & EssayFrontmatterFragment
-  & ReadingTimeFragment
-);
-
-type EssayFragment = (
-  Pick<Mdx, 'id' | 'slug' | 'body'>
-  & EssayFrontmatterFragment
-  & ReadingTimeFragment
-);
-
-type AssemblageFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'subtitle'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-  ) };
-
-type WorkFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'tags' | 'subtitle' | 'slug'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-  ) };
-
-type WorkFragment = (
-  Pick<Mdx, 'id' | 'slug' | 'body'>
-  & WorkFrontmatterFragment
-);
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -6038,8 +6053,6 @@ type GatsbyImageSharpFixed_withWebp_tracedSVGFragment = Pick<ImageSharpFixed, 't
 type GatsbyImageSharpFixed_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyImageSharpFixed_withWebp_noBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>;
-
-type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluidLimitPresentationSizeFragment = { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] };
 
@@ -6633,6 +6646,8 @@ export type DirectoryResolvers<ContextType = GatsbyResolverContext, ParentType e
 export type SiteResolvers<ContextType = GatsbyResolverContext, ParentType extends ResolversParentTypes['Site'] = ResolversParentTypes['Site']> = {
   buildTime?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, RequireFields<Site_buildTimeArgs, never>>;
   siteMetadata?: Resolver<Maybe<ResolversTypes['SiteSiteMetadata']>, ParentType, ContextType>;
+  port?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  host?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   flags?: Resolver<Maybe<ResolversTypes['SiteFlags']>, ParentType, ContextType>;
   polyfill?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   pathPrefix?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -7140,7 +7155,7 @@ export type SiteEdgeResolvers<ContextType = GatsbyResolverContext, ParentType ex
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type SiteFieldsEnumResolvers = { buildTime: 'undefined', siteMetadata___title: 'siteMetadata.title', siteMetadata___description: 'siteMetadata.description', siteMetadata___author___name: 'siteMetadata.author.name', siteMetadata___author___summary: 'siteMetadata.author.summary', siteMetadata___siteUrl: 'siteMetadata.siteUrl', siteMetadata___social___twitter: 'siteMetadata.social.twitter', siteMetadata___twitterHandle: 'siteMetadata.twitterHandle', siteMetadata___keywords: 'siteMetadata.keywords', siteMetadata___canonicalUrl: 'siteMetadata.canonicalUrl', siteMetadata___organization___name: 'siteMetadata.organization.name', siteMetadata___organization___url: 'siteMetadata.organization.url', flags___FAST_DEV: 'flags.FAST_DEV', flags___DEV_SSR: 'flags.DEV_SSR', flags___PARALLEL_SOURCING: 'flags.PARALLEL_SOURCING', polyfill: 'undefined', pathPrefix: 'undefined', jsxRuntime: 'undefined', id: 'undefined', parent___id: 'parent.id', parent___parent___id: 'parent.parent.id', parent___parent___parent___id: 'parent.parent.parent.id', parent___parent___parent___children: 'parent.parent.parent.children', parent___parent___children: 'parent.parent.children', parent___parent___children___id: 'parent.parent.children.id', parent___parent___children___children: 'parent.parent.children.children', parent___parent___internal___content: 'parent.parent.internal.content', parent___parent___internal___contentDigest: 'parent.parent.internal.contentDigest', parent___parent___internal___description: 'parent.parent.internal.description', parent___parent___internal___fieldOwners: 'parent.parent.internal.fieldOwners', parent___parent___internal___ignoreType: 'parent.parent.internal.ignoreType', parent___parent___internal___mediaType: 'parent.parent.internal.mediaType', parent___parent___internal___owner: 'parent.parent.internal.owner', parent___parent___internal___type: 'parent.parent.internal.type', parent___children: 'parent.children', parent___children___id: 'parent.children.id', parent___children___parent___id: 'parent.children.parent.id', parent___children___parent___children: 'parent.children.parent.children', parent___children___children: 'parent.children.children', parent___children___children___id: 'parent.children.children.id', parent___children___children___children: 'parent.children.children.children', parent___children___internal___content: 'parent.children.internal.content', parent___children___internal___contentDigest: 'parent.children.internal.contentDigest', parent___children___internal___description: 'parent.children.internal.description', parent___children___internal___fieldOwners: 'parent.children.internal.fieldOwners', parent___children___internal___ignoreType: 'parent.children.internal.ignoreType', parent___children___internal___mediaType: 'parent.children.internal.mediaType', parent___children___internal___owner: 'parent.children.internal.owner', parent___children___internal___type: 'parent.children.internal.type', parent___internal___content: 'parent.internal.content', parent___internal___contentDigest: 'parent.internal.contentDigest', parent___internal___description: 'parent.internal.description', parent___internal___fieldOwners: 'parent.internal.fieldOwners', parent___internal___ignoreType: 'parent.internal.ignoreType', parent___internal___mediaType: 'parent.internal.mediaType', parent___internal___owner: 'parent.internal.owner', parent___internal___type: 'parent.internal.type', children: 'undefined', children___id: 'children.id', children___parent___id: 'children.parent.id', children___parent___parent___id: 'children.parent.parent.id', children___parent___parent___children: 'children.parent.parent.children', children___parent___children: 'children.parent.children', children___parent___children___id: 'children.parent.children.id', children___parent___children___children: 'children.parent.children.children', children___parent___internal___content: 'children.parent.internal.content', children___parent___internal___contentDigest: 'children.parent.internal.contentDigest', children___parent___internal___description: 'children.parent.internal.description', children___parent___internal___fieldOwners: 'children.parent.internal.fieldOwners', children___parent___internal___ignoreType: 'children.parent.internal.ignoreType', children___parent___internal___mediaType: 'children.parent.internal.mediaType', children___parent___internal___owner: 'children.parent.internal.owner', children___parent___internal___type: 'children.parent.internal.type', children___children: 'children.children', children___children___id: 'children.children.id', children___children___parent___id: 'children.children.parent.id', children___children___parent___children: 'children.children.parent.children', children___children___children: 'children.children.children', children___children___children___id: 'children.children.children.id', children___children___children___children: 'children.children.children.children', children___children___internal___content: 'children.children.internal.content', children___children___internal___contentDigest: 'children.children.internal.contentDigest', children___children___internal___description: 'children.children.internal.description', children___children___internal___fieldOwners: 'children.children.internal.fieldOwners', children___children___internal___ignoreType: 'children.children.internal.ignoreType', children___children___internal___mediaType: 'children.children.internal.mediaType', children___children___internal___owner: 'children.children.internal.owner', children___children___internal___type: 'children.children.internal.type', children___internal___content: 'children.internal.content', children___internal___contentDigest: 'children.internal.contentDigest', children___internal___description: 'children.internal.description', children___internal___fieldOwners: 'children.internal.fieldOwners', children___internal___ignoreType: 'children.internal.ignoreType', children___internal___mediaType: 'children.internal.mediaType', children___internal___owner: 'children.internal.owner', children___internal___type: 'children.internal.type', internal___content: 'internal.content', internal___contentDigest: 'internal.contentDigest', internal___description: 'internal.description', internal___fieldOwners: 'internal.fieldOwners', internal___ignoreType: 'internal.ignoreType', internal___mediaType: 'internal.mediaType', internal___owner: 'internal.owner', internal___type: 'internal.type' };
+export type SiteFieldsEnumResolvers = { buildTime: 'undefined', siteMetadata___title: 'siteMetadata.title', siteMetadata___description: 'siteMetadata.description', siteMetadata___author___name: 'siteMetadata.author.name', siteMetadata___author___summary: 'siteMetadata.author.summary', siteMetadata___siteUrl: 'siteMetadata.siteUrl', siteMetadata___social___twitter: 'siteMetadata.social.twitter', siteMetadata___twitterHandle: 'siteMetadata.twitterHandle', siteMetadata___keywords: 'siteMetadata.keywords', siteMetadata___canonicalUrl: 'siteMetadata.canonicalUrl', siteMetadata___organization___name: 'siteMetadata.organization.name', siteMetadata___organization___url: 'siteMetadata.organization.url', port: 'undefined', host: 'undefined', flags___FAST_DEV: 'flags.FAST_DEV', flags___DEV_SSR: 'flags.DEV_SSR', flags___PARALLEL_SOURCING: 'flags.PARALLEL_SOURCING', polyfill: 'undefined', pathPrefix: 'undefined', jsxRuntime: 'undefined', id: 'undefined', parent___id: 'parent.id', parent___parent___id: 'parent.parent.id', parent___parent___parent___id: 'parent.parent.parent.id', parent___parent___parent___children: 'parent.parent.parent.children', parent___parent___children: 'parent.parent.children', parent___parent___children___id: 'parent.parent.children.id', parent___parent___children___children: 'parent.parent.children.children', parent___parent___internal___content: 'parent.parent.internal.content', parent___parent___internal___contentDigest: 'parent.parent.internal.contentDigest', parent___parent___internal___description: 'parent.parent.internal.description', parent___parent___internal___fieldOwners: 'parent.parent.internal.fieldOwners', parent___parent___internal___ignoreType: 'parent.parent.internal.ignoreType', parent___parent___internal___mediaType: 'parent.parent.internal.mediaType', parent___parent___internal___owner: 'parent.parent.internal.owner', parent___parent___internal___type: 'parent.parent.internal.type', parent___children: 'parent.children', parent___children___id: 'parent.children.id', parent___children___parent___id: 'parent.children.parent.id', parent___children___parent___children: 'parent.children.parent.children', parent___children___children: 'parent.children.children', parent___children___children___id: 'parent.children.children.id', parent___children___children___children: 'parent.children.children.children', parent___children___internal___content: 'parent.children.internal.content', parent___children___internal___contentDigest: 'parent.children.internal.contentDigest', parent___children___internal___description: 'parent.children.internal.description', parent___children___internal___fieldOwners: 'parent.children.internal.fieldOwners', parent___children___internal___ignoreType: 'parent.children.internal.ignoreType', parent___children___internal___mediaType: 'parent.children.internal.mediaType', parent___children___internal___owner: 'parent.children.internal.owner', parent___children___internal___type: 'parent.children.internal.type', parent___internal___content: 'parent.internal.content', parent___internal___contentDigest: 'parent.internal.contentDigest', parent___internal___description: 'parent.internal.description', parent___internal___fieldOwners: 'parent.internal.fieldOwners', parent___internal___ignoreType: 'parent.internal.ignoreType', parent___internal___mediaType: 'parent.internal.mediaType', parent___internal___owner: 'parent.internal.owner', parent___internal___type: 'parent.internal.type', children: 'undefined', children___id: 'children.id', children___parent___id: 'children.parent.id', children___parent___parent___id: 'children.parent.parent.id', children___parent___parent___children: 'children.parent.parent.children', children___parent___children: 'children.parent.children', children___parent___children___id: 'children.parent.children.id', children___parent___children___children: 'children.parent.children.children', children___parent___internal___content: 'children.parent.internal.content', children___parent___internal___contentDigest: 'children.parent.internal.contentDigest', children___parent___internal___description: 'children.parent.internal.description', children___parent___internal___fieldOwners: 'children.parent.internal.fieldOwners', children___parent___internal___ignoreType: 'children.parent.internal.ignoreType', children___parent___internal___mediaType: 'children.parent.internal.mediaType', children___parent___internal___owner: 'children.parent.internal.owner', children___parent___internal___type: 'children.parent.internal.type', children___children: 'children.children', children___children___id: 'children.children.id', children___children___parent___id: 'children.children.parent.id', children___children___parent___children: 'children.children.parent.children', children___children___children: 'children.children.children', children___children___children___id: 'children.children.children.id', children___children___children___children: 'children.children.children.children', children___children___internal___content: 'children.children.internal.content', children___children___internal___contentDigest: 'children.children.internal.contentDigest', children___children___internal___description: 'children.children.internal.description', children___children___internal___fieldOwners: 'children.children.internal.fieldOwners', children___children___internal___ignoreType: 'children.children.internal.ignoreType', children___children___internal___mediaType: 'children.children.internal.mediaType', children___children___internal___owner: 'children.children.internal.owner', children___children___internal___type: 'children.children.internal.type', children___internal___content: 'children.internal.content', children___internal___contentDigest: 'children.internal.contentDigest', children___internal___description: 'children.internal.description', children___internal___fieldOwners: 'children.internal.fieldOwners', children___internal___ignoreType: 'children.internal.ignoreType', children___internal___mediaType: 'children.internal.mediaType', children___internal___owner: 'children.internal.owner', children___internal___type: 'children.internal.type', internal___content: 'internal.content', internal___contentDigest: 'internal.contentDigest', internal___description: 'internal.description', internal___fieldOwners: 'internal.fieldOwners', internal___ignoreType: 'internal.ignoreType', internal___mediaType: 'internal.mediaType', internal___owner: 'internal.owner', internal___type: 'internal.type' };
 
 export type SiteGroupConnectionResolvers<ContextType = GatsbyResolverContext, ParentType extends ResolversParentTypes['SiteGroupConnection'] = ResolversParentTypes['SiteGroupConnection']> = {
   totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;

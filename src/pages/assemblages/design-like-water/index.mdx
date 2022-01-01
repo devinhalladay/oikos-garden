@@ -9,7 +9,7 @@ subtitle: Building an adaptive, autonomous design practice at Manhattan Hydrauli
 import { graphql } from "gatsby";
 import Layout from "../../../components/Layout";
 import NoteCard from "../../../components/NoteCard";
-import EssayHeader from "../../../components/EssayHeader";
+import EssayCard from "../../../components/EssayCard";
 import Card from "../../../components/Card";
 
 <Card animate="true" className="min-h-64 w-full">
@@ -35,7 +35,7 @@ This is _some markdown_
 
 This is _some markdown_
 
-<EssayHeader post={props.data.essays.nodes[0]} isLinked mini />
+<EssayCard post={props.data.essays.nodes[0]} isLinked mini />
 
 export const pageQuery = graphql`
   query {

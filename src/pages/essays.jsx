@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import EssayHeader from '../components/EssayHeader';
+import EssayCard from '../components/EssayCard';
 import Layout from '../components/Layout';
 import PageHeading from '../components/PageHeading';
 
@@ -13,7 +13,7 @@ function EssaysIndex({ data }) {
       <PageHeading title="Essays" />
       <div className="mt-6">
         {data.allMdx.nodes.map((node) => {
-          return <EssayHeader isLinked="true" post={node} />;
+          return <EssayCard post={node} />;
         })}
       </div>
     </Layout>

@@ -2,10 +2,8 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import EssayHeader from '../components/EssayHeader';
 import Layout from '../components/Layout';
-import Figure from '../components/mdx/figure';
-import Heading from '../components/mdx/headings';
+import TagLink from '../components/TagLink';
 
 const EssayTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];
@@ -72,12 +70,28 @@ const EssayTemplate = ({ data, location }) => {
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article">
-        <EssayHeader post={post} />
+        <header className="pb-14 mb-14 border-gray-100 border-b-8">
+          <div className="mb-1 text-gray-500 font-sans lining-nums text-center font-medium">
+            <small className="mr-3">{post.frontmatter.date}</small>
+            <small className="mr-3">{post.fields.readingTime.text}</small>
+            {post.frontmatter.tags &&
+              post.frontmatter.tags.map((tag, i) => (
+                <TagLink tag={tag} size={"sm"} />
+              ))}
+          </div>
+          <div className="mb-2 text-center justify-center items-center flex flex-col">
+            <h1 className="mb-2 font-serif font-light pb-8">
+              {post.frontmatter.title}
+            </h1>
+            <div className="bg-domain-red w-px h-64"></div>
+            {post.frontmatter.subtitle && (
+              <p className="font-sans text-2xl indent-0 mt-8">
+                {post.frontmatter.subtitle}
+              </p>
+            )}
+          </div>
+        </header>
         <MDXRenderer>{post.body}</MDXRenderer>
-        <footer
-          style={{
-            height: 200,
-          }}></footer>
       </article>
     </Layout>
   );

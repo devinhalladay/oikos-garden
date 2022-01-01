@@ -1,14 +1,17 @@
-import { MDXProvider } from "@mdx-js/react";
-import React, { FC } from "react";
-import { Helmet } from "react-helmet";
-import favicon from "../images/favicon.ico";
-import "../styles/styles.scss";
-import Graphic from "./graphic";
-import components from "./mdx";
-import Navigation from "./Navigation";
+import "@fontsource/alegreya-sans-sc/latin.css";
 import "@fontsource/alegreya-sans/latin.css";
 import "@fontsource/manuale/latin.css";
-import "@fontsource/alegreya-sans-sc/latin.css";
+import "../styles/styles.scss";
+
+import React, { FC } from "react";
+import { Helmet } from "react-helmet";
+
+import { MDXProvider } from "@mdx-js/react";
+
+import favicon from "../images/favicon.ico";
+import Graphic from "./Graphic";
+import components from "./mdx";
+import Navigation from "./Navigation";
 
 interface Layout {
   children: React.ReactNode;

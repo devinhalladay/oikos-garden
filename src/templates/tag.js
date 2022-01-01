@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import AssemblageCard from '../components/AssemblageCard';
-import EssayHeader from '../components/EssayHeader';
+import EssayCard from '../components/EssayCard';
 import Layout from '../components/Layout';
 import NoteCard from '../components/NoteCard';
 import PageHeading from '../components/PageHeading';
@@ -114,7 +114,7 @@ const TagPage = ({
             <SectionHeading title={`Essays (${essaysCount})`} />
             <div className="grid grid-cols-2 gap-4">
               {essaysQuery.nodes.map((node) => (
-                <EssayHeader post={node} isLinked mini />
+                <EssayCard post={node} mini />
               ))}
             </div>
           </section>
