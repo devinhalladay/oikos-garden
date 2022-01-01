@@ -5962,16 +5962,16 @@ type EssayPreviewFragment = (
   & ReadingTimeFragment
 );
 
-type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3927187473QueryVariables = Exact<{
+type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3416422395QueryVariables = Exact<{
   tag: Maybe<Scalars['String']>;
 }>;
 
 
-type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3927187473Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyArray<(
+type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3416422395Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyArray<(
       Pick<Mdx, 'id' | 'slug'>
       & AssemblageFrontmatterFragment
     )> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
-      Pick<BrainNote, 'id' | 'slug'>
+      Pick<BrainNote, 'id' | 'slug' | 'title'>
       & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'title' | 'tags'> }> }
     )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> }, readonly relatedMdxTags: { readonly group: ReadonlyArray<(
       Pick<MdxGroupConnection, 'totalCount'>

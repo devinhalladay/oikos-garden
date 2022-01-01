@@ -10,9 +10,11 @@ interface NoteCard {
 }
 
 const NoteCard: FC<NoteCard> = ({ note }) => {
+  console.log(note);
+
   return (
     <Link to={`/notes/${note.slug}`} className="mb-4 block">
-      <div className="indent-0 h-full font-sans pb-0 w-full border-b border-gray-300 font-sans h-full pb-2 mb-2 w-full flex-col overflow-hidden">
+      <div className="indent-0 border-b border-gray-300 font-sans h-full pb-2 mb-2 w-full flex-col overflow-hidden">
         <small className="text-gray-500 font-medium leading-none block mb-2">
           {note.childMdx.frontmatter.date}
         </small>

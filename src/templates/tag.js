@@ -158,6 +158,7 @@ export const pageQuery = graphql`
       nodes {
         id
         slug
+        title
         childMdx {
           frontmatter {
             date(formatString: "MM/DD/YYYY")

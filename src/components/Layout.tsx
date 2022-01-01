@@ -31,8 +31,21 @@ const Layout: FC<Layout> = ({ children, width = undefined, navContent }) => {
 
         <link rel="icon" href={favicon} />
         <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
-
         <meta name="theme-color" content="#e3001c" />
+
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@theflowingsky" />
+        <meta name="twitter:title" content="Infinite Caesura" />
+        <meta
+          name="twitter:description"
+          content="Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan"
+        />
+        <meta name="twitter:image" content="/images/seo-image.png" />
       </Helmet>
 
       <Graphic layout={width} />
