@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet";
 import { MDXProvider } from "@mdx-js/react";
 
 import favicon from "../images/favicon.ico";
+import appleTouchIcon from "../images/apple-touch-icon.png";
 import Graphic from "./Graphic";
 import components from "./mdx";
 import Navigation from "./Navigation";
@@ -22,11 +23,16 @@ interface Layout {
 const Layout: FC<Layout> = ({ children, width = undefined, navContent }) => {
   return (
     <MDXProvider components={components}>
-      <Helmet
-        title="Infinite Caesura"
-        description="Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan."
-      >
+      <Helmet title="Infinite Caesura">
+        <meta
+          name="description"
+          content="Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan"
+        />
+
         <link rel="icon" href={favicon} />
+        <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
+
+        <meta name="theme-color" content="#e3001c" />
       </Helmet>
 
       <Graphic layout={width} />
