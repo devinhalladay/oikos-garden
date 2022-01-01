@@ -5,7 +5,7 @@ import TagLink from '../TagLink';
 
 function NoteCard({ note }) {
   return (
-    <Link to={`${note.slug}`} className="mb-4 block">
+    <Link to={`/notes/${note.slug}`} className="mb-4 block">
       <Card>
         <div className="font-sans h-full px-2 pb-2 w-full flex-col overflow-hidden">
           <small className="text-gray-500 font-medium mb-1 leading-none">
