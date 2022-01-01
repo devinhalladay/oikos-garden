@@ -7,7 +7,7 @@ function EssayHeader({ post, isLinked, mini }) {
   if (isLinked) {
     return (
       <Link to={`/${post.frontmatter.slug}`}>
-        <Card>
+        <Card className="mb-10">
           <article className="h-full font-sans p-4">
             {!mini && (
               <div className="mb-1 text-gray-500 font-sans lining-nums">
@@ -17,8 +17,17 @@ function EssayHeader({ post, isLinked, mini }) {
                 <small>{post.fields.readingTime.text}</small>
               </div>
             )}
-            <div className="flex flex-col-reverse sm:flex-row justify-between">
-              <div className="sm:flex-grow-0 w-full sm:w-3/5">
+            {post.frontmatter.cover_image && (
+              <img
+                className="float-right rounded-md w-1/3 overflow-hidden border border-gray-200 m-0"
+                src={
+                  post.frontmatter.cover_image.childImageSharp
+                    .fluid.src
+                }
+              />
+            )}
+            <div className="flex flex-col-reverse justify-between">
+              <div className="flex-grow-0 w-full">
                 <div className="mb-2">
                   <div className="mr-8">
                     <h1
@@ -33,14 +42,16 @@ function EssayHeader({ post, isLinked, mini }) {
                         {post.frontmatter.subtitle}
                       </h2>
                     )}
-                    {post.excerpt && (
-                      <div class="max-h-48 overflow-y-hidden relative">
-                        <p className="font-sans text-base text-gray-600 max-w-full indent-0 mt-4">
-                          {post.excerpt}
-                        </p>
-                        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white to-transparent z-10"></div>
-                      </div>
-                    )}
+                    <div class="max-h-48 overflow-y-hidden relative">
+                      {post.excerpt && (
+                        <>
+                          <p className="font-sans text-base text-gray-600 max-w-full indent-0 mt-4">
+                            {post.excerpt}
+                          </p>
+                          <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-white to-transparent z-10"></div>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
                 {post.frontmatter.tags && (
@@ -49,17 +60,6 @@ function EssayHeader({ post, isLinked, mini }) {
                       <TagLink tag={tag} size={mini ? 'sm' : 'lg'} />
                     ))}
                   </div>
-                )}
-              </div>
-              <div className="w-full sm:w-1/4 justify-self-end mb-5 sm:mb-0">
-                {post.frontmatter.cover_image && (
-                  <img
-                    className="rounded-md overflow-hidden border border-gray-200 m-0"
-                    src={
-                      post.frontmatter.cover_image.childImageSharp
-                        .fluid.src
-                    }
-                  />
                 )}
               </div>
             </div>

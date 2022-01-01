@@ -66,7 +66,7 @@ const IndexPage = ({
             ))}
           </div>
         </section>
-        <section className="w-full pb-12 border-gray-100 border-b-8">
+        {/* <section className="w-full pb-12 border-gray-100 border-b-8">
           <SectionHeading
             title="Creative Works"
             subhead="Design, art, and other media I've created regarding the
@@ -115,7 +115,7 @@ const IndexPage = ({
               );
             })}
           </div>
-        </section>
+        </section> */}
       </div>
     </Layout>
   );
