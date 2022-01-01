@@ -37,53 +37,53 @@ function Nav({ children }) {
           and writer based in Manhattan.
         </p>
       </aside>
-      {children ? (
+      {/* {children ? (
         children
-      ) : (
-        <ul className="font-sans-sc text-lg lowercase mt-6">
-          <div id="toc" className="toc tocbot js-toc" />
-          <li className="mb-2">
-            <Link
-              to="/"
-              ariaLabel="View front page"
-              activeClassName="text-domain-red font-bold">
-              Front Page
-            </Link>
-          </li>
-          <li className="mb-2">
-            <Link
-              to="/essays"
-              ariaLabel="Go to essays"
-              activeClassName="text-domain-red font-bold">
-              Essays
-            </Link>
-          </li>
-          <li className="mb-2">
-            <Link
-              to="/notes"
-              ariaLabel="Go to notes"
-              activeClassName="text-domain-red font-bold">
-              Notes
-            </Link>
-          </li>
-          <li className="mb-2">
-            <Link
-              to="/works"
-              ariaLabel="View work catalog"
-              activeClassName="text-domain-red font-bold">
-              Works
-            </Link>
-          </li>
-          <li className="mb-2">
-            <Link
-              to="/tags"
-              ariaLabel="View site topics"
-              activeClassName="text-domain-red font-bold">
-              Concepts
-            </Link>
-          </li>
-        </ul>
-      )}
+      ) : ( */}
+      <ul className="font-sans-sc text-lg lowercase mt-6">
+        <div id="toc" className="toc tocbot js-toc" />
+        <li className="mb-2">
+          <Link
+            to="/"
+            ariaLabel="View front page"
+            activeClassName="text-domain-red font-bold">
+            Front Page
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link
+            to="/essays"
+            ariaLabel="Go to essays"
+            activeClassName="text-domain-red font-bold">
+            Essays
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link
+            to="/notes"
+            ariaLabel="Go to notes"
+            activeClassName="text-domain-red font-bold">
+            Notes
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link
+            to="/works"
+            ariaLabel="View work catalog"
+            activeClassName="text-domain-red font-bold">
+            Works
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link
+            to="/tags"
+            ariaLabel="View site topics"
+            activeClassName="text-domain-red font-bold">
+            Concepts
+          </Link>
+        </li>
+      </ul>
+      {/* )} */}
     </nav>
   );
 }

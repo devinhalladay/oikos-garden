@@ -49,14 +49,7 @@ module.exports = {
             resolve: `gatsby-transformer-remark`,
             options: {
               plugins: [
-                {
-                  resolve: `gatsby-remark-autolink-headers`,
-                  options: {
-                    offsetY: `100`,
-                    icon: false,
-                    elements: ['h1', 'h2', 'h3', 'h4'],
-                  },
-                },
+                'gatsby-remark-heading-slug'
               ],
             },
           },
@@ -101,13 +94,13 @@ module.exports = {
         name: 'essays',
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/assemblages`,
-        name: 'assemblages',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     path: `${__dirname}/content/assemblages`,
+    //     name: 'assemblages',
+    //   },
+    // },
     {
       resolve: 'gatsby-source-filesystem',
       options: {

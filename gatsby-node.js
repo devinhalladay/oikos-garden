@@ -1,6 +1,5 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
-const website = require('./config/website');
 const _ = require('lodash');
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -9,9 +8,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Define a template for blog post
   const essayTemplate = path.resolve(`./src/templates/essay.js`);
   const tagTemplate = path.resolve('./src/templates/tag.js');
-  const assemblageTemplate = path.resolve(
-    './src/templates/assemblage.js'
-  );
+  // const assemblageTemplate = path.resolve(
+  //   './src/templates/assemblage.js'
+  // );
   const workTemplate = path.resolve('./src/templates/work.js');
 
   // Get all markdown blog posts sorted by date
@@ -51,25 +50,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
   );
 
-  const assemblageResults = await graphql(
-    `
-      {
-        allMdx(
-          limit: 1000
-          filter: {
-            fileAbsolutePath: { regex: "/content/assemblages/" }
-          }
-        ) {
-          nodes {
-            id
-            frontmatter {
-              slug
-            }
-          }
-        }
-      }
-    `
-  );
+  // const assemblageResults = await graphql(
+  //   `
+  //     {
+  //       allMdx(
+  //         limit: 1000
+  //         filter: {
+  //           fileAbsolutePath: { regex: "/content/assemblages/" }
+  //         }
+  //       ) {
+  //         nodes {
+  //           id
+  //           frontmatter {
+  //             slug
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // );
 
   const workResults = await graphql(
     `
@@ -102,7 +101,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     ...tagsResults.data.allMdx.group,
     ...tagsResults.data.allBrainNote.group,
   ];
-  const assemblages = assemblageResults.data.allMdx.nodes;
+  // const assemblages = assemblageResults.data.allMdx.nodes;
   const works = workResults.data.allMdx.nodes;
 
   // Create blog essays pages
@@ -153,18 +152,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   }
 
-  if (assemblages.length > 0) {
-    // Make tag pages
-    assemblages.forEach((a) => {
-      createPage({
-        path: `/assemblages/${_.kebabCase(a.frontmatter.slug)}/`,
-        component: assemblageTemplate,
-        context: {
-          id: a.id,
-        },
-      });
-    });
-  }
+  // if (assemblages.length > 0) {
+  //   // Make tag pages
+  //   assemblages.forEach((a) => {
+  //     createPage({
+  //       path: `/assemblages/${_.kebabCase(a.frontmatter.slug)}/`,
+  //       component: assemblageTemplate,
+  //       context: {
+  //         id: a.id,
+  //       },
+  //     });
+  //   });
+  // }
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

@@ -652,14 +652,15 @@ blockquote.blockquote-page,
   border: 1px solid #e8e8e8;
   box-sizing: border-box;
   box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.12);
-  padding-left: 15px;
+  padding-left: 40px;
   padding-top: 0;
   padding-right: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
   margin: 0 0 2em;
-  border-left: 10px solid #d0232a;
+  border-left: 5px solid #d0232a;
   border-radius: 3px;
+  font-size: 1.25rem;
 }
 blockquote.blockquote-page p,
 .sheet p {
