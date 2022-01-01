@@ -13,7 +13,7 @@ const TagsIndex = ({
     allBrainNote: { group: brainTags },
   },
 }) => {
-  const allTags = [...mdxTags];
+  const allTags = [...mdxTags, ...brainTags];
 
   let alphabetizedTags = allTags.reduce((r, e) => {
     // get first letter of name of current element

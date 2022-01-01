@@ -66,14 +66,14 @@ function Nav({ children }) {
             Notes
           </Link>
         </li>
-        <li className="mb-2">
+        {/* <li className="mb-2">
           <Link
             to="/works"
             ariaLabel="View work catalog"
             activeClassName="text-domain-red font-bold">
             Works
           </Link>
-        </li>
+        </li> */}
         <li className="mb-2">
           <Link
             to="/tags"
