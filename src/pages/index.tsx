@@ -20,7 +20,7 @@ const IndexPage: React.FC<IndexPage> = ({
 }) => {
   return (
     <Layout width="wide">
-      <div className="flex flex-col xl:flex-row mb-12 border-gray-100 border-b-8">
+      <div className="flex flex-col gap-12 sm:flex-row mb-12 border-gray-100 border-b-8">
         {/* <section className="w-full xl:w-2/3 mr-8">
           <SectionHeading
             title="Assemblages"
@@ -46,14 +46,28 @@ const IndexPage: React.FC<IndexPage> = ({
             })}
           </div>
         </section> */}
-        <section className="w-full">
+
+        <section className="w-full sm:w-2/3 border-gray-100 border-b-8 pb-12">
+          <SectionHeading
+            title="Featured Essays"
+            subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
+            link="/essays"
+          />
+          <div className="grid gap-4">
+            {essaysQuery.nodes.map((node) => (
+              <EssayCard post={node} mini />
+            ))}
+          </div>
+        </section>
+
+        <section className="w-full sm:w-1/3">
           <SectionHeading
             link="/notes"
             title="Recent Notes"
             subhead="Rolling, work-in-progress notes, images, clippings, and
               threads."
           />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="gap-4">
             {notesQuery.nodes.map((note) => (
               <NoteCard
                 note={
@@ -67,18 +81,6 @@ const IndexPage: React.FC<IndexPage> = ({
         </section>
       </div>
       <div>
-        <section className="w-full border-gray-100 border-b-8 pb-12">
-          <SectionHeading
-            title="Featured Essays"
-            subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
-            link="/essays"
-          />
-          <div className="grid gap-4">
-            {essaysQuery.nodes.map((node) => (
-              <EssayCard post={node} mini />
-            ))}
-          </div>
-        </section>
         {/* <section className="w-full pb-12 border-gray-100 border-b-8">
           <SectionHeading
             title="Creative Works"

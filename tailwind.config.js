@@ -5,6 +5,16 @@ module.exports = {
   ],
   theme: {
     textIndent: (theme) => theme('spacing'),
+    screens: {
+      xxs: '375px',
+      xs: '600px',
+      sm: '768px',
+      md: '900px',
+      lg: '1024px',
+      xl: '1200px',
+      xxl: '1440px',
+      xxxl: '2600px',
+    },
     extend: {
       fontFamily: {
         'sans': ['Alegreya Sans', 'sans-serif'],

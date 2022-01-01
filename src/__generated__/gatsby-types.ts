@@ -5981,6 +5981,11 @@ type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3927187473Query = { read
       & { tag: BrainNoteGroupConnection['fieldValue'] }
     )> } };
 
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
 type pageUsersdevinCodeSitesoikosGardensrcpagesessaysJsx2646689613QueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6026,11 +6031,6 @@ type pageUsersdevinCodeSitesoikosGardensrcpagesworksJsx242300695Query = { readon
         Pick<Mdx, 'id' | 'slug'>
         & WorkFrontmatterFragment
       ) }> } };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type AssemblageBySlugQueryVariables = Exact<{
   id: Scalars['String'];
