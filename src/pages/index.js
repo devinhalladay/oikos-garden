@@ -185,7 +185,7 @@ export const pageQuery = graphql`
 
   essaysQuery: allMdx(
     filter: { fileAbsolutePath: { regex: "/content/essays/" }, frontmatter: {featured: {eq: true}} }
-    sort: { fields: frontmatter___date }
+    sort: { fields: frontmatter___date, order: DESC }
     limit: 4
   ) {
     nodes {
