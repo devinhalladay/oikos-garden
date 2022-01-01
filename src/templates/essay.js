@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import EssayHeader from '../components/Essay/EssayHeader';
 import Layout from '../components/layout';
+import Figure from '../components/mdx/figure';
 import Heading from '../components/mdx/headings';
 
 const EssayTemplate = ({ data, location }) => {

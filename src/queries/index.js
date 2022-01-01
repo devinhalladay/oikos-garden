@@ -29,6 +29,7 @@ export const essayQueries = graphql`
   fragment EssayPreview on Mdx {
     id
     slug
+    excerpt(truncate: true, pruneLength: 1000)
     ...EssayFrontmatter
     ...ReadingTime
   }

@@ -183,14 +183,14 @@ export const pageQuery = graphql`
     #   }
     # }
 
-    essaysQuery: allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/essays/" } }
-      sort: { fields: frontmatter___date }
-      limit: 4
-    ) {
-      nodes {
-        ...EssayPreview
-      }
+  essaysQuery: allMdx(
+    filter: { fileAbsolutePath: { regex: "/content/essays/" }, frontmatter: {featured: {eq: true}} }
+    sort: { fields: frontmatter___date }
+    limit: 4
+  ) {
+    nodes {
+      ...EssayPreview
     }
+  }
   }
 `;

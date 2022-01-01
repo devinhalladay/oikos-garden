@@ -9,6 +9,7 @@ module.exports = {
   flags: {
     FAST_DEV: true,
     DEV_SSR: false,
+    PARALLEL_SOURCING: true,
   },
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
