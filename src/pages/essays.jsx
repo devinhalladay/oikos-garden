@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import EssayHeader from '../components/Essay/EssayHeader';
-import Layout from '../components/layout';
+import EssayHeader from '../components/EssayHeader';
+import Layout from '../components/Layout';
 import PageHeading from '../components/PageHeading';
 
 function EssaysIndex({ data }) {

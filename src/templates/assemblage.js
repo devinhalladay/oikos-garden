@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 
 const AssemblageTemplate = ({ data, location }) => {
   const post = data.allMdx.nodes[0];

@@ -1,22 +1,25 @@
-const config = require('./config/website');
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
+const config = require("./config/website");
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
 
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
 module.exports = {
+  // These are preview features.
   flags: {
     FAST_DEV: true,
     DEV_SSR: false,
     PARALLEL_SOURCING: true,
   },
+  // This configures metadata about the app.
+  // THe values are mostly used in the head of the site.
   siteMetadata: {
     siteUrl: config.siteUrl + pathPrefix,
     title: config.siteTitle,
     twitterHandle: config.twitterHandle,
     description: config.siteDescription,
-    keywords: ['Philosophy', 'Tech', 'Design', 'Art History'],
+    keywords: ["Philosophy", "Tech", "Design", "Art History"],
     canonicalUrl: config.siteUrl,
     author: {
       name: config.author,
@@ -30,75 +33,85 @@ module.exports = {
     },
   },
   plugins: [
-    'gatsby-plugin-emotion',
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-sass`,
-    'gatsby-plugin-image',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sitemap',
-    'gatsby-remark-reading-time',
-    'gatsby-plugin-sharp',
+    `gatsby-plugin-image`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-remark-reading-time`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-mdx-source-name`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
+        defaultLayouts: {
+          // Default page layout for all posts rendered by MDX.
+          default: require.resolve(`./src/components/Layout.jsx`),
+        },
         gatsbyRemarkPlugins: [
+          // Parses markdown and creates a table of contents
           {
             resolve: `gatsby-transformer-remark`,
             options: {
-              plugins: [
-                'gatsby-remark-heading-slug'
-              ],
+              // We can use any remark plugins here
+              plugins: [`gatsby-remark-heading-slug`],
             },
           },
+          // Custom plugin powering my site's margin notes
           {
             resolve: require.resolve(`./plugins/footnotes.js`),
             options: {
-              referenceComponent: 'Footnote',
+              // Component for rendering margin notes
+              referenceComponent: `Footnote`,
+              // We'll render the footnotes in a custom component.
               footnoteComponent: undefined,
             },
           },
         ],
-
-        defaultLayouts: {
-          default: require.resolve('./src/components/layout.js'),
-        },
       },
     },
-    'gatsby-transformer-sharp',
+    // All our images are stored in this folder
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/images/`,
       },
     },
+    // Sometimes we need to use an absolute path to an image,
+    // so we can also store images here.
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/static/images/`,
       },
     },
+    // All my site's pages are stored in this folder
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'pages',
+        name: "pages",
         path: `${__dirname}/src/pages/`,
       },
     },
+    // All my essays are stored in this folder
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/essays`,
-        name: 'essays',
+        name: "essays",
       },
     },
+    // All my works are stored in this folder
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/works`,
-        name: 'works',
+        name: "works",
       },
     },
+    // My notes and wikilinks are parsed by this plugin
     {
       resolve: `@aengusm/gatsby-theme-brain`,
       options: {

@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import Card from '../Card';
-import TagLink from '../TagLink';
+import Card from './Card';
+import TagLink from './TagLink';
 
 function NoteCard({ note }) {
   return (

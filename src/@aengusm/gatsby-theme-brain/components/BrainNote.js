@@ -1,6 +1,6 @@
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import React from 'react';
-import Layout from '../../../components/layout';
+import Layout from '../../../components/Layout';
 import PageHeading from '../../../components/PageHeading';
 import SectionHeading from '../../../components/SectionHeading';
 import TagLink from '../../../components/TagLink';

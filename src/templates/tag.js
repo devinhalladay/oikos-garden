@@ -2,10 +2,10 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import AssemblageCard from '../components/Assemblages/AssemblageCard';
-import EssayHeader from '../components/Essay/EssayHeader';
-import Layout from '../components/layout';
-import NoteCard from '../components/Notes/NoteCard';
+import AssemblageCard from '../components/AssemblageCard';
+import EssayHeader from '../components/EssayHeader';
+import Layout from '../components/Layout';
+import NoteCard from '../components/NoteCard';
 import PageHeading from '../components/PageHeading';
 import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';

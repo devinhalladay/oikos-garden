@@ -1,5 +1,8 @@
 module.exports = {
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './public/**/*.html',
+    './src/**/*.{js,jsx,ts,tsx,mdx}',
+  ],
   theme: {
     textIndent: (theme) => theme('spacing'),
     extend: {
@@ -20,12 +23,6 @@ module.exports = {
         'domain-red': '#d0232a',
       },
       minHeight: (theme) => theme('spacing'),
-    },
-  },
-  variants: {
-    extend: {
-      borderStyle: ['responsive', 'hover'],
-      borderWidth: ['responsive', 'hover'],
     },
   },
   plugins: [

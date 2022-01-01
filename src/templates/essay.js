@@ -2,8 +2,8 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import EssayHeader from '../components/Essay/EssayHeader';
-import Layout from '../components/layout';
+import EssayHeader from '../components/EssayHeader';
+import Layout from '../components/Layout';
 import Figure from '../components/mdx/figure';
 import Heading from '../components/mdx/headings';
 
@@ -31,31 +31,31 @@ const EssayTemplate = ({ data, location }) => {
               {typeof i.items === 'undefined'
                 ? null
                 : i.items.map((i2) => {
-                    console.log(i2.items);
-                    return (
-                      <li
-                        key={i2.url}
-                        className="ml-2 pb-1 hover:border-l border-domain-red pl-2">
-                        <a href={i2.url} key={i2.url}>
-                          {i2.title}
-                        </a>
-                        {typeof i2.items === 'undefined'
-                          ? null
-                          : i2.items.map((i3) => {
-                              console.log(i3.items);
-                              return (
-                                <li
-                                  key={i3.url}
-                                  className="ml-4 pb-1">
-                                  <a href={i3.url} key={i3.url}>
-                                    {i3.title}
-                                  </a>
-                                </li>
-                              );
-                            })}
-                      </li>
-                    );
-                  })}
+                  console.log(i2.items);
+                  return (
+                    <li
+                      key={i2.url}
+                      className="ml-2 pb-1 hover:border-l border-domain-red pl-2">
+                      <a href={i2.url} key={i2.url}>
+                        {i2.title}
+                      </a>
+                      {typeof i2.items === 'undefined'
+                        ? null
+                        : i2.items.map((i3) => {
+                          console.log(i3.items);
+                          return (
+                            <li
+                              key={i3.url}
+                              className="ml-4 pb-1">
+                              <a href={i3.url} key={i3.url}>
+                                {i3.title}
+                              </a>
+                            </li>
+                          );
+                        })}
+                    </li>
+                  );
+                })}
             </li>
           );
         })}

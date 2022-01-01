@@ -1,10 +1,10 @@
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
-import AssemblageCard from '../components/Assemblages/AssemblageCard';
+import AssemblageCard from '../components/AssemblageCard';
 import Card from '../components/Card';
-import EssayHeader from '../components/Essay/EssayHeader';
-import Layout from '../components/layout';
-import NoteCard from '../components/Notes/NoteCard';
+import EssayHeader from '../components/EssayHeader';
+import Layout from '../components/Layout';
+import NoteCard from '../components/NoteCard';
 import SectionHeading from '../components/SectionHeading';
 import TagLink from '../components/TagLink';
 

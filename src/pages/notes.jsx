@@ -1,8 +1,8 @@
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import Layout from '../components/layout';
-import NoteCard from '../components/Notes/NoteCard';
+import Layout from '../components/Layout';
+import NoteCard from '../components/NoteCard';
 import PageHeading from '../components/PageHeading';
 import TagLink from '../components/TagLink';
 
