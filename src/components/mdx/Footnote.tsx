@@ -1,29 +1,13 @@
-import { css } from '@emotion/react';
-import React, { useEffect, useRef, useState } from 'react';
+import { css } from "@emotion/react";
+import React, { FC, useState } from "react";
 
-export const useBbox = () => {
-  const ref = useRef();
-  const [bbox, setBbox] = useState({});
+interface Footnote {
+  id: string;
+  idName: string;
+  children: React.ReactNode[];
+}
 
-  const set = () =>
-    setBbox(
-      ref && ref.current ? ref.current.getBoundingClientRect() : {}
-    );
-
-  useEffect(() => {
-    set();
-    window.addEventListener('resize', set);
-    return () => window.removeEventListener('resize', set);
-  }, []);
-
-  return [bbox, ref];
-};
-
-const Footnote = (props) => {
-  const [bbox, ref] = useBbox();
-
-  const { id, idName, children, closed, className } = props;
-
+const Footnote: FC<Footnote> = ({ id, idName, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const defaultFootnoteStyles = css`
@@ -63,7 +47,7 @@ const Footnote = (props) => {
     }
 
     &:before {
-      content: '[' counter(sidenote-counter) ']';
+      content: "[" counter(sidenote-counter) "]";
       vertical-align: baseline;
       font-size: 0.875rem;
       padding-right: 6px;
@@ -114,7 +98,7 @@ const Footnote = (props) => {
     }
 
     &:before {
-      content: '[' counter(sidenote-counter) ']';
+      content: "[" counter(sidenote-counter) "]";
       vertical-align: baseline;
       font-size: 0.875rem;
       padding-right: 6px;
@@ -138,7 +122,7 @@ const Footnote = (props) => {
     text-indent: 0;
 
     &:after {
-      content: '[' counter(sidenote-counter) ']';
+      content: "[" counter(sidenote-counter) "]";
       font-family: Manuale;
       font-size: 0.875rem;
       color: #d0232a;
@@ -155,16 +139,18 @@ const Footnote = (props) => {
     <>
       <label
         id={`f-ref-${id}`}
-        for={idName}
+        htmlFor={idName}
         className="margin-toggle sidenote-number"
         css={labelStyles}
         onClick={() => {
           setIsOpen(!isOpen);
-        }}></label>
+        }}
+      ></label>
       <input type="checkbox" id={idName} css={inputStyles} />
       <span
         css={isOpen ? openFootnoteStyles : defaultFootnoteStyles}
-        className="sidenote">
+        className="sidenote"
+      >
         {children}
       </span>
     </>

@@ -2,14 +2,11 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import EssayHeader from '../components/EssayHeader';
 import Layout from '../components/Layout';
 import PageHeading from '../components/PageHeading';
 
 const WorkTemplate = ({ data, location }) => {
   const work = data.allMdx.nodes[0];
-
-  console.log(data);
 
   return (
     <Layout location={location}>

@@ -69,18 +69,7 @@ export const pageQuery = graphql`
         id
         excerpt(pruneLength: 160)
         body
-        frontmatter {
-          subtitle
-          title
-          cover_image {
-            childImageSharp {
-              fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-
+        ...AssemblageFrontmatter
         slug
       }
     }
