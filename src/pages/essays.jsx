@@ -11,7 +11,7 @@ function EssaysIndex({ data }) {
       <Helmet title="Essays • Infinite Caesura" />
 
       <PageHeading title="Essays" />
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col gap-8">
         {data.allMdx.nodes.map((node) => {
           return <EssayCard post={node} />;
         })}

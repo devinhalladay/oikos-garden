@@ -53,7 +53,7 @@ const IndexPage: React.FC<IndexPage> = ({
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
             link="/essays"
           />
-          <div className="grid gap-4">
+          <div className="flex flex-col gap-4">
             {essaysQuery.nodes.map((node) => (
               <EssayCard post={node} mini />
             ))}
