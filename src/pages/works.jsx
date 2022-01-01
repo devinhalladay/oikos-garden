@@ -10,7 +10,7 @@ const WorksIndex = ({ data: { worksQuery } }) => {
   const { node } = worksQuery;
 
   return (
-    <Layout width="wide">
+    <Layout wide>
       <Helmet title="Works • Infinite Caesura" />
       <PageHeading title="Creative Works" />
       <section>

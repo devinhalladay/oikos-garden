@@ -28,7 +28,7 @@ const TagsIndex = ({
   }, []);
 
   return (
-    <Layout width="wide">
+    <Layout wide>
       <Helmet title="Concepts • Infinite Caesura" />
       <PageHeading
         title="Concepts Index"

@@ -19,7 +19,7 @@ const IndexPage: React.FC<IndexPage> = ({
   data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
   return (
-    <Layout width="wide">
+    <Layout wide>
       <div className="flex flex-col gap-12 sm:flex-row mb-12 border-gray-100 border-b-8">
         {/* <section className="w-full xl:w-2/3 mr-8">
           <SectionHeading

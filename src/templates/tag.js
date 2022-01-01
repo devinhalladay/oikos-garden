@@ -56,7 +56,7 @@ const TagPage = ({
   );
 
   return (
-    <Layout width="wide">
+    <Layout wide>
       <Helmet title={`${tag} • Infinite Caesura`} />
       <PageHeading
         title={

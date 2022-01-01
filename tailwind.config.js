@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
   content: [
     './public/**/*.html',
@@ -29,10 +30,14 @@ module.exports = {
         '5xl': '2.6rem',
       },
       colors: {
-        'infinite-blue': '#d0232a',
-        'domain-red': '#d0232a',
+        'blue': '#0084ff',
+        'red': '#d0232a',
       },
       minHeight: (theme) => theme('spacing'),
+      gap: {
+        'narrow': '16px',
+        'wide': '64px'
+      }
     },
   },
   plugins: [

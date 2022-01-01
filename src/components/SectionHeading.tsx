@@ -14,7 +14,7 @@ const SectionHeading: FC<SectionHeading> = ({ title, subhead, link }) => {
         {link && (
           <a
             href={link}
-            className="text-domain-red text-sm uppercase font-semibold tracking-wide flex items-center gap-2"
+            className="text-red text-sm uppercase font-semibold tracking-wide flex items-center gap-2"
           >
             <span>View all</span>
             <svg

@@ -60,10 +60,6 @@ html {
 $background: #d4d4d4;
 $text: #151515;
 
-img {
-  max-width: 100%;
-}
-
 body {
   background-color: white;
   text-rendering: geometricPrecision;
@@ -157,46 +153,6 @@ nav {
   @media (max-width: 1100px) {
     grid-column: 1 / 4;
   }
-
-  // font-size: 1rem;
-  // letter-spacing: 0.2px;
-  // font-family: 'Alegreya Sans', sans-serif;
-  // font-weight: 400;
-
-  // ul {
-  //   li {
-  //     padding-bottom: 2.5rem;
-  //     height: 1.5rem;
-  //     width: fit-content;
-
-  //     @media (max-width: 900px) {
-  //       display: inline-block;
-  //       margin-right: 1rem;
-  //     }
-
-  //     a {
-  //       font-weight: 500;
-  //       text-transform: uppercase;
-  //       font-size: 0.875rem;
-  //       letter-spacing: 1.25px;
-  //       text-decoration: none;
-  //       color: $text;
-
-  //       &:after {
-  //         content: '';
-  //         height: 0.5px;
-  //         width: 100%;
-  //         display: block;
-  //         background: linear-gradient(
-  //           90deg,
-  //           transparent,
-  //           #adadad,
-  //           transparent
-  //         );
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 aside {
@@ -221,14 +177,14 @@ aside {
 h4,
 h5,
 h6 {
-  font-family: "Manuale", serif;
+  @apply font-serif;
 }
 
 .sans-serif,
 h1,
 h2,
 h3 {
-  font-family: "Alegreya Sans", sans-serif;
+  @apply font-sans;
 }
 
 h1,
@@ -253,10 +209,11 @@ h4 {
 main {
   position: relative;
   z-index: 3;
+
   h1,
   h2,
   h3 {
-    font-family: "Alegreya Sans";
+    @apply font-sans;
   }
 
   h1 {
@@ -264,9 +221,6 @@ main {
     font-size: 3rem;
     font-weight: 600;
     letter-spacing: -2px;
-  }
-
-  h2 {
   }
 
   h4 {
@@ -325,49 +279,12 @@ main {
   }
 }
 
-.layout {
-  padding: 2rem;
-  padding-top: 72px;
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(12, 1fr);
-  padding-bottom: 10rem;
-
-  @media (max-width: 900px) {
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 1000px) {
-  .layout {
-    grid-template-columns: repeat(12, 1fr);
-  }
-}
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   .layout {
     grid-template-columns:
       [grid-start] repeat(3, 1fr) [content-start] repeat(6, 1fr)
       [content-end] repeat(3, 1fr) [grid-end];
   }
-}
-
-.site-title {
-  color: #d0232a;
-  position: sticky;
-  font-family: "Alegreya Sans";
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 2.125rem;
-  color: #151515;
-  font-feature-settings: none;
-  // position: relative;
-
-  letter-spacing: -0.5px;
-  height: 48px;
-  display: block;
-
-  margin-bottom: 2rem;
 }
 
 .site-title--1 {
@@ -389,11 +306,6 @@ main {
   left: 0;
   right: 0;
   top: 0;
-  // grid-template-columns: [grid-start] 1fr repeat(10, 1fr) 1fr [grid-end];
-  // grid-gap: 15px 15px;
-  /* width: 100%; */
-  /* width: 100%; */
-
   padding-bottom: 0;
 }
 .caesurae {

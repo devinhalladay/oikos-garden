@@ -2690,6 +2690,11 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
+"@types/tailwindcss@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/tailwindcss/-/tailwindcss-3.0.0.tgz#2f0daf9a5788d3bc9a83e5fbcab76206e130ae27"
+  integrity sha512-322KvIsPYb5ryo+I60WN2Os7uBkdkc6G6n1SGcQZJAma6bygaOkEFJVWX8yy8wKo5yhnsOHb7L4LyBrcRnN29Q==
+
 "@types/tmp@^0.0.33":
   version "0.0.33"
   resolved "https://registry.yarnpkg.com/@types/tmp/-/tmp-0.0.33.tgz#1073c4bc824754ae3d10cfab88ab0237ba964e4d"

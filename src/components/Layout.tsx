@@ -16,11 +16,11 @@ import Navigation from "./Navigation";
 
 interface Layout {
   children: React.ReactNode;
-  width?: "wide";
+  wide?: boolean;
   navContent?: React.ReactNode;
 }
 
-const Layout: FC<Layout> = ({ children, width = undefined, navContent }) => {
+const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
   return (
     <MDXProvider components={components}>
       <Helmet title="Infinite Caesura">
@@ -48,11 +48,11 @@ const Layout: FC<Layout> = ({ children, width = undefined, navContent }) => {
         <meta name="twitter:image" content="/images/seo-image.png" />
       </Helmet>
 
-      <Graphic layout={width} />
+      <Graphic wide={wide} />
 
-      <div className="layout antialiased">
+      <div className="layout px-8 pt-[72px] pb-[10rem] gap-narrow flex-col columns-12 flex md:grid">
         <Navigation>{navContent}</Navigation>
-        <main className={width}>{children}</main>
+        <main className={wide ? "wide" : ""}>{children}</main>
       </div>
     </MDXProvider>
   );

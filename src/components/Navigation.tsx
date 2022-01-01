@@ -6,7 +6,10 @@ const Navigation: FC = ({ children }) => {
     <nav>
       <aside>
         <div>
-          <a href="/" className="site-title">
+          <a
+            href="/"
+            className="site-title sticky font-sans font-bold no-underline text-[2.125rem] tracking-tighter h-12 block mb-8"
+          >
             <svg
               width="157"
               height="55"
@@ -54,7 +57,7 @@ const Navigation: FC = ({ children }) => {
           <Link
             to="/"
             ariaLabel="View front page"
-            activeClassName="text-domain-red font-bold"
+            activeClassName="text-red font-bold"
           >
             Front Page
           </Link>
@@ -63,7 +66,7 @@ const Navigation: FC = ({ children }) => {
           <Link
             to="/essays"
             ariaLabel="Go to essays"
-            activeClassName="text-domain-red font-bold"
+            activeClassName="text-red font-bold"
           >
             Essays
           </Link>
@@ -72,7 +75,7 @@ const Navigation: FC = ({ children }) => {
           <Link
             to="/notes"
             ariaLabel="Go to notes"
-            activeClassName="text-domain-red font-bold"
+            activeClassName="text-red font-bold"
           >
             Notes
           </Link>
@@ -81,7 +84,7 @@ const Navigation: FC = ({ children }) => {
           <Link
             to="/works"
             ariaLabel="View work catalog"
-            activeClassName="text-domain-red font-bold">
+            activeClassName="text-red font-bold">
             Works
           </Link>
         </li> */}
@@ -89,7 +92,7 @@ const Navigation: FC = ({ children }) => {
           <Link
             to="/tags"
             ariaLabel="View site topics"
-            activeClassName="text-domain-red font-bold"
+            activeClassName="text-red font-bold"
           >
             Concepts
           </Link>

@@ -11,7 +11,7 @@ const NotesIndex = ({ data: { brainNotes } }) => {
   const { edges } = brainNotes;
 
   return (
-    <Layout width="wide">
+    <Layout wide>
       <Helmet title="Notes • Infinite Caesura" />
       <PageHeading title="Working Notes" />
       <section>

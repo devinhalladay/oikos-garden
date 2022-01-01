@@ -19,7 +19,7 @@ const EssayTemplate = ({ data, location }) => {
           return (
             <li
               key={i.url}
-              className="pb-1 -ml-2 pl-2 border-l border-gray-400 hover:border-domain-red box-border">
+              className="pb-1 -ml-2 pl-2 border-l border-gray-400 hover:border-red box-border">
               <a href={i.url} key={i.url}>
                 {i.title}
               </a>
@@ -30,7 +30,7 @@ const EssayTemplate = ({ data, location }) => {
                   return (
                     <li
                       key={i2.url}
-                      className="ml-2 pb-1 hover:border-l border-domain-red pl-2">
+                      className="ml-2 pb-1 hover:border-l border-red pl-2">
                       <a href={i2.url} key={i2.url}>
                         {i2.title}
                       </a>
@@ -83,7 +83,7 @@ const EssayTemplate = ({ data, location }) => {
             <h1 className="mb-2 font-serif font-light pb-8">
               {post.frontmatter.title}
             </h1>
-            <div className="bg-domain-red w-px h-64"></div>
+            <div className="bg-red w-px h-64"></div>
             {post.frontmatter.subtitle && (
               <p className="font-sans text-2xl indent-0 mt-8">
                 {post.frontmatter.subtitle}
