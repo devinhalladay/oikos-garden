@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import Card from "../Card";
 import SectionHeading from "../SectionHeading";
 import Attribution from "./Attribution";
 import Figure from "./Figure";
@@ -33,6 +34,7 @@ export default {
   QuoteCard: (props) => <QuoteCard {...props} />,
   Rule: (props) => <Rule {...props} />,
   Attribution: (props) => <Attribution {...props} />,
+  Card: (props) => <Card padded {...props} />,
   h1: (props) => <Heading level={1} {...props} />,
   h2: (props) => <Heading level={2} {...props} />,
   h3: (props) => <Heading level={3} {...props} />,

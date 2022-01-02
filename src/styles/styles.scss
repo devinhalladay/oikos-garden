@@ -242,6 +242,11 @@ main {
   article {
     font-size: 1.25rem;
 
+    > * + .Card {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
     hr {
       margin-top: 5rem;
       margin-bottom: 5rem;
@@ -657,5 +662,5 @@ article h1:not([class]) {
 }
 
 .sidenote a {
-  text-decoration: none;
+  text-decoration: underline;
 }
