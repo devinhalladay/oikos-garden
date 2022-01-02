@@ -19,12 +19,13 @@ const plugins: GatsbyConfig["plugins"] = [
   {
     resolve: `gatsby-plugin-typegen`,
     options: {
+      outputPath: `./@types/gatsby-types.d.ts`,
       includeResolvers: true,
       emitSchema: {
-        "./src/__generated__/gatsby-introspection.json": true,
+        "./__generated__/gatsby-introspection.json": true,
       },
       emitPluginDocuments: {
-        "./src/__generated__/gatsby-plugin-documents.graphql": true,
+        "./__generated__/gatsby-plugin-documents.graphql": true,
       },
     },
   },
