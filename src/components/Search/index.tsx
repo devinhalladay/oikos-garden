@@ -34,12 +34,7 @@ export default function Search({ indices }) {
         onSearchStateChange={({ query }) => setQuery(query)}
       >
         <SearchBar onFocus={() => setFocus(true)} hasFocus={hasFocus} />
-        <SearchResult
-          indices={indices}
-          className={
-            hasFocus ? "SearchResult--visible" : "SearchResult--hidden"
-          }
-        />
+        <SearchResult indices={indices} />
       </InstantSearch>
     </div>
   );

@@ -1,10 +1,4 @@
 import { Link } from "gatsby";
-import {
-  MasonryGrid,
-  JustifiedGrid,
-  FrameGrid,
-  PackingGrid,
-} from "@egjs/react-grid";
 import Masonry from "react-masonry-css";
 import { default as React } from "react";
 import { Hit } from "react-instantsearch-core";
@@ -41,9 +35,7 @@ const Hits = ({ hits, indexName }: { hits: Hit[]; indexName: string }) => {
         hit.internal?.type === "BrainNote" ? (
           <NoteCard note={hit} key={hit.objectID} />
         ) : hit.fields?.source === "essays" ? (
-          <div data-grid-column="2">
-            <EssayCard post={hit} key={hit.objectID} />
-          </div>
+          <EssayCard post={hit} key={hit.objectID} />
         ) : hit.fields?.source === "works" ? (
           <WorkCard work={hit} key={hit.objectID} />
         ) : (
@@ -73,12 +65,9 @@ const HitsInIndex = ({ index }) => {
 
 const SearchResult = ({ indices, className }) => (
   <div className={className}>
-    {/* <MasonryGrid gap={5} defaultDirection={"end"} align={"justify"} column={4}> */}
-
     {indices.map((index) => (
       <HitsInIndex index={index} key={index.name} />
     ))}
-    {/* </MasonryGrid> */}
     <PoweredBy />
   </div>
 );

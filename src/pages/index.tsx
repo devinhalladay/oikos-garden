@@ -19,12 +19,6 @@ interface IndexPage {
 const IndexPage: React.FC<IndexPage> = ({
   data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
-  const searchIndices = [
-    { name: "oikos", title: "Oikos" },
-    // { name: "notes", title: "Notes" },
-    // { name: "works", title: "Works" },
-  ];
-
   return (
     <Layout wide>
       <div className="flex flex-col gap-12 lg:flex-row mb-12 border-gray-100 border-b-8">
@@ -138,10 +132,6 @@ const IndexPage: React.FC<IndexPage> = ({
             })}
           </div>
         </section> */}
-
-        {process.env.NODE_ENV === "development" && (
-          <Search indices={searchIndices} />
-        )}
       </div>
     </Layout>
   );

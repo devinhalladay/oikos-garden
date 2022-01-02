@@ -6084,6 +6084,39 @@ type BrainNoteBySlugQuery = { readonly brainNote: Maybe<(
     & { readonly externalInboundReferences: Maybe<ReadonlyArray<Maybe<Pick<ExternalInboundReference, 'siteName' | 'sourcePage' | 'sourceUrl' | 'previewHtml'>>>>, readonly inboundReferencePreviews: Maybe<ReadonlyArray<Maybe<Pick<BrainNoteInboundReferencePreviews, 'source' | 'previewHtml'>>>>, readonly childMdx: Maybe<Pick<Mdx, 'body'>> }
   )> };
 
+type pageUsersdevinCodeSitesoikosGardensrcpagesessaysCopyJsx2646689613QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesessaysCopyJsx2646689613Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesindexCopyTsx4170242568QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type pageUsersdevinCodeSitesoikosGardensrcpagesindexCopyTsx4170242568Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & AssemblageFrontmatterFragment
+      ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & WorkFrontmatterFragment
+      ) }> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
+      Pick<BrainNote, 'id' | 'slug' | 'title'>
+      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'tags'> }> }
+    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
+
+type pageUsersdevinCodeSitesoikosGardensrcpagessTsx4170242568QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type pageUsersdevinCodeSitesoikosGardensrcpagessTsx4170242568Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & AssemblageFrontmatterFragment
+      ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & WorkFrontmatterFragment
+      ) }> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
+      Pick<BrainNote, 'id' | 'slug' | 'title'>
+      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'tags'> }> }
+    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
+
 
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
