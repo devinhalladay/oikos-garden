@@ -51,7 +51,7 @@ const Navigation: FC = ({ children }) => {
       {/* {children ? (
         children
       ) : ( */}
-      <ul className="font-sans-sc text-lg lowercase mt-6 border-gray-100 border-b-8 pb-8 mb-8 sm:pb-0 sm:mb-0 sm:border-b-0">
+      <ul className="font-sans-sc text-lg lowercase mt-6 border-gray-100 border-b-8 pb-8 mb-8 sm:pb-0 sm:mb-0 sm:border-b-0 leading-normal">
         <div id="toc" className="toc tocbot js-toc" />
         <li className="mb-2">
           <Link
@@ -104,6 +104,28 @@ const Navigation: FC = ({ children }) => {
             activeClassName="text-red font-bold"
           >
             Concepts
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link
+            to="/search"
+            ariaLabel="View search page"
+            activeClassName="text-red font-bold"
+            className="flex items-center gap-[6px]"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 21 21"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              className="mt-[3px]"
+            >
+              <circle cx="9" cy="9" r="8"></circle>
+              <line x1="21" y1="21" x2="15" y2="15"></line>
+            </svg>
+            <span className="leading-normal-">Search</span>
           </Link>
         </li>
       </ul>
