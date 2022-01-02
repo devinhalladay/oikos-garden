@@ -1,0 +1,16 @@
+---
+label: Note
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: list
+  name: tags
+  label: tags
+- type: datetime
+  name: date
+  label: date
+- type: datetime
+  name: updated
+  label: updated
