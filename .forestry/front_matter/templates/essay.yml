@@ -1,0 +1,28 @@
+---
+label: Essay
+hide_body: false
+fields:
+- type: text
+  name: layout
+  label: layout
+- type: text
+  name: title
+  label: title
+- type: textarea
+  name: subtitle
+  label: subtitle
+- type: list
+  name: tags
+  label: tags
+- type: text
+  name: slug
+  label: slug
+- type: datetime
+  name: date
+  label: date
+- type: boolean
+  name: featured
+  label: featured
+- type: file
+  name: cover_image
+  label: cover_image
