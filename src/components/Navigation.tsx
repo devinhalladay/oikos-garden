@@ -64,6 +64,15 @@ const Navigation: FC = ({ children }) => {
         </li>
         <li className="mb-2">
           <Link
+            to="/about"
+            ariaLabel="View about page"
+            activeClassName="text-red font-bold"
+          >
+            About
+          </Link>
+        </li>
+        <li className="mb-2">
+          <Link
             to="/essays"
             ariaLabel="Go to essays"
             activeClassName="text-red font-bold"

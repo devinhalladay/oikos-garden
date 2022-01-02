@@ -265,6 +265,10 @@ main {
       margin-bottom: 1.4rem;
       line-height: 1;
       font-family: "Manuale";
+
+      & + p {
+        margin-top: 1rem;
+      }
     }
 
     h4 {
