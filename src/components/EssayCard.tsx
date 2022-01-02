@@ -12,7 +12,7 @@ const EssayCard: FC<EssayCard> = ({ post, mini = false }) => {
   if (!post) return null;
 
   return (
-    <Link to={`/${post.frontmatter.slug}`}>
+    <Link to={`/essays/${post.frontmatter.slug}`}>
       <Card>
         <article className="h-full font-sans p-4 flex items-center justify-between">
           <div className="flex flex-col justify-between flex-grow-0 w-full mr-8">

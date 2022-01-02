@@ -84,7 +84,7 @@ const createPages: GatsbyNode["createPages"] = async ({
         index === allEssays.length - 1 ? null : allEssays[index + 1].id;
 
       createPage({
-        path: essay.frontmatter.slug,
+        path: `/essays/${essay.frontmatter.slug}`,
         component: templates.essay,
         context: {
           id: essay.id,
