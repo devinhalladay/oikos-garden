@@ -1,7 +1,13 @@
 ---
 title: The Protestant Phantasmagoria
+tags:
+- Phantasmagoria
+- Modernity
+- Marxism
+- The Protestant Ethic
+- Enchantment
 date: 2022-01-01T20:08:45-05:00
-updated: 2022-01-01T20:09:54-05:00
+updated: 2022-01-01T20:15:06-05:00
 ---
 
 - Intro
