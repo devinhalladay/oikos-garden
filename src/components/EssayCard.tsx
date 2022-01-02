@@ -14,8 +14,8 @@ const EssayCard: FC<EssayCard> = ({ post, mini = false }) => {
   return (
     <Link to={`/essays/${post.frontmatter.slug}`}>
       <Card>
-        <article className="h-full font-sans p-4 flex items-center justify-between">
-          <div className="flex flex-col justify-between flex-grow-0 w-full mr-8">
+        <article className="h-full font-sans p-4 flex flex-col-reverse sm:flex-row gap-8 items-center justify-between">
+          <div className="flex flex-col justify-between flex-grow-0 w-full">
             <h1
               className={`mb-2 tracking-tight leading-none ${
                 mini ? "text-2xl" : "text-3xl"
