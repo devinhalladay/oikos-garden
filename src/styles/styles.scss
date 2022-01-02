@@ -339,7 +339,7 @@ main {
   grid-row: 1;
   margin-top: 20px;
   z-index: -1;
-  margin-right: -1rem;
+  margin-right: 1rem;
 
   @media (max-width: 1100px) {
     grid-column: 1 / 5;
@@ -418,7 +418,8 @@ main {
 }
 .caesura-1 {
   grid-column: 4 / 10;
-  width: 100%;
+  width: calc(100% + 2rem);
+  margin-left: -2rem;
 
   .wide & {
     grid-column: 4 / 12;
