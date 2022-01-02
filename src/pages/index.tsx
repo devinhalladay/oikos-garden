@@ -4,6 +4,7 @@ import * as React from "react";
 import EssayCard from "../components/EssayCard";
 import Layout from "../components/Layout";
 import NoteCard from "../components/NoteCard";
+import Search from "../components/Search";
 import SectionHeading from "../components/SectionHeading";
 
 interface IndexPage {
@@ -18,6 +19,11 @@ interface IndexPage {
 const IndexPage: React.FC<IndexPage> = ({
   data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
+  const searchIndices = [
+    { name: `oikos`, title: `Oikos` },
+    { name: `notes`, title: `Notes` },
+  ];
+
   return (
     <Layout wide>
       <div className="flex flex-col gap-12 lg:flex-row mb-12 border-gray-100 border-b-8">
@@ -131,6 +137,8 @@ const IndexPage: React.FC<IndexPage> = ({
             })}
           </div>
         </section> */}
+
+        <Search indices={searchIndices} />
       </div>
     </Layout>
   );
