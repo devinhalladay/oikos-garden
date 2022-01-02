@@ -71,7 +71,7 @@ const EssayTemplate = ({ data, location }) => {
           name="twitter:description"
           content={post.frontmatter.subtitle ?? "Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan"}
         />
-        <meta name="twitter:image" content={post.frontmatter.cover_image.childImageSharp.fluid.src ?? "/images/seo-image.png"} />
+        <meta name="twitter:image" content={post.frontmatter.cover_image && post.frontmatter.cover_image.childImageSharp.fluid.src || "/images/seo-image.png"} />
       </Helmet>
       <article
         className="blog-post"
