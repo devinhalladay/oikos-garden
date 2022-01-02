@@ -1,8 +1,11 @@
 import React, { ReactNode } from "react";
 import SectionHeading from "../SectionHeading";
+import Attribution from "./Attribution";
 import Figure from "./Figure";
 import Footnote from "./Footnote";
 import Heading from "./Headings";
+import QuoteCard from "./QuoteCard";
+import Rule from "./Rule";
 
 const recursiveMap = (
   children: ReactNode,
@@ -27,6 +30,9 @@ const recursiveMap = (
 export default {
   Footnote: (props) => <Footnote key={props.id} {...props} />,
   Figure: (props) => <Figure {...props} />,
+  QuoteCard: (props) => <QuoteCard {...props} />,
+  Rule: (props) => <Rule {...props} />,
+  Attribution: (props) => <Attribution {...props} />,
   h1: (props) => <Heading level={1} {...props} />,
   h2: (props) => <Heading level={2} {...props} />,
   h3: (props) => <Heading level={3} {...props} />,
