@@ -8236,6 +8236,18 @@
             "deprecationReason": null
           },
           {
+            "name": "layout",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "external_url",
             "description": null,
             "args": [],
@@ -8260,7 +8272,7 @@
             "deprecationReason": null
           },
           {
-            "name": "layout",
+            "name": "abstract",
             "description": null,
             "args": [],
             "type": {
@@ -8333,6 +8345,18 @@
             "deprecationReason": null
           },
           {
+            "name": "social_image",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "date_updated",
             "description": null,
             "args": [
@@ -8388,30 +8412,6 @@
             "type": {
               "kind": "SCALAR",
               "name": "Date",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "social_image",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "abstract",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
               "ofType": null
             },
             "isDeprecated": false,
@@ -13393,6 +13393,18 @@
             "deprecationReason": null
           },
           {
+            "name": "layout",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "external_url",
             "description": null,
             "type": {
@@ -13417,7 +13429,7 @@
             "deprecationReason": null
           },
           {
-            "name": "layout",
+            "name": "abstract",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -13441,18 +13453,6 @@
             "deprecationReason": null
           },
           {
-            "name": "date_updated",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "DateQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "social_image",
             "description": null,
             "type": {
@@ -13465,11 +13465,11 @@
             "deprecationReason": null
           },
           {
-            "name": "abstract",
+            "name": "date_updated",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
+              "name": "DateQueryOperatorInput",
               "ofType": null
             },
             "defaultValue": null,
@@ -16066,6 +16066,12 @@
             "deprecationReason": null
           },
           {
+            "name": "childrenMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "childrenMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -16078,7 +16084,7 @@
             "deprecationReason": null
           },
           {
-            "name": "childrenMdx___frontmatter___layout",
+            "name": "childrenMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -16090,19 +16096,13 @@
             "deprecationReason": null
           },
           {
-            "name": "childrenMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childrenMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "childrenMdx___frontmatter___abstract",
+            "name": "childrenMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -16774,6 +16774,12 @@
             "deprecationReason": null
           },
           {
+            "name": "childMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "childMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -16786,7 +16792,7 @@
             "deprecationReason": null
           },
           {
-            "name": "childMdx___frontmatter___layout",
+            "name": "childMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -16798,19 +16804,13 @@
             "deprecationReason": null
           },
           {
-            "name": "childMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "childMdx___frontmatter___abstract",
+            "name": "childMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -29832,6 +29832,12 @@
             "deprecationReason": null
           },
           {
+            "name": "frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -29844,7 +29850,7 @@
             "deprecationReason": null
           },
           {
-            "name": "frontmatter___layout",
+            "name": "frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -29856,19 +29862,13 @@
             "deprecationReason": null
           },
           {
-            "name": "frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "frontmatter___abstract",
+            "name": "frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -35456,6 +35456,12 @@
             "deprecationReason": null
           },
           {
+            "name": "outboundReferenceNotes___childMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "outboundReferenceNotes___childMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -35468,7 +35474,7 @@
             "deprecationReason": null
           },
           {
-            "name": "outboundReferenceNotes___childMdx___frontmatter___layout",
+            "name": "outboundReferenceNotes___childMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -35480,19 +35486,13 @@
             "deprecationReason": null
           },
           {
-            "name": "outboundReferenceNotes___childMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "outboundReferenceNotes___childMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "outboundReferenceNotes___childMdx___frontmatter___abstract",
+            "name": "outboundReferenceNotes___childMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -35804,6 +35804,12 @@
             "deprecationReason": null
           },
           {
+            "name": "outboundReferenceNotes___childrenMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "outboundReferenceNotes___childrenMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -35816,7 +35822,7 @@
             "deprecationReason": null
           },
           {
-            "name": "outboundReferenceNotes___childrenMdx___frontmatter___layout",
+            "name": "outboundReferenceNotes___childrenMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -35828,19 +35834,13 @@
             "deprecationReason": null
           },
           {
-            "name": "outboundReferenceNotes___childrenMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "outboundReferenceNotes___childrenMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "outboundReferenceNotes___childrenMdx___frontmatter___abstract",
+            "name": "outboundReferenceNotes___childrenMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -38402,6 +38402,12 @@
             "deprecationReason": null
           },
           {
+            "name": "inboundReferenceNotes___childMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "inboundReferenceNotes___childMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -38414,7 +38420,7 @@
             "deprecationReason": null
           },
           {
-            "name": "inboundReferenceNotes___childMdx___frontmatter___layout",
+            "name": "inboundReferenceNotes___childMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -38426,19 +38432,13 @@
             "deprecationReason": null
           },
           {
-            "name": "inboundReferenceNotes___childMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "inboundReferenceNotes___childMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "inboundReferenceNotes___childMdx___frontmatter___abstract",
+            "name": "inboundReferenceNotes___childMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -38750,6 +38750,12 @@
             "deprecationReason": null
           },
           {
+            "name": "inboundReferenceNotes___childrenMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "inboundReferenceNotes___childrenMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -38762,7 +38768,7 @@
             "deprecationReason": null
           },
           {
-            "name": "inboundReferenceNotes___childrenMdx___frontmatter___layout",
+            "name": "inboundReferenceNotes___childrenMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -38774,19 +38780,13 @@
             "deprecationReason": null
           },
           {
-            "name": "inboundReferenceNotes___childrenMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "inboundReferenceNotes___childrenMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "inboundReferenceNotes___childrenMdx___frontmatter___abstract",
+            "name": "inboundReferenceNotes___childrenMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -40004,6 +40004,12 @@
             "deprecationReason": null
           },
           {
+            "name": "childMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "childMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -40016,7 +40022,7 @@
             "deprecationReason": null
           },
           {
-            "name": "childMdx___frontmatter___layout",
+            "name": "childMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -40028,19 +40034,13 @@
             "deprecationReason": null
           },
           {
-            "name": "childMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "childMdx___frontmatter___abstract",
+            "name": "childMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -40748,6 +40748,12 @@
             "deprecationReason": null
           },
           {
+            "name": "childrenMdx___frontmatter___layout",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "childrenMdx___frontmatter___external_url",
             "description": null,
             "isDeprecated": false,
@@ -40760,7 +40766,7 @@
             "deprecationReason": null
           },
           {
-            "name": "childrenMdx___frontmatter___layout",
+            "name": "childrenMdx___frontmatter___abstract",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -40772,19 +40778,13 @@
             "deprecationReason": null
           },
           {
-            "name": "childrenMdx___frontmatter___date_updated",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "childrenMdx___frontmatter___social_image",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "childrenMdx___frontmatter___abstract",
+            "name": "childrenMdx___frontmatter___date_updated",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null

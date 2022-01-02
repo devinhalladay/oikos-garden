@@ -2,7 +2,7 @@
 layout: post
 title: "Into the World of Images"
 subtitle: "What does it mean to be as an image?"
-cover_image: ../../static/images/world-of-images/image1.png
+cover_image: ./images/image1.png
 slug: "world-of-images"
 tags:
   ["Images", "Technics", "Dialectics", "Aesthetics", "Semiotics (Structural)"]
@@ -10,7 +10,13 @@ date: "2019-01-10"
 featured: true
 ---
 
-<Figure src="/images/world-of-images/image1.png" />
+import image1 from './images/image1.png'
+import image2 from './images/image2.png'
+import image3 from './images/image3.png'
+import image4 from './images/image4.png'
+import cover from './images/cover.png'
+
+<Figure src={image1} />
 
 <blockquote className="blockquote-page">
   <p>It's not that what is past casts its light on what is present, or what is present its light on the past; rather, image is that wherein what has been comes together in a flash with the now to form a constellation. In other words, image is dialectics at a standstill.</p>
@@ -55,7 +61,7 @@ The age of technical representation has decidedly thrown humanity into the unrea
 
 Through observation of the world of images, I have come to contest that there are three primary types of image: sensory images, mental images, and symbolic images. Sensory images are images analyzed and transmitted by the eye — the sensory image is plain and unaugmented sight. Mental images are images formed by the mind, the imagination. They may be informed by sensory images and their trace[^16] in memory, producing the uncanny and other creative versions of the real. Symbolic images are images produced through media. They are a consolidation and realization of sensory and mental images. Symbolic images are also predominantly technical (that is, produced by or with the aid of technical devices such as the perspective lattice, the lens, the shutter), meaning they can be either signifying or a-signifying. In each epoch, the dominant type of symbolic image is treated as having parity with the sensory image — in our epoch, this is the photographic image; in the 17th century, it was the painting; in the near future, it will be the dream image.
 
-<Figure src={"/images/world-of-images/image1.png"}>
+<Figure src={image1}>
 
 _Figure 1_ — The cycle of interdependence between different types of images.
 
@@ -63,7 +69,7 @@ _Figure 1_ — The cycle of interdependence between different types of images.
 
 Each type of image is dependent upon all the others for its existence. Symbolic images are only symbolic in relation to mental images, and mental images are only mental as such because of sensory input. When one looks at an image, memory is activated (this is why some images impact us and others do not: our subjectivities come to us through memory and its traces) and we interpret the image as a mental image, combining it with our lived experiences to create a "constellation" of reality in the mind. The visual experience itself is what generates mental images. Here we see that there is a chain of command between sensory, mental, and symbolic images, and that the symbolic image is highly dependent upon the mental image, which is to say that it is dependent upon subjectivity, which will be important for us in a moment.
 
-<Figure src={"/images/world-of-images/image2.png"}>
+<Figure src={image2}>
 
 _Figure 2_ — A subjunctive diagram explaining the chain of dependencies the construct the ontology of images.
 
@@ -71,7 +77,7 @@ _Figure 2_ — A subjunctive diagram explaining the chain of dependencies the co
 
 In addition to these three primary image categories, I distinguish between three different types of _symbolic_ images: pictures, technical images, and dream images. Each of these three types arises from a "completely different kind of distancing from concrete experience."[^17]
 
-<Figure src={"/images/world-of-images/image3.png"}>
+<Figure src={image3}>
 
 _Figure 3_ — A loose taxonomy of image types.
 
@@ -91,7 +97,7 @@ The image is many things, as we have seen, but ultimately the properties of the 
 
 ### We Amphibians
 
-<Figure src={"/images/world-of-images/image4.png"}>
+<Figure src={image4}>
 
 _Figure 4_ — Diagram representing the hypothesis of representational convergence.
 

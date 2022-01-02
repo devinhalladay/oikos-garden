@@ -46,6 +46,13 @@ const plugins: GatsbyConfig["plugins"] = [
             plugins: [`gatsby-remark-heading-slug`],
           },
         },
+        // Images
+        {
+          resolve: `gatsby-remark-images`,
+          options: {
+            maxWidth: 1200,
+          },
+        },
         // Custom plugin powering my site's margin notes
         {
           resolve: require.resolve(`../plugins/footnotes.js`),
