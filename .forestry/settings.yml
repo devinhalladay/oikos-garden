@@ -1,0 +1,36 @@
+---
+new_page_extension: md
+auto_deploy: false
+admin_path: 
+webhook_url: 
+sections:
+- type: directory
+  path: content/notes
+  label: Notes
+  create: documents
+  match: "**/*"
+  new_doc_ext: ".mdx"
+- type: directory
+  path: content/essays
+  label: Essays
+  create: all
+  match: "**/*"
+  new_doc_ext: ".mdx"
+- type: directory
+  path: content/works
+  label: Works
+  create: all
+  match: "**/*"
+  new_doc_ext: ".mdx"
+upload_dir: src/images
+public_path: "/images"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
+build:
+  preview_output_directory: public
+  install_dependencies_command: npm install
+  preview_docker_image: forestryio/node:12
+  mount_path: "/srv"
+  working_dir: "/srv"
+  instant_preview_command: npm run develop
