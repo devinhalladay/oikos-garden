@@ -28,7 +28,12 @@ const HitCount = connectStateResults(({ searchResults }) => {
 const Hits = ({ hits, indexName }: { hits: Hit[]; indexName: string }) => {
   return (
     <Masonry
-      breakpointCols={3}
+      breakpointCols={{
+        default: 4,
+        2000: 3,
+        900: 2,
+        768: 1,
+      }}
       className="flex -ml-8 w-auto"
       columnClassName="pl-8 flex flex-col gap-8 bg-clip-padding"
     >

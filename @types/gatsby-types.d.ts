@@ -5981,6 +5981,11 @@ type pageUsersdevinCodeSitesoikosGardensrctemplatestagJs3416422395Query = { read
       & { tag: BrainNoteGroupConnection['fieldValue'] }
     )> } };
 
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
 type pageUsersdevinCodeSitesoikosGardensrcpagesessaysJsx2646689613QueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6026,11 +6031,6 @@ type pageUsersdevinCodeSitesoikosGardensrcpagesworksJsx242300695Query = { readon
         Pick<Mdx, 'id' | 'slug'>
         & WorkFrontmatterFragment
       ) }> } };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
 type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6083,39 +6083,6 @@ type BrainNoteBySlugQuery = { readonly brainNote: Maybe<(
     Pick<BrainNote, 'slug' | 'title' | 'inboundReferences'>
     & { readonly externalInboundReferences: Maybe<ReadonlyArray<Maybe<Pick<ExternalInboundReference, 'siteName' | 'sourcePage' | 'sourceUrl' | 'previewHtml'>>>>, readonly inboundReferencePreviews: Maybe<ReadonlyArray<Maybe<Pick<BrainNoteInboundReferencePreviews, 'source' | 'previewHtml'>>>>, readonly childMdx: Maybe<Pick<Mdx, 'body'>> }
   )> };
-
-type pageUsersdevinCodeSitesoikosGardensrcpagesessaysCopyJsx2646689613QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type pageUsersdevinCodeSitesoikosGardensrcpagesessaysCopyJsx2646689613Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
-
-type pageUsersdevinCodeSitesoikosGardensrcpagesindexCopyTsx4170242568QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type pageUsersdevinCodeSitesoikosGardensrcpagesindexCopyTsx4170242568Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & AssemblageFrontmatterFragment
-      ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & WorkFrontmatterFragment
-      ) }> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
-      Pick<BrainNote, 'id' | 'slug' | 'title'>
-      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'tags'> }> }
-    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
-
-type pageUsersdevinCodeSitesoikosGardensrcpagessTsx4170242568QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type pageUsersdevinCodeSitesoikosGardensrcpagessTsx4170242568Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & AssemblageFrontmatterFragment
-      ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & WorkFrontmatterFragment
-      ) }> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
-      Pick<BrainNote, 'id' | 'slug' | 'title'>
-      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'tags'> }> }
-    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
 
 
 
