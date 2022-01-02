@@ -1,10 +1,7 @@
 const escapeStringRegexp = require("escape-string-regexp");
 
-const pagePath = `content`;
-const indexName = `oikos`;
-
 const essayQuery = `{
-  pages: allMdx(filter: {fileAbsolutePath: { regex: "/content/essays" }}) {
+  pages: allMdx(filter: {fileAbsolutePath: { regex: "/content/essays/" }}) {
     edges {
       node {
         id
@@ -80,7 +77,7 @@ const worksQuery = `{
           cover_image {
             childImageSharp {
               fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid
+                src
               }
             }
           }
