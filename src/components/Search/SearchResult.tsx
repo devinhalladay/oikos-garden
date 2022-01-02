@@ -5,6 +5,7 @@ import {
   FrameGrid,
   PackingGrid,
 } from "@egjs/react-grid";
+import Masonry from "react-masonry-css";
 import { default as React } from "react";
 import { Hit } from "react-instantsearch-core";
 import {
@@ -30,28 +31,34 @@ const HitCount = connectStateResults(({ searchResults }) => {
 });
 
 const Hits = ({ hits, indexName }: { hits: Hit[]; indexName: string }) => {
-  return hits
-    .sort(() => Math.random() - 0.5)
-    .map((hit) =>
-      indexName === "oikos" ? (
-        <div data-grid-column="2">
-          <EssayCard post={hit} />
-        </div>
-      ) : indexName === "notes" ? (
-        <NoteCard note={hit} />
-      ) : indexName === "works" ? (
-        <WorkCard work={hit} />
-      ) : (
-        <div>
-          <Link to={hit.slug}>
-            <h4>
-              <Highlight attribute="title" hit={hit} tagName="mark" />
-            </h4>
-          </Link>
-          <Snippet attribute="excerpt" hit={hit} tagName="mark" />
-        </div>
-      )
-    );
+  return (
+    <Masonry
+      breakpointCols={3}
+      className="flex -ml-8 w-auto"
+      columnClassName="pl-8 flex flex-col gap-8 bg-clip-padding"
+    >
+      {hits.map((hit) =>
+        hit.internal?.type === "BrainNote" ? (
+          <NoteCard note={hit} key={hit.objectID} />
+        ) : hit.fields?.source === "essays" ? (
+          <div data-grid-column="2">
+            <EssayCard post={hit} key={hit.objectID} />
+          </div>
+        ) : hit.fields?.source === "works" ? (
+          <WorkCard work={hit} key={hit.objectID} />
+        ) : (
+          <div key={hit.objectID}>
+            <Link to={hit.slug}>
+              <h4>
+                <Highlight attribute="title" hit={hit} tagName="mark" />
+              </h4>
+            </Link>
+            <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+          </div>
+        )
+      )}
+    </Masonry>
+  );
 };
 
 const CustomHits = connectHits(Hits);
@@ -59,8 +66,6 @@ const CustomHits = connectHits(Hits);
 const HitsInIndex = ({ index }) => {
   return (
     <Index indexName={index.name}>
-      <HitCount />
-
       <CustomHits indexName={index.name} />
     </Index>
   );
@@ -68,17 +73,12 @@ const HitsInIndex = ({ index }) => {
 
 const SearchResult = ({ indices, className }) => (
   <div className={className}>
-    <MasonryGrid
-      className="container"
-      gap={5}
-      defaultDirection={"end"}
-      align={"justify"}
-      column={4}
-    >
-      {indices.map((index) => (
-        <HitsInIndex index={index} key={index.name} />
-      ))}
-    </MasonryGrid>
+    {/* <MasonryGrid gap={5} defaultDirection={"end"} align={"justify"} column={4}> */}
+
+    {indices.map((index) => (
+      <HitsInIndex index={index} key={index.name} />
+    ))}
+    {/* </MasonryGrid> */}
     <PoweredBy />
   </div>
 );

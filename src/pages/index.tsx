@@ -21,8 +21,8 @@ const IndexPage: React.FC<IndexPage> = ({
 }) => {
   const searchIndices = [
     { name: "oikos", title: "Oikos" },
-    { name: "notes", title: "Notes" },
-    { name: "works", title: "Works" },
+    // { name: "notes", title: "Notes" },
+    // { name: "works", title: "Works" },
   ];
 
   return (
