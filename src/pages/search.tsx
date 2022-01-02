@@ -1,11 +1,8 @@
 import { graphql } from "gatsby";
 import * as React from "react";
 
-import EssayCard from "../components/EssayCard";
 import Layout from "../components/Layout";
-import NoteCard from "../components/NoteCard";
 import Search from "../components/Search";
-import SectionHeading from "../components/SectionHeading";
 
 interface SearchPage {}
 

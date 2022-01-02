@@ -13,6 +13,7 @@ import {
 import EssayCard from "../EssayCard";
 import NoteCard from "../NoteCard";
 import WorkCard from "../WorkCard";
+import Rule from "../mdx/Rule";
 
 const HitCount = connectStateResults(({ searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits;
@@ -68,7 +69,8 @@ const SearchResult = ({ indices, className }) => (
     {indices.map((index) => (
       <HitsInIndex index={index} key={index.name} />
     ))}
-    <PoweredBy />
+    <Rule />
+    <PoweredBy className="text-sm font-sans-sc lowercase font-bold text-gray-500" />
   </div>
 );
 
