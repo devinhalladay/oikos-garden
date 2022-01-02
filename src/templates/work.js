@@ -18,7 +18,7 @@ const WorkTemplate = ({ data, location }) => {
           name="twitter:description"
           content={work.frontmatter.subtitle ?? "Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan"}
         />
-        <meta name="twitter:image" content={work.frontmatter.cover_image.childImageSharp.fluid.src ?? "/images/seo-image.png"} />
+        <meta name="twitter:image" content={work.frontmatter.cover_image && `https://infinitecaesura.com/${work.frontmatter.cover_image.childImageSharp.fluid.src}` || "https://infinitecaesura.com/images/seo-image.png"} />
       </Helmet>
       <article
         className="blog-post"

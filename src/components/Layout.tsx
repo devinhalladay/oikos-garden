@@ -46,7 +46,10 @@ const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
           name="twitter:description"
           content="Infinite Caesura is the personal wiki of Devin Halladay, a designer and writer based in Manhattan"
         />
-        <meta name="twitter:image" content="/images/seo-image.png" />
+        <meta
+          name="twitter:image"
+          content="https://infinitecaesura.com/images/seo-image.png"
+        />
       </Helmet>
 
       <Graphic wide={wide} />
