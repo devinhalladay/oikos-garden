@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@aengusm/gatsby-theme-brain": "^1.0.13",
+    "@egjs/react-grid": "^1.7.0",
     "@emotion/react": "^11.4.1",
     "@fontsource/alegreya": "^4.5.0",
     "@fontsource/alegreya-sans": "^4.5.0",

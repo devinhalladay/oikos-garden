@@ -20,8 +20,9 @@ const IndexPage: React.FC<IndexPage> = ({
   data: { notesQuery, assemblagesQuery, essaysQuery, worksQuery },
 }) => {
   const searchIndices = [
-    { name: `oikos`, title: `Oikos` },
-    { name: `notes`, title: `Notes` },
+    { name: "oikos", title: "Oikos" },
+    { name: "notes", title: "Notes" },
+    { name: "works", title: "Works" },
   ];
 
   return (
@@ -138,7 +139,9 @@ const IndexPage: React.FC<IndexPage> = ({
           </div>
         </section> */}
 
-        <Search indices={searchIndices} />
+        {process.env.NODE_ENV === "development" && (
+          <Search indices={searchIndices} />
+        )}
       </div>
     </Layout>
   );
