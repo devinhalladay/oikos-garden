@@ -10,12 +10,16 @@ sections:
   create: documents
   match: "**/*"
   new_doc_ext: mdx
+  templates:
+  - note
 - type: directory
   path: content/essays
   label: Essays
   create: all
   match: "**/*"
   new_doc_ext: mdx
+  templates:
+  - essay
 - type: directory
   path: content/works
   label: Works
