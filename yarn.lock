@@ -6487,6 +6487,14 @@ gatsby-plugin-feed@^2.5.2:
     lodash.merge "^4.6.2"
     rss "^1.2.2"
 
+gatsby-plugin-graphql-config@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-graphql-config/-/gatsby-plugin-graphql-config-1.4.0.tgz#f4143a7398b05b536f35fddede99156a6ba7f8ed"
+  integrity sha512-u9kXmIXqcHW1RWOBlz5CmwF+TgovmvyEHyb0yQf5BirTX16x/aEaU32wVq38fKoZ4Wtcud6iH7p80whvOvwONg==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    fs-extra "^10.0.0"
+
 gatsby-plugin-image@^1.14.0:
   version "1.14.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.14.2.tgz#3955e370d8eb96cd3675001220f315a66ad8ea06"

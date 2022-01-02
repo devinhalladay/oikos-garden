@@ -15,6 +15,7 @@ const plugins: GatsbyConfig["plugins"] = [
   `gatsby-plugin-sitemap`,
   `gatsby-remark-reading-time`,
   `gatsby-plugin-sharp`,
+  `gatsby-plugin-graphql-config`,
   `gatsby-transformer-sharp`,
   {
     resolve: `gatsby-plugin-algolia`,
@@ -151,7 +152,7 @@ const flags: GatsbyConfig["flags"] = {
   PARALLEL_SOURCING: true,
 };
 
-module.exports = {
+module.exports = <GatsbyConfig>{
   // These are preview features.
   flags,
   // This configures metadata about the app.
