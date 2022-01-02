@@ -54,7 +54,7 @@ const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
 
       <Graphic wide={wide} />
 
-      <div className="layout relative px-8 pt-[72px] pb-[10rem] gap-narrow flex-col columns-12 flex md:grid">
+      <div className="layout relative px-4 pt-[72px] pb-[10rem] gap-narrow flex-col columns-12 flex md:grid">
         <Navigation>{navContent}</Navigation>
         <main className={wide ? "wide" : ""}>{children}</main>
       </div>

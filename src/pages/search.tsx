@@ -15,9 +15,7 @@ const searchIndices = [
 const SearchPage: React.FC<SearchPage> = ({}) => {
   return (
     <Layout wide>
-      {process.env.NODE_ENV === "development" && (
-        <Search indices={searchIndices} />
-      )}
+      <Search indices={searchIndices} />
     </Layout>
   );
 };
