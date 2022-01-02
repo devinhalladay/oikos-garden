@@ -1,6 +1,7 @@
 import "@fontsource/alegreya-sans-sc/latin.css";
 import "@fontsource/alegreya-sans/latin.css";
-import "@fontsource/manuale/latin.css";
+// import "@fontsource/manuale/latin.css";
+import "@fontsource/alegreya/latin.css";
 import "../styles/styles.scss";
 
 import React, { FC } from "react";

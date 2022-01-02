@@ -72,7 +72,7 @@ body {
   );
 
   color: $text;
-  font-family: Manuale;
+  @apply font-serif;
   border-left: 10px solid #d0232a;
   border-right: 10px solid #d0232a;
   margin: 0;
@@ -239,6 +239,8 @@ main {
   }
 
   article {
+    font-size: 1.25rem;
+
     hr {
       margin-top: 5rem;
       margin-bottom: 5rem;
@@ -264,7 +266,7 @@ main {
       margin-top: 2rem;
       margin-bottom: 1.4rem;
       line-height: 1;
-      font-family: "Manuale";
+      @apply font-serif;
 
       & + p {
         margin-top: 1rem;
@@ -646,7 +648,7 @@ article ul:not(.footnotes) {
 }
 
 article h1:not([class]) {
-  font-family: "Manuale";
+  @apply font-serif;
   margin-top: 2rem;
   font-weight: 300;
   font-size: 2.25rem;

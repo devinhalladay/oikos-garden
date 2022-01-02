@@ -124,7 +124,6 @@ const Footnote: FC<Footnote> = ({ id, idName, children }) => {
 
     &:after {
       content: "[" counter(sidenote-counter) "]";
-      font-family: Manuale;
       font-size: 0.875rem;
       color: #d0232a;
       top: -0.5rem;
@@ -141,7 +140,7 @@ const Footnote: FC<Footnote> = ({ id, idName, children }) => {
       <label
         id={`f-ref-${id}`}
         htmlFor={idName}
-        className="margin-toggle sidenote-number"
+        className="margin-toggle sidenote-number font-serif"
         css={labelStyles}
         onClick={() => {
           setIsOpen(!isOpen);

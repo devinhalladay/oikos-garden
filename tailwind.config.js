@@ -19,7 +19,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'sans': ['Alegreya Sans', 'sans-serif'],
-        'serif': ['Manuale', 'serif'],
+        'serif': ['Alegreya', 'serif'],
         'sans-sc': [
           'Alegreya Sans SC',
           'Alegreya Sans',
@@ -44,7 +44,7 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwindcss-typography')({
+    require('@tailwindcss/typography')({
       // all these options default to the values specified here
       ellipsis: true, // whether to generate ellipsis utilities
       hyphens: true, // whether to generate hyphenation utilities

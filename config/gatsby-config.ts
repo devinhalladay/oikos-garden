@@ -44,7 +44,7 @@ const plugins: GatsbyConfig["plugins"] = [
           resolve: `gatsby-transformer-remark`,
           options: {
             // We can use any remark plugins here
-            plugins: [`gatsby-remark-heading-slug`],
+            plugins: [],
           },
         },
         // Images
