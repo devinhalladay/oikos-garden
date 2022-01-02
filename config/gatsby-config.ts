@@ -17,6 +17,14 @@ const plugins: GatsbyConfig["plugins"] = [
   `gatsby-plugin-sharp`,
   `gatsby-transformer-sharp`,
   {
+    resolve: `gatsby-plugin-algolia`,
+    options: {
+      appId: process.env.GATSBY_ALGOLIA_APP_ID,
+      apiKey: process.env.ALGOLIA_ADMIN_KEY,
+      queries: require("../src/queries/algolia.ts"),
+    },
+  },
+  {
     resolve: `gatsby-plugin-typegen`,
     options: {
       outputPath: `./@types/gatsby-types.d.ts`,

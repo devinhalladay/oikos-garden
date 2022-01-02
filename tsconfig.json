@@ -1,6 +1,7 @@
 {
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./@types/**/*"
   ],
   "compilerOptions": {
     "target": "esnext",
