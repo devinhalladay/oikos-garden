@@ -4,9 +4,7 @@ import { Helmet } from 'react-helmet';
 import Layout from '../components/Layout';
 import NoteCard from '../components/NoteCard';
 import PageHeading from '../components/PageHeading';
-import TagLink from '../components/TagLink';
 
-// markup
 const NotesIndex = ({ data: { brainNotes } }) => {
   const { edges } = brainNotes;
 

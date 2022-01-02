@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 const Navigation: FC = ({ children }) => {
   return (
-    <nav>
+    <nav className="block md:sticky md:top-[72px] h-content">
       <aside>
         <div>
           <a
@@ -51,7 +51,7 @@ const Navigation: FC = ({ children }) => {
       {/* {children ? (
         children
       ) : ( */}
-      <ul className="font-sans-sc text-lg lowercase mt-6">
+      <ul className="font-sans-sc text-lg lowercase mt-6 border-gray-100 border-b-8 pb-8 mb-8 sm:pb-0 sm:mb-0 sm:border-b-0">
         <div id="toc" className="toc tocbot js-toc" />
         <li className="mb-2">
           <Link

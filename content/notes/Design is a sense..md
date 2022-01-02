@@ -1,7 +1,9 @@
 ---
 title: Design is a sense.
+tags:
+- Design
 date: 2021-08-06T16:44:31-04:00
-updated: 2022-01-01T12:07:35-05:00
+updated: 2022-01-01T20:01:29-05:00
 ---
 *🧤 This page does not disambiguate between the usage of "design" as a verb and as a noun. The utility of the word design, and the act of design, is exactly in this ambiguity. I suggest reading each mention of the word twice, once from the perspective of the designer and again from that of the public.*
 

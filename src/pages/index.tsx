@@ -53,7 +53,7 @@ const IndexPage: React.FC<IndexPage> = ({
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
             link="/essays"
           />
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-narrow">
             {essaysQuery.nodes.map((node) => (
               <EssayCard post={node} />
             ))}
@@ -67,7 +67,7 @@ const IndexPage: React.FC<IndexPage> = ({
             subhead="Rolling, work-in-progress notes, images, clippings, and
               threads."
           />
-          <div className="gap-4">
+          <div className="gap-narrow flex flex-col">
             {notesQuery.nodes.map((note) => (
               <NoteCard
                 note={

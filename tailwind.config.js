@@ -37,6 +37,9 @@ module.exports = {
       gap: {
         'narrow': '16px',
         'wide': '64px'
+      },
+      height: {
+        'content': 'fit-content'
       }
     },
   },
