@@ -4,25 +4,38 @@ hide_body: false
 fields:
 - type: text
   name: title
-  label: title
-- type: list
-  name: tags
-  label: tags
-- type: textarea
-  name: subtitle
-  label: subtitle
-- type: file
-  name: cover_image
-  label: cover_image
-- type: text
-  name: filters
-  label: filters
-- type: boolean
-  name: featured
-  label: featured
-- type: text
-  name: categories
-  label: categories
+  label: Title
+  config:
+    required: true
 - type: datetime
   name: slug
-  label: slug
+  label: Date
+  config:
+    date_format: MM-DD-YYYY
+    export_format: MM-DD-YYYY
+    required: true
+  default: now
+- name: updated
+  type: datetime
+  label: Updated
+  description: ''
+  config:
+    required: true
+    date_format: MM-DD-YYYY
+    time_format: 
+    display_utc: false
+    export_format: MM-DD-YYYY
+- type: list
+  name: tags
+  label: Tags
+  config:
+    use_select: false
+- type: textarea
+  name: subtitle
+  label: Subtitle
+- type: file
+  name: cover_image
+  label: Cover Image
+- type: boolean
+  name: featured
+  label: Featured
