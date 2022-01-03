@@ -5,12 +5,13 @@ cover_image: ../../src/images/water.jpg
 subtitle: Building an adaptive, autonomous design practice at Manhattan Hydraulics
 ---
 
-<!--
 import { graphql } from "gatsby";
 import Layout from "../../../components/Layout";
 import NoteCard from "../../../components/NoteCard";
 import EssayCard from "../../../components/EssayCard";
 import Card from "../../../components/Card";
+
+{ 2 + 2 }
 
 <Card animate="true" className="min-h-64 w-full">
   {props.pageContext.frontmatter.cover_image && (
@@ -42,7 +43,7 @@ export const pageQuery = graphql`
     notes: allBrainNote(
       filter: {
         title: {
-          in: ["Critique is chicken soup for the designer's soul", "MOOCs"]
+          in: ["Critique is important, but not always from clients.", "MOOCs"]
         }
       }
     ) {
@@ -71,4 +72,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`; -->
+`;

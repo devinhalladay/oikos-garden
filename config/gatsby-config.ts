@@ -97,6 +97,7 @@ const plugins: GatsbyConfig["plugins"] = [
     options: {
       name: "pages",
       path: `./src/pages/`,
+      ignore: [`./src/pages/assemblages/`],
     },
   },
   // All my essays are stored in this folder
@@ -119,7 +120,7 @@ const plugins: GatsbyConfig["plugins"] = [
   {
     resolve: `gatsby-source-filesystem`,
     options: {
-      path: `./content/assemblages`,
+      path: `./src/pages/assemblages`,
       name: "assemblages",
     },
   },

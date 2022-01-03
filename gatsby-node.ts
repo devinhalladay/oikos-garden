@@ -95,7 +95,7 @@ const createPages: GatsbyNode["createPages"] = async ({
   if (allAssemblages.length > 0) {
     allAssemblages.forEach((a) => {
       createPage({
-        path: a.frontmatter.slug,
+        path: `/assemblages/${a.frontmatter.slug}`,
         component: templates.assemblage,
         context: {
           id: a.id,

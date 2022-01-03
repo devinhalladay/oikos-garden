@@ -22,7 +22,7 @@ const IndexPage: React.FC<IndexPage> = ({
 }) => {
   return (
     <Layout wide>
-      <section className="w-full mr-8">
+      {/* <section className="w-full mr-8">
         <SectionHeading
           title="Assemblages"
           icon={<GiMeshNetwork size="2rem" />}
@@ -47,7 +47,7 @@ const IndexPage: React.FC<IndexPage> = ({
             return <AssemblageCard node={node} />;
           })}
         </div>
-      </section>
+      </section> */}
       <div className="flex flex-col gap-12 lg:flex-row mb-12 border-gray-100 border-b-8">
         <section className="w-full lg:w-2/3 border-gray-100 border-b-8 sm:border-b-0 pb-12">
           <SectionHeading
@@ -145,7 +145,7 @@ export default IndexPage;
 export const pageQuery = graphql`
   query {
     assemblagesQuery: allMdx(
-      filter: { fileAbsolutePath: { regex: "/content/assemblages/" } }
+      filter: { fileAbsolutePath: { regex: "/pages/assemblages/" } }
     ) {
       edges {
         node {

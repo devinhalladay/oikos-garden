@@ -137,7 +137,7 @@ export const pageQuery = graphql`
   query ($tag: String) {
     assemblagesQuery: allMdx(
       filter: {
-        fileAbsolutePath: { regex: "/content/assemblages/" }
+        fileAbsolutePath: { regex: "/pages/assemblages/" }
         frontmatter: { tags: { in: [$tag] } }
       }
     ) {
