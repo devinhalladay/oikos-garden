@@ -12,7 +12,7 @@ interface NoteCard {
 const NoteCard: FC<NoteCard> = ({ note }) => {
   return (
     <Link to={`/notes/${note.slug}`} className="block">
-      <div className="indent-0 border-b border-gray-300 font-sans h-full pb-2 mb-2 w-full flex-col overflow-hidden">
+      <div className="indent-0 border-b border-gray-300 border-dashed font-sans h-full pb-2 mb-2 w-full flex-col overflow-hidden">
         <small className="text-gray-500 font-medium leading-none block mb-2">
           {note.childMdx.frontmatter.date}
         </small>
