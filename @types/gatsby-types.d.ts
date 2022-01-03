@@ -265,7 +265,6 @@ type Site = Node & {
   readonly port: Maybe<Scalars['Int']>;
   readonly host: Maybe<Scalars['String']>;
   readonly flags: Maybe<SiteFlags>;
-  readonly proxy: Maybe<ReadonlyArray<Maybe<SiteProxy>>>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly jsxRuntime: Maybe<Scalars['String']>;
@@ -287,11 +286,6 @@ type SiteFlags = {
   readonly FAST_DEV: Maybe<Scalars['Boolean']>;
   readonly DEV_SSR: Maybe<Scalars['Boolean']>;
   readonly PARALLEL_SOURCING: Maybe<Scalars['Boolean']>;
-};
-
-type SiteProxy = {
-  readonly prefix: Maybe<Scalars['String']>;
-  readonly url: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadata = {
@@ -1086,7 +1080,6 @@ type Query_siteArgs = {
   port: Maybe<IntQueryOperatorInput>;
   host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
-  proxy: Maybe<SiteProxyFilterListInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -2450,15 +2443,6 @@ type SiteFlagsFilterInput = {
   readonly PARALLEL_SOURCING: Maybe<BooleanQueryOperatorInput>;
 };
 
-type SiteProxyFilterListInput = {
-  readonly elemMatch: Maybe<SiteProxyFilterInput>;
-};
-
-type SiteProxyFilterInput = {
-  readonly prefix: Maybe<StringQueryOperatorInput>;
-  readonly url: Maybe<StringQueryOperatorInput>;
-};
-
 type SiteConnection = {
   readonly totalCount: Scalars['Int'];
   readonly edges: ReadonlyArray<SiteEdge>;
@@ -2522,9 +2506,6 @@ type SiteFieldsEnum =
   | 'flags.FAST_DEV'
   | 'flags.DEV_SSR'
   | 'flags.PARALLEL_SOURCING'
-  | 'proxy'
-  | 'proxy.prefix'
-  | 'proxy.url'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2662,7 +2643,6 @@ type SiteFilterInput = {
   readonly port: Maybe<IntQueryOperatorInput>;
   readonly host: Maybe<StringQueryOperatorInput>;
   readonly flags: Maybe<SiteFlagsFilterInput>;
-  readonly proxy: Maybe<SiteProxyFilterListInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -5929,6 +5909,23 @@ type BrainNoteWithRefsBySlugQuery = { readonly brainNote: Maybe<(
     )>>> }
   )> };
 
+type AssemblageFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'subtitle'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+  ) };
+
+type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+type AssemblageBySlugQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+type AssemblageBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<(
+      Pick<Mdx, 'id' | 'excerpt' | 'body' | 'slug'>
+      & AssemblageFrontmatterFragment
+    )> } };
+
 type EssayFragment = (
   Pick<Mdx, 'id' | 'slug' | 'body'>
   & EssayFrontmatterFragment
@@ -5962,19 +5959,12 @@ type WorkFrontmatterFragment = { readonly frontmatter: (
     & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
   ) };
 
-type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
-
 type WorksBySlugQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
 type WorksBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<WorkFragment> } };
-
-type AssemblageFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'subtitle'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-  ) };
 
 type EssayPreviewFragment = (
   Pick<Mdx, 'id' | 'slug' | 'excerpt'>
@@ -6052,24 +6042,6 @@ type pageUsersdevinCodeSitesoikosGardensrcpagesworksJsx242300695Query = { readon
         & WorkFrontmatterFragment
       ) }> } };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_1_Query = { readonly brainNotes: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<BrainNote, 'title' | 'slug'>
-        & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'subtitle' | 'published' | 'tags'> }> }
-      ) }> } };
-
-type AssemblageBySlugQueryVariables = Exact<{
-  id: Scalars['String'];
-}>;
-
-
-type AssemblageBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<(
-      Pick<Mdx, 'id' | 'excerpt' | 'body' | 'slug'>
-      & AssemblageFrontmatterFragment
-    )> } };
-
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyImageSharpFixed_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -6093,6 +6065,14 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_1_Query = { readonly brainNotes: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<BrainNote, 'title' | 'slug'>
+        & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'subtitle' | 'published' | 'tags'> }> }
+      ) }> } };
 
 type BrainNoteBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -6199,7 +6179,6 @@ export type ResolversTypes = {
   Directory: ResolverTypeWrapper<Directory>;
   Site: ResolverTypeWrapper<Site>;
   SiteFlags: ResolverTypeWrapper<SiteFlags>;
-  SiteProxy: ResolverTypeWrapper<SiteProxy>;
   SiteSiteMetadata: ResolverTypeWrapper<SiteSiteMetadata>;
   SiteSiteMetadataOrganization: ResolverTypeWrapper<SiteSiteMetadataOrganization>;
   SiteFunction: ResolverTypeWrapper<SiteFunction>;
@@ -6295,8 +6274,6 @@ export type ResolversTypes = {
   SocialFilterInput: SocialFilterInput;
   SiteSiteMetadataOrganizationFilterInput: SiteSiteMetadataOrganizationFilterInput;
   SiteFlagsFilterInput: SiteFlagsFilterInput;
-  SiteProxyFilterListInput: SiteProxyFilterListInput;
-  SiteProxyFilterInput: SiteProxyFilterInput;
   SiteConnection: ResolverTypeWrapper<SiteConnection>;
   SiteEdge: ResolverTypeWrapper<SiteEdge>;
   SiteFieldsEnum: SiteFieldsEnum;
@@ -6381,7 +6358,6 @@ export type ResolversParentTypes = {
   Directory: Directory;
   Site: Site;
   SiteFlags: SiteFlags;
-  SiteProxy: SiteProxy;
   SiteSiteMetadata: SiteSiteMetadata;
   SiteSiteMetadataOrganization: SiteSiteMetadataOrganization;
   SiteFunction: SiteFunction;
@@ -6462,8 +6438,6 @@ export type ResolversParentTypes = {
   SocialFilterInput: SocialFilterInput;
   SiteSiteMetadataOrganizationFilterInput: SiteSiteMetadataOrganizationFilterInput;
   SiteFlagsFilterInput: SiteFlagsFilterInput;
-  SiteProxyFilterListInput: SiteProxyFilterListInput;
-  SiteProxyFilterInput: SiteProxyFilterInput;
   SiteConnection: SiteConnection;
   SiteEdge: SiteEdge;
   SiteGroupConnection: SiteGroupConnection;
@@ -6683,7 +6657,6 @@ export type SiteResolvers<ContextType = GatsbyResolverContext, ParentType extend
   port?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
   host?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   flags?: Resolver<Maybe<ResolversTypes['SiteFlags']>, ParentType, ContextType>;
-  proxy?: Resolver<Maybe<Array<Maybe<ResolversTypes['SiteProxy']>>>, ParentType, ContextType>;
   polyfill?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   pathPrefix?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   jsxRuntime?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -6698,12 +6671,6 @@ export type SiteFlagsResolvers<ContextType = GatsbyResolverContext, ParentType e
   FAST_DEV?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   DEV_SSR?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   PARALLEL_SOURCING?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type SiteProxyResolvers<ContextType = GatsbyResolverContext, ParentType extends ResolversParentTypes['SiteProxy'] = ResolversParentTypes['SiteProxy']> = {
-  prefix?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -7196,7 +7163,7 @@ export type SiteEdgeResolvers<ContextType = GatsbyResolverContext, ParentType ex
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type SiteFieldsEnumResolvers = { buildTime: 'undefined', siteMetadata___title: 'siteMetadata.title', siteMetadata___description: 'siteMetadata.description', siteMetadata___author___name: 'siteMetadata.author.name', siteMetadata___author___summary: 'siteMetadata.author.summary', siteMetadata___siteUrl: 'siteMetadata.siteUrl', siteMetadata___social___twitter: 'siteMetadata.social.twitter', siteMetadata___twitterHandle: 'siteMetadata.twitterHandle', siteMetadata___keywords: 'siteMetadata.keywords', siteMetadata___canonicalUrl: 'siteMetadata.canonicalUrl', siteMetadata___organization___name: 'siteMetadata.organization.name', siteMetadata___organization___url: 'siteMetadata.organization.url', port: 'undefined', host: 'undefined', flags___FAST_DEV: 'flags.FAST_DEV', flags___DEV_SSR: 'flags.DEV_SSR', flags___PARALLEL_SOURCING: 'flags.PARALLEL_SOURCING', proxy: 'undefined', proxy___prefix: 'proxy.prefix', proxy___url: 'proxy.url', polyfill: 'undefined', pathPrefix: 'undefined', jsxRuntime: 'undefined', id: 'undefined', parent___id: 'parent.id', parent___parent___id: 'parent.parent.id', parent___parent___parent___id: 'parent.parent.parent.id', parent___parent___parent___children: 'parent.parent.parent.children', parent___parent___children: 'parent.parent.children', parent___parent___children___id: 'parent.parent.children.id', parent___parent___children___children: 'parent.parent.children.children', parent___parent___internal___content: 'parent.parent.internal.content', parent___parent___internal___contentDigest: 'parent.parent.internal.contentDigest', parent___parent___internal___description: 'parent.parent.internal.description', parent___parent___internal___fieldOwners: 'parent.parent.internal.fieldOwners', parent___parent___internal___ignoreType: 'parent.parent.internal.ignoreType', parent___parent___internal___mediaType: 'parent.parent.internal.mediaType', parent___parent___internal___owner: 'parent.parent.internal.owner', parent___parent___internal___type: 'parent.parent.internal.type', parent___children: 'parent.children', parent___children___id: 'parent.children.id', parent___children___parent___id: 'parent.children.parent.id', parent___children___parent___children: 'parent.children.parent.children', parent___children___children: 'parent.children.children', parent___children___children___id: 'parent.children.children.id', parent___children___children___children: 'parent.children.children.children', parent___children___internal___content: 'parent.children.internal.content', parent___children___internal___contentDigest: 'parent.children.internal.contentDigest', parent___children___internal___description: 'parent.children.internal.description', parent___children___internal___fieldOwners: 'parent.children.internal.fieldOwners', parent___children___internal___ignoreType: 'parent.children.internal.ignoreType', parent___children___internal___mediaType: 'parent.children.internal.mediaType', parent___children___internal___owner: 'parent.children.internal.owner', parent___children___internal___type: 'parent.children.internal.type', parent___internal___content: 'parent.internal.content', parent___internal___contentDigest: 'parent.internal.contentDigest', parent___internal___description: 'parent.internal.description', parent___internal___fieldOwners: 'parent.internal.fieldOwners', parent___internal___ignoreType: 'parent.internal.ignoreType', parent___internal___mediaType: 'parent.internal.mediaType', parent___internal___owner: 'parent.internal.owner', parent___internal___type: 'parent.internal.type', children: 'undefined', children___id: 'children.id', children___parent___id: 'children.parent.id', children___parent___parent___id: 'children.parent.parent.id', children___parent___parent___children: 'children.parent.parent.children', children___parent___children: 'children.parent.children', children___parent___children___id: 'children.parent.children.id', children___parent___children___children: 'children.parent.children.children', children___parent___internal___content: 'children.parent.internal.content', children___parent___internal___contentDigest: 'children.parent.internal.contentDigest', children___parent___internal___description: 'children.parent.internal.description', children___parent___internal___fieldOwners: 'children.parent.internal.fieldOwners', children___parent___internal___ignoreType: 'children.parent.internal.ignoreType', children___parent___internal___mediaType: 'children.parent.internal.mediaType', children___parent___internal___owner: 'children.parent.internal.owner', children___parent___internal___type: 'children.parent.internal.type', children___children: 'children.children', children___children___id: 'children.children.id', children___children___parent___id: 'children.children.parent.id', children___children___parent___children: 'children.children.parent.children', children___children___children: 'children.children.children', children___children___children___id: 'children.children.children.id', children___children___children___children: 'children.children.children.children', children___children___internal___content: 'children.children.internal.content', children___children___internal___contentDigest: 'children.children.internal.contentDigest', children___children___internal___description: 'children.children.internal.description', children___children___internal___fieldOwners: 'children.children.internal.fieldOwners', children___children___internal___ignoreType: 'children.children.internal.ignoreType', children___children___internal___mediaType: 'children.children.internal.mediaType', children___children___internal___owner: 'children.children.internal.owner', children___children___internal___type: 'children.children.internal.type', children___internal___content: 'children.internal.content', children___internal___contentDigest: 'children.internal.contentDigest', children___internal___description: 'children.internal.description', children___internal___fieldOwners: 'children.internal.fieldOwners', children___internal___ignoreType: 'children.internal.ignoreType', children___internal___mediaType: 'children.internal.mediaType', children___internal___owner: 'children.internal.owner', children___internal___type: 'children.internal.type', internal___content: 'internal.content', internal___contentDigest: 'internal.contentDigest', internal___description: 'internal.description', internal___fieldOwners: 'internal.fieldOwners', internal___ignoreType: 'internal.ignoreType', internal___mediaType: 'internal.mediaType', internal___owner: 'internal.owner', internal___type: 'internal.type' };
+export type SiteFieldsEnumResolvers = { buildTime: 'undefined', siteMetadata___title: 'siteMetadata.title', siteMetadata___description: 'siteMetadata.description', siteMetadata___author___name: 'siteMetadata.author.name', siteMetadata___author___summary: 'siteMetadata.author.summary', siteMetadata___siteUrl: 'siteMetadata.siteUrl', siteMetadata___social___twitter: 'siteMetadata.social.twitter', siteMetadata___twitterHandle: 'siteMetadata.twitterHandle', siteMetadata___keywords: 'siteMetadata.keywords', siteMetadata___canonicalUrl: 'siteMetadata.canonicalUrl', siteMetadata___organization___name: 'siteMetadata.organization.name', siteMetadata___organization___url: 'siteMetadata.organization.url', port: 'undefined', host: 'undefined', flags___FAST_DEV: 'flags.FAST_DEV', flags___DEV_SSR: 'flags.DEV_SSR', flags___PARALLEL_SOURCING: 'flags.PARALLEL_SOURCING', polyfill: 'undefined', pathPrefix: 'undefined', jsxRuntime: 'undefined', id: 'undefined', parent___id: 'parent.id', parent___parent___id: 'parent.parent.id', parent___parent___parent___id: 'parent.parent.parent.id', parent___parent___parent___children: 'parent.parent.parent.children', parent___parent___children: 'parent.parent.children', parent___parent___children___id: 'parent.parent.children.id', parent___parent___children___children: 'parent.parent.children.children', parent___parent___internal___content: 'parent.parent.internal.content', parent___parent___internal___contentDigest: 'parent.parent.internal.contentDigest', parent___parent___internal___description: 'parent.parent.internal.description', parent___parent___internal___fieldOwners: 'parent.parent.internal.fieldOwners', parent___parent___internal___ignoreType: 'parent.parent.internal.ignoreType', parent___parent___internal___mediaType: 'parent.parent.internal.mediaType', parent___parent___internal___owner: 'parent.parent.internal.owner', parent___parent___internal___type: 'parent.parent.internal.type', parent___children: 'parent.children', parent___children___id: 'parent.children.id', parent___children___parent___id: 'parent.children.parent.id', parent___children___parent___children: 'parent.children.parent.children', parent___children___children: 'parent.children.children', parent___children___children___id: 'parent.children.children.id', parent___children___children___children: 'parent.children.children.children', parent___children___internal___content: 'parent.children.internal.content', parent___children___internal___contentDigest: 'parent.children.internal.contentDigest', parent___children___internal___description: 'parent.children.internal.description', parent___children___internal___fieldOwners: 'parent.children.internal.fieldOwners', parent___children___internal___ignoreType: 'parent.children.internal.ignoreType', parent___children___internal___mediaType: 'parent.children.internal.mediaType', parent___children___internal___owner: 'parent.children.internal.owner', parent___children___internal___type: 'parent.children.internal.type', parent___internal___content: 'parent.internal.content', parent___internal___contentDigest: 'parent.internal.contentDigest', parent___internal___description: 'parent.internal.description', parent___internal___fieldOwners: 'parent.internal.fieldOwners', parent___internal___ignoreType: 'parent.internal.ignoreType', parent___internal___mediaType: 'parent.internal.mediaType', parent___internal___owner: 'parent.internal.owner', parent___internal___type: 'parent.internal.type', children: 'undefined', children___id: 'children.id', children___parent___id: 'children.parent.id', children___parent___parent___id: 'children.parent.parent.id', children___parent___parent___children: 'children.parent.parent.children', children___parent___children: 'children.parent.children', children___parent___children___id: 'children.parent.children.id', children___parent___children___children: 'children.parent.children.children', children___parent___internal___content: 'children.parent.internal.content', children___parent___internal___contentDigest: 'children.parent.internal.contentDigest', children___parent___internal___description: 'children.parent.internal.description', children___parent___internal___fieldOwners: 'children.parent.internal.fieldOwners', children___parent___internal___ignoreType: 'children.parent.internal.ignoreType', children___parent___internal___mediaType: 'children.parent.internal.mediaType', children___parent___internal___owner: 'children.parent.internal.owner', children___parent___internal___type: 'children.parent.internal.type', children___children: 'children.children', children___children___id: 'children.children.id', children___children___parent___id: 'children.children.parent.id', children___children___parent___children: 'children.children.parent.children', children___children___children: 'children.children.children', children___children___children___id: 'children.children.children.id', children___children___children___children: 'children.children.children.children', children___children___internal___content: 'children.children.internal.content', children___children___internal___contentDigest: 'children.children.internal.contentDigest', children___children___internal___description: 'children.children.internal.description', children___children___internal___fieldOwners: 'children.children.internal.fieldOwners', children___children___internal___ignoreType: 'children.children.internal.ignoreType', children___children___internal___mediaType: 'children.children.internal.mediaType', children___children___internal___owner: 'children.children.internal.owner', children___children___internal___type: 'children.children.internal.type', children___internal___content: 'children.internal.content', children___internal___contentDigest: 'children.internal.contentDigest', children___internal___description: 'children.internal.description', children___internal___fieldOwners: 'children.internal.fieldOwners', children___internal___ignoreType: 'children.internal.ignoreType', children___internal___mediaType: 'children.internal.mediaType', children___internal___owner: 'children.internal.owner', children___internal___type: 'children.internal.type', internal___content: 'internal.content', internal___contentDigest: 'internal.contentDigest', internal___description: 'internal.description', internal___fieldOwners: 'internal.fieldOwners', internal___ignoreType: 'internal.ignoreType', internal___mediaType: 'internal.mediaType', internal___owner: 'internal.owner', internal___type: 'internal.type' };
 
 export type SiteGroupConnectionResolvers<ContextType = GatsbyResolverContext, ParentType extends ResolversParentTypes['SiteGroupConnection'] = ResolversParentTypes['SiteGroupConnection']> = {
   totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -7517,7 +7484,6 @@ export type Resolvers<ContextType = GatsbyResolverContext> = {
   Directory?: DirectoryResolvers<ContextType>;
   Site?: SiteResolvers<ContextType>;
   SiteFlags?: SiteFlagsResolvers<ContextType>;
-  SiteProxy?: SiteProxyResolvers<ContextType>;
   SiteSiteMetadata?: SiteSiteMetadataResolvers<ContextType>;
   SiteSiteMetadataOrganization?: SiteSiteMetadataOrganizationResolvers<ContextType>;
   SiteFunction?: SiteFunctionResolvers<ContextType>;

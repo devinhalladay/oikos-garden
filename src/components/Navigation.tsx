@@ -1,6 +1,13 @@
 import { Link } from "gatsby";
 import React, { FC } from "react";
 
+import {
+  GiScrollQuill,
+  GiNotebook,
+  GiTreeBranch,
+  GiMagnifyingGlass,
+} from "react-icons/gi";
+
 const Navigation: FC = ({ children }) => {
   return (
     <nav className="block md:sticky md:top-[72px] h-content">
@@ -76,8 +83,10 @@ const Navigation: FC = ({ children }) => {
             to="/essays"
             ariaLabel="Go to essays"
             activeClassName="text-red font-bold"
+            className="flex items-center gap-[6px]"
           >
-            Essays
+            <GiScrollQuill />
+            <span>Essays</span>
           </Link>
         </li>
         <li className="mb-2">
@@ -85,8 +94,10 @@ const Navigation: FC = ({ children }) => {
             to="/notes"
             ariaLabel="Go to notes"
             activeClassName="text-red font-bold"
+            className="flex items-center gap-[6px]"
           >
-            Notes
+            <GiNotebook />
+            <span>Notes</span>
           </Link>
         </li>
         {/* <li className="mb-2">
@@ -102,8 +113,10 @@ const Navigation: FC = ({ children }) => {
             to="/tags"
             ariaLabel="View site topics"
             activeClassName="text-red font-bold"
+            className="flex items-center gap-[6px]"
           >
-            Concepts
+            <GiTreeBranch />
+            <span>Concepts</span>
           </Link>
         </li>
         <li className="mb-2">
@@ -113,18 +126,7 @@ const Navigation: FC = ({ children }) => {
             activeClassName="text-red font-bold"
             className="flex items-center gap-[6px]"
           >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 21 21"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              className="mt-[3px]"
-            >
-              <circle cx="9" cy="9" r="8"></circle>
-              <line x1="21" y1="21" x2="15" y2="15"></line>
-            </svg>
+            <GiMagnifyingGlass />
             <span className="leading-normal-">Search</span>
           </Link>
         </li>

@@ -115,6 +115,14 @@ const plugins: GatsbyConfig["plugins"] = [
       name: "works",
     },
   },
+  // Assemblages
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `./content/assemblages`,
+      name: "assemblages",
+    },
+  },
   // My notes and wikilinks are parsed by this plugin
   {
     resolve: `@aengusm/gatsby-theme-brain`,

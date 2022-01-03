@@ -1,5 +1,7 @@
 import { graphql } from "gatsby";
 import * as React from "react";
+import { GiMeshNetwork, GiNotebook, GiScrollQuill } from "react-icons/gi";
+import AssemblageCard from "../components/AssemblageCard";
 
 import EssayCard from "../components/EssayCard";
 import Layout from "../components/Layout";
@@ -20,38 +22,39 @@ const IndexPage: React.FC<IndexPage> = ({
 }) => {
   return (
     <Layout wide>
+      <section className="w-full mr-8">
+        <SectionHeading
+          title="Assemblages"
+          icon={<GiMeshNetwork size="2rem" />}
+          subhead={
+            <>
+              Thematic compositions of notes, essays, and works. Similar to{" "}
+              <a
+                href="https://tomcritchlow.com/2019/07/17/blogchains/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium"
+              >
+                blogchains
+              </a>
+              .
+            </>
+          }
+        />
+        <div className="grid grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 pl-0 list-none gap-4">
+          {assemblagesQuery.edges.map((edge) => {
+            const { node } = edge;
+            return <AssemblageCard node={node} />;
+          })}
+        </div>
+      </section>
       <div className="flex flex-col gap-12 lg:flex-row mb-12 border-gray-100 border-b-8">
-        {/* <section className="w-full xl:w-2/3 mr-8">
-          <SectionHeading
-            title="Assemblages"
-            subhead={
-              <>
-                Thematic compositions of notes, essays, and works.
-                Similar to{' '}
-                <a
-                  href="https://tomcritchlow.com/2019/07/17/blogchains/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium">
-                  blogchains
-                </a>
-                .
-              </>
-            }
-          />
-          <div className="grid md:grid-cols-2 pl-0 list-none gap-4 gap">
-            {assemblagesQuery.edges.map((edge) => {
-              const { node } = edge;
-              return <AssemblageCard node={node} />;
-            })}
-          </div>
-        </section> */}
-
         <section className="w-full lg:w-2/3 border-gray-100 border-b-8 sm:border-b-0 pb-12">
           <SectionHeading
             title="Featured Essays"
             subhead="Long-form writing on topics ranging from design and technology, to political theory, to art history, and beyond."
             link="/essays"
+            icon={<GiScrollQuill size="2rem" />}
           />
           <div className="flex flex-col gap-narrow">
             {essaysQuery.nodes.map((node) => (
@@ -66,6 +69,7 @@ const IndexPage: React.FC<IndexPage> = ({
             title="Recent Notes"
             subhead="Rolling, work-in-progress notes, images, clippings, and
               threads."
+            icon={<GiNotebook size="2rem" />}
           />
           <div className="gap-narrow flex flex-col">
             {notesQuery.nodes.map((note) => (

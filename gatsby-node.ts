@@ -16,6 +16,7 @@ const createPages: GatsbyNode["createPages"] = async ({
     essay: path.resolve(`./src/templates/essay.js`),
     tag: path.resolve("./src/templates/tag.js"),
     work: path.resolve("./src/templates/work.js"),
+    assemblage: path.resolve("./src/templates/assemblage.js"),
   };
 
   // Query all the posts
@@ -25,6 +26,18 @@ const createPages: GatsbyNode["createPages"] = async ({
         essays: allMdx(
           limit: 1000
           filter: { fileAbsolutePath: { regex: "/content/essays/" } }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              slug
+            }
+          }
+        }
+
+        assemblages: allMdx(
+          limit: 1000
+          filter: { fileAbsolutePath: { regex: "/content/assemblages/" } }
         ) {
           nodes {
             id
@@ -76,6 +89,20 @@ const createPages: GatsbyNode["createPages"] = async ({
   const allTags = [...data.tags.group, ...data.allBrainNote.group];
 
   const allWorks = data.works.nodes;
+
+  const allAssemblages = data.assemblages.nodes;
+
+  if (allAssemblages.length > 0) {
+    allAssemblages.forEach((a) => {
+      createPage({
+        path: a.frontmatter.slug,
+        component: templates.assemblage,
+        context: {
+          id: a.id,
+        },
+      });
+    });
+  }
 
   if (allEssays.length > 0) {
     allEssays.forEach((essay, index) => {
