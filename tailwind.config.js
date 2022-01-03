@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './public/**/*.html',
     './src/**/*.{js,jsx,ts,tsx,mdx}',
+    './content/**/*.{md,mdx}',
   ],
   theme: {
     textIndent: (theme) => theme('spacing'),

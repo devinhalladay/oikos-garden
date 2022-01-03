@@ -1,9 +1,10 @@
-import { graphql, Link } from 'gatsby';
-import * as React from 'react';
-import { Helmet } from 'react-helmet';
-import Layout from '../components/Layout';
-import NoteCard from '../components/NoteCard';
-import PageHeading from '../components/PageHeading';
+import { graphql, Link } from "gatsby";
+import * as React from "react";
+import { Helmet } from "react-helmet";
+import { GiNotebook } from "react-icons/gi";
+import Layout from "../components/Layout";
+import NoteCard from "../components/NoteCard";
+import PageHeading from "../components/PageHeading";
 
 const NotesIndex = ({ data: { brainNotes } }) => {
   const { edges } = brainNotes;
@@ -11,7 +12,11 @@ const NotesIndex = ({ data: { brainNotes } }) => {
   return (
     <Layout wide>
       <Helmet title="Notes • Infinite Caesura" />
-      <PageHeading title="Working Notes" />
+      <PageHeading
+        title="Working Notes"
+        icon={<GiNotebook size="2rem" />}
+        subtitle="Rolling, work-in-progress notes, images, clippings, and threads."
+      />
       <section>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {edges.map(({ node }) => {

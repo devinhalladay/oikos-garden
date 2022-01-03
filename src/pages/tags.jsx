@@ -2,6 +2,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 // Components
 import { Helmet } from 'react-helmet';
+import { GiTreeBranch } from 'react-icons/gi';
 import Layout from '../components/Layout';
 import PageHeading from '../components/PageHeading';
 import SectionHeading from '../components/SectionHeading';
@@ -32,6 +33,7 @@ const TagsIndex = ({
       <Helmet title="Concepts • Infinite Caesura" />
       <PageHeading
         title="Concepts Index"
+        icon={<GiTreeBranch size="2rem" />}
         subtitle={
           <>
             Entries in this wiki are tagged by{' '}
