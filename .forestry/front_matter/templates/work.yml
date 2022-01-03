@@ -1,0 +1,28 @@
+---
+label: Work
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: list
+  name: tags
+  label: tags
+- type: textarea
+  name: subtitle
+  label: subtitle
+- type: file
+  name: cover_image
+  label: cover_image
+- type: text
+  name: filters
+  label: filters
+- type: boolean
+  name: featured
+  label: featured
+- type: text
+  name: categories
+  label: categories
+- type: datetime
+  name: slug
+  label: slug
