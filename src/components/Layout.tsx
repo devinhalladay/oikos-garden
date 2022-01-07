@@ -61,9 +61,8 @@ const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-LVPGF72CY3', {
-              page_path: window.location.pathname,
-            });
+
+            gtag('config', 'G-LVPGF72CY3');
           `,
           }}
         />
