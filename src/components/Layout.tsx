@@ -51,13 +51,14 @@ const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
           content="https://infinitecaesura.com/images/seo-image.png"
         />
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LVPGF72CY3"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-LVPGF72CY3"
+        ></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-LVPGF72CY3');
+          window.dataLayer = window.dataLayer || []; function gtag()
+          {dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', 'G-LVPGF72CY3');
         </script>
       </Helmet>
 

@@ -902,7 +902,7 @@ type Frontmatter = {
   readonly filters: Maybe<Scalars['String']>;
   readonly categories: Maybe<Scalars['String']>;
   readonly published: Maybe<Scalars['Boolean']>;
-  readonly updated: Maybe<Scalars['Date']>;
+  readonly updated: Maybe<Scalars['String']>;
   readonly layout: Maybe<Scalars['String']>;
   readonly external_url: Maybe<Scalars['String']>;
   readonly epistemic_status: Maybe<Scalars['String']>;
@@ -915,14 +915,6 @@ type Frontmatter = {
 
 
 type Frontmatter_dateArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
-};
-
-
-type Frontmatter_updatedArgs = {
   formatString: Maybe<Scalars['String']>;
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
@@ -1470,7 +1462,7 @@ type FrontmatterFilterInput = {
   readonly filters: Maybe<StringQueryOperatorInput>;
   readonly categories: Maybe<StringQueryOperatorInput>;
   readonly published: Maybe<BooleanQueryOperatorInput>;
-  readonly updated: Maybe<DateQueryOperatorInput>;
+  readonly updated: Maybe<StringQueryOperatorInput>;
   readonly layout: Maybe<StringQueryOperatorInput>;
   readonly external_url: Maybe<StringQueryOperatorInput>;
   readonly epistemic_status: Maybe<StringQueryOperatorInput>;
@@ -5876,6 +5868,55 @@ type BrainNoteSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_1_Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & AssemblageFrontmatterFragment
+      ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & WorkFrontmatterFragment
+      ) }> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
+      Pick<BrainNote, 'id' | 'slug' | 'title'>
+      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'tags'> }> }
+    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
+
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_2_Query = { readonly allMdx: { readonly group: ReadonlyArray<(
+      Pick<MdxGroupConnection, 'totalCount'>
+      & { tag: MdxGroupConnection['fieldValue'] }
+    )> }, readonly allBrainNote: { readonly group: ReadonlyArray<(
+      Pick<BrainNoteGroupConnection, 'totalCount'>
+      & { tag: BrainNoteGroupConnection['fieldValue'] }
+    )> } };
+
+type EssayFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'slug' | 'date' | 'subtitle' | 'tags'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> }
+  ) };
+
+type ReadingTimeFragment = { readonly fields: Maybe<{ readonly readingTime: Maybe<Pick<MdxFieldsReadingTime, 'text'>> }> };
+
+type EssayPreviewFragment = (
+  Pick<Mdx, 'id' | 'slug' | 'excerpt'>
+  & EssayFrontmatterFragment
+  & ReadingTimeFragment
+);
+
+type EssayFragment = (
+  Pick<Mdx, 'id' | 'slug' | 'body'>
+  & EssayFrontmatterFragment
+  & ReadingTimeFragment
+);
+
+type AssemblageFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'subtitle'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+  ) };
+
 type BrainNoteWithRefsBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
@@ -5901,35 +5942,10 @@ type BrainNoteWithRefsBySlugQuery = { readonly brainNote: Maybe<(
     )>>> }
   )> };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_1_Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
-
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_2_Query = { readonly assemblagesQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & AssemblageFrontmatterFragment
-      ) }> }, readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & WorkFrontmatterFragment
-      ) }> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
-      Pick<BrainNote, 'id' | 'slug' | 'title'>
-      & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'tags'> }> }
-    )> }, readonly essaysQuery: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
-
 type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_3_Query = { readonly allMdx: { readonly group: ReadonlyArray<(
-      Pick<MdxGroupConnection, 'totalCount'>
-      & { tag: MdxGroupConnection['fieldValue'] }
-    )> }, readonly allBrainNote: { readonly group: ReadonlyArray<(
-      Pick<BrainNoteGroupConnection, 'totalCount'>
-      & { tag: BrainNoteGroupConnection['fieldValue'] }
-    )> } };
+type Unnamed_3_Query = { readonly allMdx: { readonly nodes: ReadonlyArray<EssayPreviewFragment> } };
 
 type allNotesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5939,38 +5955,12 @@ type allNotesQuery = { readonly brainNotes: { readonly edges: ReadonlyArray<{ re
         & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'subtitle' | 'published' | 'tags'> }> }
       ) }> } };
 
-type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_4_Query = { readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<Mdx, 'id' | 'slug'>
-        & WorkFrontmatterFragment
-      ) }> } };
-
-type WorkFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'tags' | 'subtitle' | 'slug'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-  ) };
-
-type WorkFragment = (
-  Pick<Mdx, 'id' | 'slug' | 'body'>
-  & WorkFrontmatterFragment
-);
-
-type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_5_Query = { readonly brainNotes: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<BrainNote, 'title' | 'slug'>
-        & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'subtitle' | 'published' | 'tags'> }> }
-      ) }> } };
-
-type Unnamed_6_QueryVariables = Exact<{
+type Unnamed_4_QueryVariables = Exact<{
   tag: Maybe<Scalars['String']>;
 }>;
 
 
-type Unnamed_6_Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyArray<(
+type Unnamed_4_Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyArray<(
       Pick<Mdx, 'id' | 'slug'>
       & AssemblageFrontmatterFragment
     )> }, readonly notesQuery: { readonly nodes: ReadonlyArray<(
@@ -5984,20 +5974,38 @@ type Unnamed_6_Query = { readonly assemblagesQuery: { readonly nodes: ReadonlyAr
       & { tag: BrainNoteGroupConnection['fieldValue'] }
     )> } };
 
-type AssemblageFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'subtitle'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
-  ) };
-
-type BlogPostBySlugQueryVariables = Exact<{
+type WorksBySlugQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<(
-      Pick<Mdx, 'tableOfContents'>
-      & EssayFragment
-    )> } };
+type WorksBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<WorkFragment> } };
+
+type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_5_Query = { readonly worksQuery: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<Mdx, 'id' | 'slug'>
+        & WorkFrontmatterFragment
+      ) }> } };
+
+type Unnamed_6_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_6_Query = { readonly brainNotes: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<BrainNote, 'title' | 'slug'>
+        & { readonly childMdx: Maybe<{ readonly frontmatter: Pick<Frontmatter, 'date' | 'subtitle' | 'published' | 'tags'> }> }
+      ) }> } };
+
+type WorkFrontmatterFragment = { readonly frontmatter: (
+    Pick<Frontmatter, 'title' | 'tags' | 'subtitle' | 'slug'>
+    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> }
+  ) };
+
+type WorkFragment = (
+  Pick<Mdx, 'id' | 'slug' | 'body'>
+  & WorkFrontmatterFragment
+);
 
 type AssemblageBySlugQueryVariables = Exact<{
   id: Scalars['String'];
@@ -6008,25 +6016,6 @@ type AssemblageBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: May
       Pick<Mdx, 'id' | 'excerpt' | 'body' | 'slug'>
       & AssemblageFrontmatterFragment
     )> } };
-
-type EssayFrontmatterFragment = { readonly frontmatter: (
-    Pick<Frontmatter, 'title' | 'slug' | 'date' | 'subtitle' | 'tags'>
-    & { readonly cover_image: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<Pick<ImageSharpFluid, 'src'>> }> }> }
-  ) };
-
-type ReadingTimeFragment = { readonly fields: Maybe<{ readonly readingTime: Maybe<Pick<MdxFieldsReadingTime, 'text'>> }> };
-
-type EssayPreviewFragment = (
-  Pick<Mdx, 'id' | 'slug' | 'excerpt'>
-  & EssayFrontmatterFragment
-  & ReadingTimeFragment
-);
-
-type EssayFragment = (
-  Pick<Mdx, 'id' | 'slug' | 'body'>
-  & EssayFrontmatterFragment
-  & ReadingTimeFragment
-);
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -6054,12 +6043,15 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type WorksBySlugQueryVariables = Exact<{
+type BlogPostBySlugQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-type WorksBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<WorkFragment> } };
+type BlogPostBySlugQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly allMdx: { readonly nodes: ReadonlyArray<(
+      Pick<Mdx, 'tableOfContents'>
+      & EssayFragment
+    )> } };
 
 type BrainNoteBySlugQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -7006,7 +6998,7 @@ export type FrontmatterResolvers<ContextType = GatsbyResolverContext, ParentType
   filters?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   categories?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   published?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  updated?: Resolver<Maybe<ResolversTypes['Date']>, ParentType, ContextType, RequireFields<Frontmatter_updatedArgs, never>>;
+  updated?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   layout?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   external_url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   epistemic_status?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
