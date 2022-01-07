@@ -53,13 +53,20 @@ const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
 
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LVPGF72CY3"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-LVPGF72CY3');
-        </script>
+          src={`https://www.googletagmanager.com/gtag/js?id=G-LVPGF72CY3`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LVPGF72CY3', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </Helmet>
 
       <Graphic wide={wide} />
