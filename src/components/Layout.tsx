@@ -50,22 +50,6 @@ const Layout: FC<Layout> = ({ children, wide = false, navContent }) => {
           name="twitter:image"
           content="https://infinitecaesura.com/images/seo-image.png"
         />
-
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-LVPGF72CY3`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-LVPGF72CY3');
-          `,
-          }}
-        />
       </Helmet>
 
       <Graphic wide={wide} />
