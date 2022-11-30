@@ -8,3 +8,6 @@ content/.obsidian/*
 .env.*
 
 .DS_Store
+
+.replit
+replit.nix
